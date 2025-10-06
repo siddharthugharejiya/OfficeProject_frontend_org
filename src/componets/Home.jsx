@@ -16,9 +16,8 @@ import "../App.css"
 import { FeaturedProductSkeleton, BlogCardSkeleton, LoadingSpinner } from './SkeletonLoader'
 import { Autoplay } from 'swiper/modules';
 import { CategorySlider } from './CategorySlider'
-import { getImageUrl, handleImageError, handleImageLoad } from '../utils/imageUtils'
-import GlobalLoader from './GlobalLoader'
-// import { GlobalLoader } from './GlobalLoader'
+import { getImageUrl, } from '../utils/imageUtils'
+
 
 function Home() {
     const dispatch = useDispatch()
@@ -302,8 +301,8 @@ function Home() {
                                                                     src={getImageUrl(item.Image?.[0])}
                                                                     alt={item.name}
                                                                     className="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out"
-                                                                    onError={(e) => handleImageError(e, 'No Image')}
-                                                                    onLoad={() => handleImageLoad(item.Image?.[0])}
+                                                                // onError={(e) => handleImageError(e, 'No Image')}
+                                                                // onLoad={() => handleImageLoad(item.Image?.[0])}
                                                                 />
                                                             </div>
                                                             <div className="card-body mt-4 p-2">

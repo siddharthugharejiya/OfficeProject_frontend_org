@@ -11,7 +11,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { getImageUrl, handleImageError, handleImageLoad } from '../utils/imageUtils';
+import { getImageUrl } from '../utils/imageUtils';
 
 function SinglePage() {
   const { id } = useParams();
@@ -92,8 +92,8 @@ function SinglePage() {
                 src={getImageUrl(selectedImage)}
                 alt={product.name}
                 className="w-full h-[560px] object-cover transition-transform duration-300 ease-in-out"
-                onError={(e) => handleImageError(e, 'No Image')}
-                onLoad={() => handleImageLoad(selectedImage)}
+              // onError={(e) => handleImageError(e, 'No Image')}
+              // onLoad={() => handleImageLoad(selectedImage)}
               />
             </div>
 
@@ -110,8 +110,8 @@ function SinglePage() {
                       ${selectedImage === img
                         ? "ring-2 ring-indigo-500"
                         : "hover:ring-2 ring-offset-2 ring-indigo-300"}`}
-                    onError={(e) => handleImageError(e, 'Error')}
-                    onLoad={() => handleImageLoad(img)}
+                  // onError={(e) => handleImageError(e, 'Error')}
+                  // onLoad={() => handleImageLoad(img)}
                   />
                 ))}
             </div>

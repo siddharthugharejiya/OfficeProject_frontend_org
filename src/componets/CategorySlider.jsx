@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { fetchCategoryProducts } from "../Redux/action";
 import { useNavigate } from "react-router-dom";
-import { getImageUrl, handleImageError, handleImageLoad } from "../utils/imageUtils";
+import { getImageUrl } from "../utils/imageUtils";
 
 const categories = [
     "One Piece Closet",
@@ -77,8 +77,8 @@ export function CategorySlider() {
                                         src={getImageUrl(item.Image?.[0])}
                                         alt={item.name}
                                         className="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out"
-                                        onError={(e) => handleImageError(e, 'No Image')}
-                                        onLoad={() => handleImageLoad(item.Image?.[0])}
+                                    // onError={(e) => handleImageError(e, 'No Image')}
+                                    // onLoad={() => handleImageLoad(item.Image?.[0])}
                                     />
                                 </div>
                                 <div className="card-body mt-4 p-2">

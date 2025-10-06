@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import "../App.css";
 import Navbar_1 from './Navbar_1';
 import Footer1 from './Footer1';
-import { getImageUrl, handleImageError, handleImageLoad } from '../utils/imageUtils';
+import { getImageUrl } from '../utils/imageUtils';
 
 function ProductPage() {
     const { id } = useParams();
@@ -56,8 +56,8 @@ function ProductPage() {
                                             src={getImageUrl(item.Image?.[0])}
                                             alt={item.name}
                                             className="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out"
-                                            onError={(e) => handleImageError(e, 'No Image')}
-                                            onLoad={() => handleImageLoad(item.Image?.[0])}
+                                        // onError={(e) => handleImageError(e, 'No Image')}
+                                        // onLoad={() => handleImageLoad(item.Image?.[0])}
                                         />
                                     </div>
                                     <div className="card-body mt-4 p-2 text-center">

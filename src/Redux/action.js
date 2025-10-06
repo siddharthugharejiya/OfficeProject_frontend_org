@@ -21,6 +21,36 @@ const showToast = (message, type = "success") => {
     }).showToast();
 };
 
+// Helper function to fix image URLs
+const fixImageUrls = (products) => {
+    const BASE_URL = "https://officeproject-backend.onrender.com";
+
+    if (!products) return products;
+
+    if (Array.isArray(products)) {
+        return products.map(product => ({
+            ...product,
+            Image: product.Image ? product.Image.map(img =>
+                img.startsWith("http")
+                    ? img
+                    : `${BASE_URL}${img.startsWith("/") ? "" : "/"}${img}`
+            ) : []
+        }));
+    } else if (typeof products === 'object') {
+        // Single product object
+        return {
+            ...products,
+            Image: products.Image ? products.Image.map(img =>
+                img.startsWith("http")
+                    ? img
+                    : `${BASE_URL}${img.startsWith("/") ? "" : "/"}${img}`
+            ) : []
+        };
+    }
+
+    return products;
+};
+
 // ------------------- PRODUCT GET -------------------
 export const Product_Get = () => async (dispatch) => {
     dispatch({ type: "PRODUCT_GET_LOADING" });
@@ -28,7 +58,8 @@ export const Product_Get = () => async (dispatch) => {
     try {
         const response = await fetch("https://officeproject-backend.onrender.com/get");
         const res = await response.json();
-        dispatch({ type: "PRODUCT_GET_SUCCESS", payload: res.data });
+        const fixedData = fixImageUrls(res.data);
+        dispatch({ type: "PRODUCT_GET_SUCCESS", payload: fixedData });
     } catch (error) {
         showToast("Failed to fetch products", "error");
         console.error("Product_Get error:", error);
@@ -71,7 +102,6 @@ export const product_add_action = (productData) => async (dispatch) => {
     }
 };
 
-
 // ------------------- DELETE PRODUCT -------------------
 export const Product_del = (id) => async (dispatch) => {
     dispatch({ type: "PRODUCT_DELETE_LOADING" });
@@ -98,7 +128,8 @@ export const Product_edite_get = (id) => async (dispatch) => {
     try {
         const response = await fetch(`https://officeproject-backend.onrender.com/edite-get/${id}`);
         const res = await response.json();
-        dispatch({ type: "PRODUCT_EDIT_GET_SUCCESS", payload: res });
+        const fixedData = fixImageUrls(res);
+        dispatch({ type: "PRODUCT_EDIT_GET_SUCCESS", payload: fixedData });
     } catch (error) {
         showToast("❌ Failed to get product for edit", "error");
         console.error("Edit get error:", error);
@@ -137,7 +168,8 @@ export const SingleProduct_Action = (id) => async (dispatch) => {
     try {
         const response = await fetch(`https://officeproject-backend.onrender.com/SinglePage/${id}`);
         const data = await response.json();
-        dispatch({ type: "SINGLE_PRODUCT_SUCCESS", payload: data });
+        const fixedData = fixImageUrls(data);
+        dispatch({ type: "SINGLE_PRODUCT_SUCCESS", payload: fixedData });
     } catch (error) {
         console.error("SingleProduct error:", error);
         dispatch({ type: "SINGLE_PRODUCT_ERROR", payload: error.message });
@@ -151,7 +183,8 @@ export const Product_Action = (id) => async (dispatch) => {
     try {
         const response = await fetch(`https://officeproject-backend.onrender.com/product/${id}`);
         const data = await response.json();
-        dispatch({ type: "PRODUCT_BY_ID_SUCCESS", payload: data });
+        const fixedData = fixImageUrls(data);
+        dispatch({ type: "PRODUCT_BY_ID_SUCCESS", payload: fixedData });
     } catch (error) {
         console.error("Product error:", error);
         dispatch({ type: "PRODUCT_BY_ID_ERROR", payload: error.message });
@@ -165,7 +198,8 @@ export const All_Product = () => async (dispatch) => {
     try {
         const response = await fetch(`https://officeproject-backend.onrender.com/get`);
         const data = await response.json();
-        dispatch({ type: "ALL_PRODUCT_SUCCESS", payload: data });
+        const fixedData = fixImageUrls(data);
+        dispatch({ type: "ALL_PRODUCT_SUCCESS", payload: fixedData });
     } catch (error) {
         console.error("All Product error:", error);
         // dispatch({ type: "ALL_PRODUCT_ERROR", payload: error.message });
@@ -177,10 +211,10 @@ export const Product_category = (category) => async (dispatch) => {
     dispatch({ type: "CATEGORY_LOADING" });
 
     try {
-
         const response = await fetch(`https://officeproject-backend.onrender.com/category/${category}`);
         const data = await response.json();
-        dispatch({ type: "CATEGORY_SUCCESS", payload: data });
+        const fixedData = fixImageUrls(data);
+        dispatch({ type: "CATEGORY_SUCCESS", payload: fixedData });
     } catch (error) {
         console.error("Category error:", error);
         // dispatch({ type: "CATEGORY_ERROR", payload: error.message });

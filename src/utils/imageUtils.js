@@ -2,31 +2,17 @@
 export const getImageUrl = (imageUrl) => {
     if (!imageUrl) return '/placeholder.png';
 
-    // If it's already a full URL, return as is
+    // If it's already a full URL (http or https), return as is
     if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
-        return imageUrl;
+        return imageUrl; // ✅ Return original URL
     }
 
-    // If it starts with /uploads, add the base URL
-    if (imageUrl.startsWith('/uploads/')) {
-        return `http://localhost:9595${imageUrl}`;
-    }
+    // Define your backend base URL with HTTPS
+    const BASE_URL = 'https://officeproject-backend.onrender.com';
 
-    // If it doesn't start with /, add it
-    if (!imageUrl.startsWith('/')) {
-        return `http://localhost:9595/${imageUrl}`;
-    }
+    // Remove any leading slashes to avoid double slashes
+    const cleanImageUrl = imageUrl.startsWith('/') ? imageUrl.slice(1) : imageUrl;
 
-    // Default case
-    return `http://localhost:9595${imageUrl}`;
-};
-
-// Function to handle image load errors
-export const handleImageError = (e, fallbackText = 'Image Not Found') => {
-    e.target.src = '/placeholder.png';
-};
-
-// Function to log successful image loads
-export const handleImageLoad = (imageUrl) => {
-    // Silent success - no logging needed
+    // Construct the full URL
+    return `${BASE_URL}/${cleanImageUrl}`;
 };

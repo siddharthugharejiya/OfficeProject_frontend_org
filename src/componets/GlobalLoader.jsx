@@ -7,7 +7,7 @@ export default function GlobalLoader({ visible }) {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
             <div className="bg-white/95 rounded-2xl p-8 flex flex-col items-center shadow-2xl border border-gray-200">
                 {/* Ceramic Toilet Loader */}
-                <div className="relative w-32 h-32 mb-4">
+                <div className="relative w-32 h-32 mb-4 pt-4">
                     {/* Toilet Base */}
                     <div className="absolute inset-0 flex items-center justify-center">
                         {/* Tank */}

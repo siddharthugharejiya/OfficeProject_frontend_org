@@ -92,10 +92,10 @@ export function Nav() {
                                 <Link
                                     to="/"
                                     onClick={() => setActiveIndex(0)}
-                                    className="2xl:text-[20px] sm:text-[17px] font-medium text-[#2c2c2c] hover:text-[#b86c59] focus:outline-none relative"
+                                    className="text-[17px] font-medium text-white hover:text-gray-200 focus:outline-none relative"
                                 >
                                     Home
-                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#b86c59] transition-all duration-300 ${activeIndex === 0 ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
+                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#7eb859] transition-all duration-300 ${activeIndex === 0 ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
                                 </Link>
                             </div>
 
@@ -104,10 +104,11 @@ export function Nav() {
                                 <Link
                                     to="/whoWeAre"
                                     onClick={() => setActiveIndex(1)}
-                                    className="text-[17px] font-medium text-[#2c2c2c] hover:text-[#b86c59] focus:outline-none relative"
+                                    className="text-[17px] font-medium text-white hover:text-gray-200 focus:outline-none relative"
+
                                 >
                                     Who We Are
-                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#b86c59] transition-all duration-300 ${activeIndex === 1 ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
+                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#7eb859] transition-all duration-300 ${activeIndex === 1 ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
                                 </Link>
                             </div>
 
@@ -120,10 +121,10 @@ export function Nav() {
                                         }
                                         setActiveIndex(2);
                                     }}
-                                    className="text-[17px] font-medium text-[#2c2c2c] hover:text-[#b86c59] focus:outline-none relative transition"
+                                    className="text-[17px] font-medium text-white hover:text-white focus:outline-none relative transition"
                                 >
                                     Product
-                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#b86c59] transition-all duration-300 ${activeIndex === 2 ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
+                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#7eb859] transition-all duration-300 ${activeIndex === 2 ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
                                 </Link>
                                 {/* Centered Dropdown */}
                                 <div className={`absolute left-1/2 transform -translate-x-1/2 top-[60%] mt-2 z-50 w-[90vw] max-w-[300px] sm:w-[80vw] sm:max-w-[380px] md:w-[60vw] md:max-w-[420px] lg:w-[36rem] lg:max-w-[550px] bg-white shadow-lg rounded-md max-h-[60vh] lg:max-h-[50vh] overflow-y-auto ${isProductDropdownOpen ? 'block' : 'hidden'}`}>
@@ -160,10 +161,10 @@ export function Nav() {
                                 <Link
                                     to="/new"
                                     onClick={() => setActiveIndex(4)}
-                                    className="text-[17px] font-medium text-[#2c2c2c] hover:text-[#b86c59] focus:outline-none relative"
+                                    className="text-[17px] font-medium text-white hover:text-white focus:outline-none relative"
                                 >
                                     New Arrivals
-                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#b86c59] transition-all duration-300 ${activeIndex === 4 ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
+                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#7eb859] transition-all duration-300 ${activeIndex === 4 ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
                                 </Link>
                             </div>
 
@@ -172,10 +173,10 @@ export function Nav() {
                                 <Link
                                     to="/contact"
                                     onClick={() => setActiveIndex(5)}
-                                    className="text-[17px] font-medium text-[#2c2c2c] hover:text-[#b86c59] focus:outline-none relative"
+                                    className="text-[17px] font-medium text-white hover:text-white focus:outline-none relative"
                                 >
                                     Contact
-                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#b86c59] transition-all duration-300 ${activeIndex === 5 ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
+                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#7eb859] transition-all duration-300 ${activeIndex === 5 ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
                                 </Link>
                             </div>
                         </nav>
@@ -190,8 +191,8 @@ export function Nav() {
                     <button onClick={handleToggle} className="text-xl"><FaTimes /></button>
                 </div>
                 <nav className="flex flex-col p-4 space-y-3">
-                    <Link to="/" onClick={() => { setActiveIndex(0); setIsOpen(false); }} className="text-left hover:text-[#b86c59]">Home</Link>
-                    <Link to="/whoWeAre" onClick={() => { setActiveIndex(1); setIsOpen(false); }} className="text-left hover:text-[#b86c59]">Who We Are</Link>
+                    <Link to="/" onClick={() => { setActiveIndex(0); setIsOpen(false); }} className="text-left hover:text-white">Home</Link>
+                    <Link to="/whoWeAre" onClick={() => { setActiveIndex(1); setIsOpen(false); }} className="text-left hover:text-white">Who We Are</Link>
                     <div>
                         <button onClick={() => { setActiveIndex(2); setIsProductDropdownOpen(!isProductDropdownOpen); }} className="text-left hover:text-[#b86c59] w-full">Product</button>
                         {isProductDropdownOpen && (
