@@ -1,0 +1,221 @@
+*{
+ font-family: "Jost", sans-serif;
+ /* overflow-x: hidden; */
+ /* overflow-y: hidden; */
+}
+/* Prevent horizontal scroll due to animations/carousels */
+html, body, #root { max-width: 100%; overflow-x: hidden; }
+
+.slick-slider,
+ .slick-list { overflow: hidden !important; }
+[data-aos="fade-left"], [data-aos="fade-right"], [data-aos^="fade-"] { will-change: transform, opacity; }
+.animated-slider-container {
+  width: 100%;
+  height: 760px;
+  overflow: hidden;
+
+}
+
+.slide-bg {
+  height: 760px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 280px;
+}
+
+.slide-content {
+  color: #000;
+  max-width: 600px;
+}
+
+.slide-subtitle {
+  font-size: 14px;
+  color: #bd9c85;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.slide-title {
+  font-size: 60px;
+  font-weight: 500;
+  margin-bottom: 30px;
+  line-height: 1.2;
+}
+
+.slide-description {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.slide-button {
+  display: inline-block;
+  background-color: #bd9c85;
+  color: #fff;
+  padding: 15px 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.slide-button:hover {
+  background-color: #a87b5c;
+}
+
+/* index.css or custom CSS file */
+.custom-toast {
+  font-weight: bold;
+  animation: pop 0.3s ease;
+  transform: scale(1);
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+/* Premium Shimmer Animation */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Premium Loading Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(189, 156, 133, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(189, 156, 133, 0.6);
+  }
+}
+
+/* Premium Glassmorphism Effects */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Premium Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, #BD9C85, #BD624C);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Premium Shadow Effects */
+.shadow-3xl {
+  box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Premium Card Hover Effects */
+.premium-card-hover {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.premium-card-hover:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Premium Button Effects */
+.premium-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.premium-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.premium-button:hover::before {
+  left: 100%;
+}
+.slick-dots{
+  display: none !important;
+}
+
+
+/* index.css or App.css में डालो */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.card-inner {
+  transition: transform 0.7s;
+  transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.card-flip:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+.slick-slide{
+  width: 100% !important;
+}
+/* 
+.product-slider-wrapper .slick-track{
+  width: 250px !important;
+}
+.sl {
+  display: flex !important;
+  justify-content: center;
+} */
+
