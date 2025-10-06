@@ -40,7 +40,7 @@ const AnimatedImageSlider = () => {
                 {slidess.map((slide, index) => (
                     <SwiperSlide key={slide.id}>
                         <div
-                            className="relative w-full flex items-center justify-center h-[90vh] sm:h-[60vh] md:h-[80vh] lg:h-[90vh] xl:h-[130vh] 2xl:h-[110vh]"
+                            className="relative w-full flex items-center justify-center h-[50vh] sm:h-[60vh] md:h-[80vh] lg:h-[90vh] xl:h-[130vh] 2xl:h-[110vh]"
                         // style={{
                         //     height: '40vh',
                         //     minHeight: '500px',
