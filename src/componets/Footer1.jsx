@@ -119,13 +119,7 @@ function Footer1() {
                                 </a>
 
                                 {/* Twitter (existing placeholder) */}
-                                <a href="https://twitter.com/clientname" target="_blank" rel="noopener noreferrer">
-                                    <div className="w-[42px] h-[42px] rounded-full border flex justify-center items-center
-        transition-colors duration-300 hover:bg-sky-400 hover:text-white"
-                                        style={{ borderColor: 'rgba(153, 153, 153, 0.1)' }}>
-                                        <i className="fa-brands fa-twitter text-sm"></i>
-                                    </div>
-                                </a>
+                              
 
                           
 

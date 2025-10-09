@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
-import { motion } from "framer-motion";
+
 import { Nav } from "./Nav";
+import { Autoplay } from "swiper/modules";
 
 const useWindowSize = () => {
     const [windowSize, setWindowSize] = useState({
@@ -30,19 +31,19 @@ const useWindowSize = () => {
 const slidess = [
     {
         id: 1,
-        image: "../image/slider_1.jpg",
+        image: "/image/slider_1.jpg",
     },
     {
         id: 2,
-        image: "../image/slider_2.jpg",
+        image: "/image/slider_2.jpg",
     },
     {
         id: 3,
-        image: "../image/slider_3.jpg",
+        image: "/image/slider_3.jpg",
     },
     {
         id: 4,
-        image: "../image/slider_4.jpg",
+        image: "/image/slider_4.jpg",
     },
 ];
 
@@ -63,22 +64,26 @@ const AnimatedImageSlider = () => {
         }
     }
     const mobileHeight = screenWidth < 640 ? `${mobileVh}vh` : undefined;
-
+      const swiperRef = useRef(null);
+     
     return (
-        <div className="w-full relative overflow-hidden">
+        <div className="w-full relative overflow-hidden -px-1">
             <div className="absolute top-0 w-full z-50">
                 <Nav />
             </div>
             <Swiper
+    onSwiper={(swiper) => (swiperRef.current = swiper)}
+                                        modules={[Autoplay]}
+                
                 slidesPerView={1}
                 loop={true}
-                speed={800}
+                speed={1500}
                 autoplay={{
-                    delay: 4000,
+                    delay: 2000,
                     disableOnInteraction: false,
                 }}
                 onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-                className="w-full sm:h-[60vh] md:h-[70vh] lg:h-[80vh] xl:h-[100vh] 2xl:h-[100vh]" // 2xl भी 100vh
+                className="w-full sm:h-[60vh] md:h-[70vh] lg:h-[80vh] xl:h-[100vh] 2xl:h-[100vh]" 
                 style={{
                     height: screenWidth >= 1280 ? '100vh' : mobileHeight, // XL+ screens
                     overflow: screenWidth >= 1280 ? 'hidden' : 'visible', // scroll hide for XL+

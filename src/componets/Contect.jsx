@@ -33,17 +33,19 @@ function Contect() {
             <Navbar_1 />
             <div className="max-w-6xl mx-auto px-4 py-10 space-y-10">
                 {/* 🔹 Map Section */}
-                <div className="w-full h-[400px]  overflow-hidden ">
-                    <iframe
-                        title="Client Office Map"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019321200041!2d-122.41941508468177!3d37.7749297797594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c5d9b64fb%3A0x5b1a0c6453d1a4d3!2sSan+Francisco%2C+CA!5e0!3m2!1sen!2sin!4v1690000000000!5m2!1sen!2sin"
-                        width="100%"
-                        height="100%"
-                        className="border-0"
-                        allowFullScreen=""
-                        loading="lazy"
-                    ></iframe>
-                </div>
+              <div className="w-full h-[400px] overflow-hidden">
+  <iframe
+    title="Client Office Map"
+    
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1838.8420994244123!2d70.86961843848967!3d22.814162767205055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39598d77537d5241%3A0x885fbb57aefb9a11!2sIshan%20business%20centre!5e0!3m2!1sen!2sin!4v1759906805864!5m2!1sen!2sin"
+    width="100%"
+    height="100%"
+    className="border-0"
+    allowFullScreen=""
+    loading="lazy"
+  ></iframe>
+</div>
+
 
                 {/* 🔹 Contact Form Section */}
                 <div className="bg-gray-5   c `78900 p-6 md:p-10">

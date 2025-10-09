@@ -82,7 +82,7 @@ export function Nav() {
 
                     {/* DESKTOP HEADER */}
                     <div className="hidden lg:flex items-center justify-between pt-5 lg:px-30 flex-wrap">
-                        <div className='2xl:w-[20%] w-full flex justify-center items-center'>
+                        <div className='2xl:w-[20%] xl:w-[20%] lg:w-[20%] w-full flex justify-center items-center'>
                             <img src="../image/Logo CLR.png" alt="Logo" className="h-8" />
                         </div>
 

@@ -192,43 +192,43 @@ function Home() {
                     <div className='p-4 flex flex-col justify-center items-center text-center' data-aos="fade-up" data-aos-delay="0">
                         {/* image */}
                         <div className='pb-4'>
-                            <img src="https://demo74.leotheme.com/prestashop/leo_shopiodecor_demo/themes/leo_shopiodecor/assets/img/modules/appagebuilder/images/decor-icon5.png" alt="" className="w-9 h-9 sm:w-14 sm:h-14" />
+                            <img src="./image/decor-icon5.png" alt="" className="w-9 h-9 sm:w-12 sm:h-12" />
                         </div>
                         {/* content */}
                         <div>
-                            <h1 className='font-bold uppercase text-sm sm:text-base'>Free Delivery</h1>
-                            <p className='text-[#666] text-xs sm:text-sm font-semibold'>Free shipping over $100</p>
+                            <h1 className='font-bold uppercase text-sm sm:text-base'>Quality Assurance</h1>
+                            <p className='text-[#666] text-xs sm:text-sm font-semibold'>Premium Quality Guaranteed</p>
                         </div>
                     </div>
 
                     <div className='p-4 flex flex-col justify-center items-center text-center' data-aos="fade-up" data-aos-delay="100">
                         {/* image */}
                         <div className='pb-4'>
-                            <img src="https://demo74.leotheme.com/prestashop/leo_shopiodecor_demo/themes/leo_shopiodecor/assets/img/modules/appagebuilder/images/decor-icon6.png" alt="" className="w-9 h-9 sm:w-14 sm:h-14" />
+                            <img src="./image/decor-icon6.png" alt="" className="w-9 h-9 sm:w-12 sm:h-12" />
                         </div>
                         {/* content */}
                         <div>
-                            <h1 className='font-bold uppercase text-sm sm:text-base'>Member Discount</h1>
-                            <p className='text-[#666] text-xs sm:text-sm font-semibold'>Get $15 off your order</p>
+                            <h1 className='font-bold uppercase text-sm sm:text-base'>Product Installation</h1>
+                            <p className='text-[#666] text-xs sm:text-sm font-semibold'>Installed With Care</p>
                         </div>
                     </div>
 
                     <div className='p-4 flex flex-col justify-center items-center text-center' data-aos="fade-up" data-aos-delay="200">
                         {/* image */}
                         <div className='pb-4'>
-                            <img src="https://demo74.leotheme.com/prestashop/leo_shopiodecor_demo/themes/leo_shopiodecor/assets/img/modules/appagebuilder/images/decor-icon7.png" alt="" className="w-9 h-9 sm:w-14 sm:h-14" />
+                            <img src="./image/decor-icon7.png" alt="" className="w-9 h-9 sm:w-12 sm:h-12" />
                         </div>
                         {/* content */}
                         <div>
-                            <h1 className='font-bold uppercase text-sm sm:text-base'>Money Return</h1>
-                            <p className='text-[#666] text-xs sm:text-sm font-semibold'>Guarantee under 7 days</p>
+                            <h1 className='font-bold uppercase text-sm sm:text-base'>Customer Support</h1>
+                            <p className='text-[#666] text-xs sm:text-sm font-semibold'>Commercial Order Assistance</p>
                         </div>
                     </div>
 
                     <div className='p-4 flex flex-col justify-center items-center text-center' data-aos="fade-up" data-aos-delay="300">
                         {/* image */}
                         <div className='pb-4'>
-                            <img src="https://demo74.leotheme.com/prestashop/leo_shopiodecor_demo/themes/leo_shopiodecor/assets/img/modules/appagebuilder/images/decor-icon8.png" alt="" className="w-9 h-9 sm:w-14 sm:h-14" />
+                            <img src="./image/decor-icon8.png" alt="" className="w-9 h-9 sm:w-12 sm:h-12" />
                         </div>
                         {/* content */}
                         <div>
@@ -278,7 +278,7 @@ function Home() {
                                             disableOnInteraction: false,
                                             pauseOnMouseEnter: true,
                                         }}
-                                        loop={true}
+                                          loop={Product.length > 4}
                                         spaceBetween={20}
                                         slidesPerView={1}
                                         breakpoints={{
@@ -366,7 +366,7 @@ function Home() {
                     {/* Bottom Chair Image */}
                     <div className="bg-[#f8f2ee] rounded-lg p-4">
                         <img
-                            src="https://cdn.shopify.com/s/files/1/0905/2012/files/s-dbanner-5.png?v=1645586327"
+                            src="/image/s-dbanner-5.png?v=1645586327"
                             alt="Chair"
                             className="w-full h-auto object-contain"
                         />
@@ -378,7 +378,7 @@ function Home() {
                     {/* Top Chair Image */}
                     <div className="bg-[#f8f2ee] rounded-lg p-4">
                         <img
-                            src="https://cdn.shopify.com/s/files/1/0905/2012/files/s-dbanner-4_a6224ad9-a4c7-4198-93f1-c63532deb906.jpg?v=1645586327"
+                            src="/image/s-dbanner-4_a6224ad9-a4c7-4198-93f1-c63532deb906.jpg?v=1645586327"
                             alt="Chair 2"
                             className="w-full h-auto object-contain"
                         />
@@ -453,7 +453,7 @@ function Home() {
 
             {/* Stay in the loop */}
 
-            <div className='mb-4 py-10'>
+            {/* <div className='mb-4 py-10'>
                 <div className='pt-4 px-4 pb-4' data-aos="fade-up">
                     <div className="flex items-center justify-center space-x-2 font-semibold text-[#BD9C85] text-sm uppercase pb-2">
                         <span>04</span>
@@ -474,7 +474,7 @@ function Home() {
 
                             <div className='card h-auto w-full' data-aos="fade-up" data-aos-delay="0">
                                 <div>
-                                    <img src="https://demo74.leotheme.com/prestashop/leo_shopiodecor_demo/img/leoblog/b/1/23/576_350/b-b-blog-7.jpg" className='h-[200px] sm:h-[250px] w-full object-cover' alt="" />
+                                    <img src="/image/b-b-blog-7.jpg" className='h-[200px] sm:h-[250px] w-full object-cover' alt="" />
                                 </div>
                                 <div className='card-body p-4'>
                                     <div className="title flex flex-wrap items-center text-xs sm:text-sm">
@@ -494,7 +494,7 @@ function Home() {
 
                             <div className='card h-auto w-full' data-aos="fade-up" data-aos-delay="0">
                                 <div>
-                                    <img src="https://demo74.leotheme.com/prestashop/leo_shopiodecor_demo/img/leoblog/b/1/23/576_350/b-b-blog-7.jpg" className='h-[200px] sm:h-[250px] w-full object-cover' alt="" />
+                                    <img src="/image/b-b-blog-7.jpg" className='h-[200px] sm:h-[250px] w-full object-cover' alt="" />
                                 </div>
                                 <div className='card-body p-4'>
                                     <div className="title flex flex-wrap items-center text-xs sm:text-sm">
@@ -519,7 +519,7 @@ function Home() {
 
                             <div className='card h-auto w-full' data-aos="fade-up" data-aos-delay="0">
                                 <div>
-                                    <img src="https://demo74.leotheme.com/prestashop/leo_shopiodecor_demo/img/leoblog/b/1/23/576_350/b-b-blog-7.jpg" className='h-[200px] sm:h-[250px] w-full object-cover' alt="" />
+                                    <img src="/image/b-b-blog-7.jpg" className='h-[200px] sm:h-[250px] w-full object-cover' alt="" />
                                 </div>
                                 <div className='card-body p-4'>
                                     <div className="title flex flex-wrap items-center text-xs sm:text-sm">
@@ -543,7 +543,7 @@ function Home() {
                     )}
                 </div>
 
-            </div>
+            </div> */}
             <Footer />
         </div>
     )

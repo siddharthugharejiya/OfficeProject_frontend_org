@@ -202,7 +202,7 @@ function SinglePage() {
                 480: { slidesPerView: 1 },
                 300: { slidesPerView: 1 },
               }}
-              loop={true}
+               loop={releted.length > 4}
             >
               {releted.map((item, index) => (
                 <SwiperSlide key={item.id}>
@@ -216,8 +216,8 @@ function SinglePage() {
                           src={getImageUrl(item.Image?.[0])}
                           alt={item.name}
                           className="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out"
-                          onError={(e) => handleImageError(e, 'No Image')}
-                          onLoad={() => handleImageLoad(item.Image?.[0])}
+                          // onError={(e) => handleImageError(e, 'No Image')}
+                          // onLoad={() => handleImageLoad(item.Image?.[0])}
                         />
                       </div>
                       <div className="card-body mt-4 p-2" >

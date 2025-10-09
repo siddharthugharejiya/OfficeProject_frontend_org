@@ -1,18 +1,13 @@
-// Utility function to get proper image URL
 export const getImageUrl = (imageUrl) => {
-    if (!imageUrl) return '/placeholder.png';
+    // अगर imageUrl null या undefined है तो fallback
+    if (!imageUrl) return './placeholder.png'; // या कोई default image
 
-    // If it's already a full URL (http or https), return as is
+    // अगर full URL है तो वैसे ही return करो
     if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
-        return imageUrl; // ✅ Return original URL
+        return imageUrl;
     }
 
-    // Define your backend base URL with HTTPS
     const BASE_URL = 'https://officeproject-backend.onrender.com';
-
-    // Remove any leading slashes to avoid double slashes
     const cleanImageUrl = imageUrl.startsWith('/') ? imageUrl.slice(1) : imageUrl;
-
-    // Construct the full URL
     return `${BASE_URL}/${cleanImageUrl}`;
 };
