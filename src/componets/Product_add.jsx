@@ -16,6 +16,8 @@ const Product_add = () => {
     const dispatch = useDispatch();
     const product_edite = useSelector(state => state.Product_edite_getting?.edite_data || {});
 
+
+
     const [update, setupdate] = useState(false);
     const [loading, setLoading] = useState(false);
     const [activeTab, setActiveTab] = useState("link");
@@ -38,6 +40,8 @@ const Product_add = () => {
     useEffect(() => {
         if (product_edite && product_edite.data) {
             const productData = product_edite.data;
+            console.log(productData);
+
             setstate({
                 id: productData._id || "",
                 name: productData.name || "",
@@ -88,10 +92,7 @@ const Product_add = () => {
                 alert(`${file.name} is not a valid image file`);
                 return false;
             }
-            if (file.size > 5 * 1024 * 1024) { // 5MB limit
-                alert(`${file.name} is too large. Please select files under 5MB`);
-                return false;
-            }
+
             return true;
         });
 
@@ -126,7 +127,7 @@ const Product_add = () => {
         try {
             const formData = new FormData();
 
-            // Fields
+            // Append basic fields
             formData.append('name', state.name);
             formData.append('title', state.title);
             formData.append('des', state.des);
@@ -136,40 +137,73 @@ const Product_add = () => {
             formData.append('tag', state.tag);
             formData.append('category', state.category);
 
-            // Handle both file uploads and URL links
-            const links = [];
-            selectedFiles.forEach((item, index) => {
+            // Separate file uploads and URL links
+            const fileImages = [];
+            const linkImages = [];
+
+            selectedFiles.forEach((item) => {
                 if (item.file) {
-                    // File upload - use 'image' field name as per backend
-                    formData.append('image', item.file);
+                    // It's a file upload
+                    fileImages.push(item.file);
                 } else {
-                    // URL link
-                    links.push(item.preview);
+                    // It's a URL link
+                    linkImages.push(item.preview);
                 }
             });
 
-            // Add link images as JSON string if any
-            if (links.length > 0) {
-                formData.append('linkImages', JSON.stringify(links));
+            // Append files individually with field name 'images'
+            fileImages.forEach((file) => {
+                formData.append('images', file);
+            });
+
+            // Append link images as JSON string
+            if (linkImages.length > 0) {
+                formData.append('linkImages', JSON.stringify(linkImages));
             }
+
+            console.log('Submitting form data:');
+            console.log('Files:', fileImages.length);
+            console.log('Links:', linkImages);
 
             // POST to backend
             const url = update ? `https://officeproject-backend.onrender.com/edite/${state.id}` : "https://officeproject-backend.onrender.com/add";
             const method = update ? "PUT" : "POST";
 
-            const res = await fetch(url, { method, body: formData });
-            const data = await res.json();
+            const res = await fetch(url, {
+                method,
+                body: formData
+            });
 
-            if (!res.ok) throw new Error(data.message || "Something went wrong");
+            if (!res.ok) {
+                const errorData = await res.json();
+                throw new Error(errorData.message || `HTTP error! status: ${res.status}`);
+            }
+
+            const data = await res.json();
+            console.log('Success response:', data);
 
             alert(update ? "Product Updated!" : "Product Added!");
-            dispatch(Product_Get()); // refresh list
+            dispatch(Product_Get());
 
             // Reset form
-            setstate({ id: "", name: "", Image: [], title: "", des: "", rating: "", price: "", weight: "", tag: "", category: "" });
+            setstate({
+                id: "",
+                name: "",
+                Image: [],
+                title: "",
+                des: "",
+                rating: "",
+                price: "",
+                weight: "",
+                tag: "",
+                category: ""
+            });
             setSelectedFiles([]);
             setupdate(false);
+            setImageLink("");
+
         } catch (err) {
+            console.error("Submission error:", err);
             alert("Error: " + err.message);
         } finally {
             setLoading(false);

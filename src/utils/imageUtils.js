@@ -2,8 +2,11 @@ export const getImageUrl = (imageUrl) => {
     // अगर imageUrl null या undefined है तो fallback
     if (!imageUrl) return './placeholder.png'; // या कोई default image
 
-    // अगर full URL है तो वैसे ही return करो
-    if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
+    // अगर full URL है तो ensure HTTPS
+    if (imageUrl.startsWith('http://')) {
+        return imageUrl.replace('http://', 'https://');
+    }
+    if (imageUrl.startsWith('https://')) {
         return imageUrl;
     }
 

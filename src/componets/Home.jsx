@@ -278,7 +278,7 @@ function Home() {
                                             disableOnInteraction: false,
                                             pauseOnMouseEnter: true,
                                         }}
-                                          loop={Product.length > 4}
+                                        loop={Product.length > 4}
                                         spaceBetween={20}
                                         slidesPerView={1}
                                         breakpoints={{
@@ -294,22 +294,27 @@ function Home() {
                                                     <div className="flex justify-center items-stretch h-full">
                                                         <div
                                                             className="card w-full max-w-[18rem] bg-white sm:max-w-[20rem] md:max-w-[22rem] lg:max-w-[18rem] xl:max-w-[17rem] flex flex-col items-center hover:shadow-sm transition-transform duration-300 cursor-pointer overflow-auto m-1 z-0"
-                                                            onClick={() => handleclick(item._id)}
+
                                                         >
-                                                            <div className="h-[350px] relative overflow-hidden w-full group">
+                                                            <div className="h-[350px] relative overflow-hidden w-full group select-none" onTouchStart={(e) => {
+                                                                // trigger hover-like effect on touch
+                                                                const img = e.currentTarget.querySelector('img');
+                                                                if (img) img.classList.add('grayscale-0');
+                                                            }} onTouchEnd={(e) => {
+                                                                const img = e.currentTarget.querySelector('img');
+                                                                if (img) img.classList.remove('grayscale-0');
+                                                            }}>
                                                                 <img
                                                                     src={getImageUrl(item.Image?.[0])}
                                                                     alt={item.name}
-                                                                    className="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out"
-                                                                // onError={(e) => handleImageError(e, 'No Image')}
-                                                                // onLoad={() => handleImageLoad(item.Image?.[0])}
+                                                                    className="h-full w-full object-cover grayscale group-hover:grayscale-0 active:grayscale-0 transition-all duration-500 ease-in-out"
                                                                 />
                                                             </div>
-                                                            <div className="card-body mt-4 p-2">
-                                                                <h2 className="card-title text-lg font-mono uppercase text-[14px] text-center text-[#CE701F]">
+                                                            <div className="card-body mt-4 p-2" onClick={() => handleclick(item._id)}>
+                                                                <h2 className="card-title text-lg font-mono uppercase text-[14px] text-center text-[#CE701F] active:text-[#CE701F]">
                                                                     {item.name}
                                                                 </h2>
-                                                                <p className="card-title text-gray-500 text-lg font-mono uppercase text-[14px] text-center hover:text-[#CE701F]">
+                                                                <p className="card-title text-gray-500 text-lg font-mono uppercase text-[14px] text-center hover:text-[#CE701F] active:text-[#CE701F]">
                                                                     {item.category}
                                                                 </p>
                                                             </div>

@@ -8,6 +8,7 @@ import { LoadingSpinner } from './SkeletonLoader'
 import { FaEye, FaShareAlt, FaShoppingCart, FaHeart } from 'react-icons/fa'
 import Navbar_1 from './Navbar_1'
 import Footer1 from './Footer1'
+import { getImageUrl } from '../utils/imageUtils'
 
 const sampleProducts = [
     {
@@ -113,62 +114,11 @@ function NewArrivals() {
                     <p className="text-gray-600 max-w-3xl mx-auto">Browse the latest products added to our collection. Handpicked and crafted with care.</p>
                 </section>
 
-                {/* Modal quick-view for selected product */}
-                {open && eye && (
-                    <>
-                        {/* Overlay */}
-                        <div className="fixed inset-0 bg-black opacity-40 z-50" onClick={handleClose}></div>
 
-                        {/* Modal Box */}
-                        <div className="transition-all duration-700 fixed top-0 left-0 h-screen w-full z-50 flex justify-center items-center overflow-auto p-4 animate-fade-in">
-                            <div className="grid sm:grid-cols-2 grid-cols-1 bg-white rounded-xl shadow-2xl w-full max-w-4xl max-h-[98vh] overflow-y-auto relative">
-
-                                {/* Close Button */}
-                                <div className="absolute sm:right-5 right-5 top-0 p-4 z-50">
-                                    <button className="text-[20px] hover:animate-ping" onClick={handleClose}>×</button>
-                                </div>
-
-                                {/* Image Side */}
-                                <div className="h-full w-full flex justify-center items-center bg-gray-50 p-6">
-                                    <div className="relative h-[450px] w-[420px] sm:h-[78vh]  md:w-[100%] sm:w-[70%] max-w-[560px] overflow-hidden group">
-                                        <img
-                                            src={(eye.Image && eye.Image[0]) || eye.Image || 'https://via.placeholder.com/800x600?text=No+Image'}
-                                            alt={eye.name}
-                                            className="absolute z-10 h-full w-full object-cover transform transition-all duration-700 group-hover:-translate-x-full"
-                                        />
-                                        <img
-                                            src={(eye.Image && eye.Image[1]) || (eye.Image && eye.Image[0]) || 'https://via.placeholder.com/800x600?text=No+Image'}
-                                            alt={`${eye.name} back`}
-                                            className="absolute z-0 h-full w-full object-cover transform translate-x-full scale-100 transition-all duration-700 group-hover:translate-x-0 group-hover:scale-110"
-                                        />
-                                        <div className="absolute z-20 top-0 left-[-75%] w-[200%] h-full bg-gradient-to-r from-transparent via-white/20 to-transparent rotate-12 transition-all duration-700 group-hover:left-[100%] pointer-events-none" />
-                                    </div>
-                                </div>
-
-                                {/* Info Side */}
-                                <div className="p-6 flex flex-col justify-between max-h-[95vh] overflow-y-auto">
-                                    <div>
-                                        <h1 className="text-xl font-medium uppercase text-[#CE701F] mb-2">{eye.name}</h1>
-                                        <h2>{eye.category}</h2>
-                                        <h2 className="text-base text-gray-500 mb-3">{eye.category}</h2>
-                                        <p className="text-gray-600 text-sm mb-4">
-                                            {eye.des}
-                                        </p>
-                                        <div><button className='bg-[#CE701F] p-1 text-white rounded-sm' onClick={() => handleclick(eye._id)}>view more</button></div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </>
-                )}
 
                 {/* Filters: left and right shortcut buttons + single input + Search button */}
                 <section className="max-w-7xl mx-auto mb-6">
                     <div className="flex items-center justify-between gap-4">
-
-
-
                         {/* Center: search input + button */}
                         <div className="flex-1 flex items-center justify-left">
                             <div className="flex gap-3 items-center w-full max-w-lg">
@@ -206,50 +156,27 @@ function NewArrivals() {
                     )}
 
                     {!isLoading && filtered.length > 0 && filtered.map((item) => (
-                        <div key={item._id} className="card m-auto w-full max-w-sm flex flex-col items-center hover:shadow-sm transition-transform duration-300 cursor-pointer z-0" >
-                            <div className="relative overflow-hidden group w-full">
-                                {/* responsive heights: mobile 220, sm 260, md 300 */}
-                                <div className="h-[220px] sm:h-[260px] md:h-[300px] w-full">
-                                    {(() => {
-                                        const imgSrc = (item && item.Image && item.Image[0]) || item.Image || 'https://via.placeholder.com/600x600?text=No+Image'
-                                        return <img src={imgSrc} alt={item.name || ''} className="h-full w-full object-cover" />
-                                    })()}
-                                </div>
+                        <div
+                            key={item._id}
+                            className="card bg-white w-full max-w-[18rem] sm:max-w-[20rem] md:max-w-[22rem] lg:max-w-[18rem] xl:max-w-[17rem] flex flex-col items-center hover:shadow-sm transition-transform duration-300 cursor-pointer overflow-auto m-1 z-0"
 
-                                {/* Hover icons */}
-                                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 hidden group-hover:flex gap-3 z-10">
-                                    {/* Cart Icon */}
-                                    <div className="bg-white p-2 shadow-md flex justify-center items-center hover:scale-110 transition-all duration-200 ">
-                                        <FaShoppingCart className="text-[18px]" />
-                                    </div>
-
-                                    {/* View Icon */}
-                                    {/* View Icon */}
-                                    <div
-                                        className="bg-white p-2 shadow-md flex justify-center items-center hover:scale-110 transition-all duration-200"
-                                        onClick={() => handleViewClick(item)} // ✅ ये लाइन जरूरी है
-                                    >
-                                        <FaEye className="text-[18px]" />
-                                    </div>
-
-
-                                    {/* Wishlist Icon */}
-                                    <div className="bg-white p-2 shadow-md flex justify-center items-center hover:scale-110 transition-all duration-200 ">
-                                        <FaHeart className="text-[18px]" />
-
-                                    </div>
-
-                                    {/* Share Icon */}
-                                    <div className="bg-white p-2 shadow-md flex justify-center items-center hover:scale-110 transition-all duration-200 ">
-                                        <FaShareAlt className="text-[18px]" />
-                                    </div>
-                                </div>
-
+                        >
+                            <div className="h-[350px] relative overflow-hidden w-full group">
+                                <img
+                                    src={getImageUrl(item.Image?.[0])}
+                                    alt={item.name}
+                                    className="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out"
+                                // onError={(e) => handleImageError(e, 'No Image')}
+                                // onLoad={() => handleImageLoad(item.Image?.[0])}
+                                />
                             </div>
-                            <div className="card-body mt-4 px-3 w-full text-center" onClick={() => goToProduct(item._id)}>
-                                <h2 className="card-title font-mono uppercase text-[14px] text-[#CE701F] truncate">{item.name}</h2>
-                                <h2 className="card-title font-mono uppercase text-[13px] text-gray-700 hover:text-[#CE701F] truncate">{item.category}</h2>
-                                <p className="card-title text-[13px] text-gray-600 mt-1 truncate">{item.des}</p>
+                            <div className="card-body mt-4 p-2 text-center" onClick={() => goToProduct(item._id)}>
+                                <h2 className="card-title text-lg font-mono uppercase text-[14px] text-[#CE701F]">
+                                    {item.name}
+                                </h2>
+                                <p className="card-title text-gray-500 text-lg font-mono uppercase text-[14px] hover:text-[#CE701F]">
+                                    {item.category}
+                                </p>
                             </div>
                         </div>
                     ))}

@@ -9,8 +9,11 @@ import { getImageUrl } from '../utils/imageUtils';
 
 function ProductPage() {
     const { id } = useParams();
+    console.log(id);
     const dispatch = useDispatch();
     const nav = useNavigate();
+    const rawData = useSelector(state => state.Product_getting?.Product);
+    console.log(rawData);
 
     useEffect(() => {
         if (id) {
@@ -18,7 +21,6 @@ function ProductPage() {
         }
     }, [id, dispatch]);
 
-    const rawData = useSelector(state => state.Product_getting?.Product);
 
     // ✅ Normalize data to always be an array
     let productList = [];
