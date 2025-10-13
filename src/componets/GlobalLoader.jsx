@@ -1,36 +1,58 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-export default function GlobalLoader({ visible }) {
-    if (!visible) return null;
+export default function GlobalLoader({ visible, onComplete }) {
+    const [progress, setProgress] = useState(0);
+
+    useEffect(() => {
+        if (!visible) {
+            setProgress(0);
+            return;
+        }
+
+        let currentProgress = 0;
+
+        // Simulate initial fast progress
+        const fastInterval = setInterval(() => {
+            currentProgress += Math.random() * 15 + 10; // 10-25% increment
+            if (currentProgress >= 70) {
+                clearInterval(fastInterval);
+                startSlowProgress();
+            }
+            setProgress(Math.min(currentProgress, 70));
+        }, 300);
+
+        const startSlowProgress = () => {
+            // Simulate slower progress for remaining part
+            const slowInterval = setInterval(() => {
+                currentProgress += Math.random() * 5 + 2; // 2-7% increment
+                if (currentProgress >= 95) {
+                    clearInterval(slowInterval);
+                    // Wait for actual completion
+                    setTimeout(() => {
+                        setProgress(100);
+                        setTimeout(() => {
+                            if (onComplete) onComplete();
+                        }, 300);
+                    }, 500);
+                } else {
+                    setProgress(currentProgress);
+                }
+            }, 600);
+        };
+
+        return () => {
+            clearInterval(fastInterval);
+        };
+    }, [visible, onComplete]);
+
+    if (!visible && progress === 0) return null;
 
     return (
-        <div className="fixed inset-0 bg-gray-400 bg-opacity-20 flex items-center justify-center z-50">
-            <div className="bg-white rounded-lg p-8 shadow-lg">
-                {/* Classic Spinning Loader */}
-                <div className="flex flex-col items-center space-y-4">
-                    <div className="relative">
-                        {/* Outer Ring */}
-                        <div className="w-16 h-16 border-4 border-gray-200 border-t-[#7eb859] rounded-full animate-spin"></div>
-
-                        {/* Inner Ring */}
-                        <div className="absolute top-2 left-2 w-12 h-12 border-4 border-gray-100 border-b-[#7eb859] rounded-full animate-spin-reverse"></div>
-                    </div>
-
-                    {/* Loading Text */}
-                    <p className="text-gray-600 font-medium">Loading...</p>
-                </div>
-            </div>
-
-            {/* Animation Styles */}
-            <style>{`
-                @keyframes spin-reverse {
-                    0% { transform: rotate(360deg); }
-                    100% { transform: rotate(0deg); }
-                }
-                .animate-spin-reverse {
-                    animation: spin-reverse 1s linear infinite;
-                }
-            `}</style>
+        <div className="fixed top-0 left-0 w-full h-1 bg-gray-200 z-50">
+            <div
+                className="h-full bg-[#7eb859] transition-all duration-200 ease-linear"
+                style={{ width: `${progress}%` }}
+            ></div>
         </div>
     );
 }

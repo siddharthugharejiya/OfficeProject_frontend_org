@@ -232,6 +232,7 @@ function Navbar_1() {
                 </div>
 
                 <Link to="/new" className="hover:text-[#b86c59] transition">New Arrivals</Link>
+                <Link to="/v" className="hover:text-[#b86c59] transition">Vision & Mission</Link>
                 <Link to="/contact" className="hover:text-[#b86c59] transition">Contact</Link>
             </nav>
 

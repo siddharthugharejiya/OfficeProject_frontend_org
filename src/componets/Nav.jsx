@@ -95,7 +95,7 @@ export function Nav() {
                                     className="text-[17px] font-medium text-white hover:text-gray-200 focus:outline-none relative"
                                 >
                                     Home
-                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#7eb859] transition-all duration-300 ${activeIndex === 0 ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
+                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#393185] transition-all duration-300 ${activeIndex === 0 ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
                                 </Link>
                             </div>
 
@@ -107,8 +107,8 @@ export function Nav() {
                                     className="text-[17px] font-medium text-white hover:text-gray-200 focus:outline-none relative"
 
                                 >
-                                    Who We Are
-                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#7eb859] transition-all duration-300 ${activeIndex === 1 ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
+                                    About Us
+                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#393185] transition-all duration-300 ${activeIndex === 1 ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
                                 </Link>
                             </div>
 
@@ -124,7 +124,7 @@ export function Nav() {
                                     className="text-[17px] font-medium text-white hover:text-white focus:outline-none relative transition"
                                 >
                                     Product
-                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#7eb859] transition-all duration-300 ${activeIndex === 2 ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
+                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#393185] transition-all duration-300 ${activeIndex === 2 ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
                                 </Link>
                                 {/* Centered Dropdown */}
                                 <div className={`absolute left-1/2 transform -translate-x-1/2 top-[60%] mt-2 z-50 w-[90vw] max-w-[300px] sm:w-[80vw] sm:max-w-[380px] md:w-[60vw] md:max-w-[420px] lg:w-[36rem] lg:max-w-[550px] bg-white shadow-lg rounded-md max-h-[60vh] lg:max-h-[50vh] overflow-y-auto ${isProductDropdownOpen ? 'block' : 'hidden'}`}>
@@ -164,7 +164,18 @@ export function Nav() {
                                     className="text-[17px] font-medium text-white hover:text-white focus:outline-none relative"
                                 >
                                     New Arrivals
-                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#7eb859] transition-all duration-300 ${activeIndex === 4 ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
+                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#393185] transition-all duration-300 ${activeIndex === 4 ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
+                                </Link>
+                            </div>
+
+                            <div className="relative group flex">
+                                <Link
+                                    to="/v"
+                                    onClick={() => setActiveIndex(4)}
+                                    className="text-[17px] font-medium text-white hover:text-white focus:outline-none relative"
+                                >
+                                    Vision & Mission
+                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#393185] transition-all duration-300 ${activeIndex === 4 ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
                                 </Link>
                             </div>
 
@@ -176,7 +187,7 @@ export function Nav() {
                                     className="text-[17px] font-medium text-white hover:text-white focus:outline-none relative"
                                 >
                                     Contact
-                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#7eb859] transition-all duration-300 ${activeIndex === 5 ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
+                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#393185] transition-all duration-300 ${activeIndex === 5 ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
                                 </Link>
                             </div>
                         </nav>

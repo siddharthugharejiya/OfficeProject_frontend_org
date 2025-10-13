@@ -192,7 +192,7 @@ function Home() {
                     <div className='p-4 flex flex-col justify-center items-center text-center' data-aos="fade-up" data-aos-delay="0">
                         {/* image */}
                         <div className='pb-4'>
-                            <img src="./image/decor-icon5.png" alt="" className="w-9 h-9 sm:w-12 sm:h-12" />
+                            <img src="./image/p1.png" alt="" className="w-9 h-9 sm:w-12 sm:h-12" />
                         </div>
                         {/* content */}
                         <div>
@@ -204,7 +204,7 @@ function Home() {
                     <div className='p-4 flex flex-col justify-center items-center text-center' data-aos="fade-up" data-aos-delay="100">
                         {/* image */}
                         <div className='pb-4'>
-                            <img src="./image/decor-icon6.png" alt="" className="w-9 h-9 sm:w-12 sm:h-12" />
+                            <img src="./image/p2.png" alt="" className="w-9 h-9 sm:w-12 sm:h-12" />
                         </div>
                         {/* content */}
                         <div>
@@ -216,7 +216,7 @@ function Home() {
                     <div className='p-4 flex flex-col justify-center items-center text-center' data-aos="fade-up" data-aos-delay="200">
                         {/* image */}
                         <div className='pb-4'>
-                            <img src="./image/decor-icon7.png" alt="" className="w-9 h-9 sm:w-12 sm:h-12" />
+                            <img src="./image/p3.png" alt="" className="w-9 h-9 sm:w-12 sm:h-12" />
                         </div>
                         {/* content */}
                         <div>
@@ -228,7 +228,7 @@ function Home() {
                     <div className='p-4 flex flex-col justify-center items-center text-center' data-aos="fade-up" data-aos-delay="300">
                         {/* image */}
                         <div className='pb-4'>
-                            <img src="./image/decor-icon8.png" alt="" className="w-9 h-9 sm:w-12 sm:h-12" />
+                            <img src="./image/24-hours-support.png" alt="" className="w-9 h-9 sm:w-12 sm:h-12" />
                         </div>
                         {/* content */}
                         <div>
@@ -241,12 +241,12 @@ function Home() {
 
             <div className="sm:py-5 sm:mt-10 mb-3  py-2 mt-1 pb-1">
                 <div className='mb-6 px-4' data-aos="fade-up">
-                    <div className="flex items-center justify-center space-x-2 font-semibold text-[#BD9C85] text-sm uppercase pb-2">
+                    <div className="flex items-center justify-center space-x-2 font-semibold text-[#393185] text-sm uppercase pb-2">
                         <span>01</span>
-                        <span className="h-[1px] w-[20px] bg-[#BD9C85]"></span>
+                        <span className="h-[1px] w-[20px] bg-[#393185]"></span>
                         <span>Find Your Favorite</span>
                     </div>
-                    <h3 className='text-center text-2xl sm:text-3xl md:text-4xl uppercase font-bold'>shop by category</h3>
+                    <h3 className='text-center text-2xl sm:text-3xl md:text-4xl uppercase font-bold text-[#2B2A29]'>shop by category</h3>
                 </div>
 
                 {/* product */}
@@ -361,17 +361,18 @@ function Home() {
                             <span>About Us</span>
                         </div>
                         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold uppercase mb-4 lg:mb-6 text-black">
-                            Fresh, handmade products
+                            INNOVATION MEETS FUNCTIONAL DESIGN
                         </h2>
                         <p className="text-[#666] text-sm sm:text-base md:text-lg leading-relaxed">
-                            We believe that every product is both a vessel for contemporary culture and an heirloom for future generations. Once you find your perfect piece, we'll get it to you, no hassle.
+                            We craft sanitaryware that blends technology, performance, and style. Every product is thoughtfully designed to ensure superior hygiene, powerful flushing, and long-lasting durability. With advanced engineering and precision craftsmanship, we bring elegance and efficiency to every bathroom space.
+
                         </p>
                     </div>
 
                     {/* Bottom Chair Image */}
                     <div className="bg-[#f8f2ee] rounded-lg p-4">
                         <img
-                            src="/image/s-dbanner-5.png?v=1645586327"
+                            src="/image/slider_6.jpg"
                             alt="Chair"
                             className="w-full h-auto object-contain"
                         />
@@ -383,7 +384,7 @@ function Home() {
                     {/* Top Chair Image */}
                     <div className="bg-[#f8f2ee] rounded-lg p-4">
                         <img
-                            src="/image/s-dbanner-4_a6224ad9-a4c7-4198-93f1-c63532deb906.jpg?v=1645586327"
+                            src="/image/slider_5.jpg"
                             alt="Chair 2"
                             className="w-full h-auto object-contain"
                         />
