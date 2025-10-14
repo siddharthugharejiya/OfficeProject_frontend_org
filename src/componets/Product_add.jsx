@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 import { useDispatch, useSelector } from 'react-redux';
 import { Product_edite_get, product_edite_action, Product_Get } from '../Redux/action';
 
@@ -16,8 +17,6 @@ const Product_add = () => {
     const dispatch = useDispatch();
     const product_edite = useSelector(state => state.Product_edite_getting?.edite_data || {});
 
-
-
     const [update, setupdate] = useState(false);
     const [loading, setLoading] = useState(false);
     const [activeTab, setActiveTab] = useState("link");
@@ -28,14 +27,20 @@ const Product_add = () => {
         id: "",
         name: "",
         Image: [],
-        title: "",
+        title: "", // ADDED MISSING TITLE FIELD
         des: "",
         rating: "",
         price: "",
         weight: "",
         tag: "",
-        category: ""
+        category: "",
+        h: "",
+        w: "",
+        l: "",
+        s_trap: "",
+        p_trap: "",
     });
+    console.log(state);
 
     useEffect(() => {
         if (product_edite && product_edite.data) {
@@ -52,8 +57,14 @@ const Product_add = () => {
                 price: productData.price || "",
                 weight: productData.weight || "",
                 tag: productData.tag || "",
-                category: productData.category || ""
+                category: productData.category || "",
+                h: productData.h || "",
+                w: productData.w || "",
+                l: productData.l || "",
+                s_trap: productData.s_trap || "",
+                p_trap: productData.p_trap || ""
             });
+            console.log("product add data you right now check ", state);
 
             if (Array.isArray(productData.Image)) {
                 const previews = productData.Image.map(url => ({ file: null, preview: url }));
@@ -74,7 +85,7 @@ const Product_add = () => {
 
         const trimmedUrl = imageLink.trim();
         if (!isValidImageUrl(trimmedUrl)) {
-            alert("Please enter a valid image URL (http:// or https://)");
+            Swal.fire({ icon: 'warning', title: 'Invalid URL', text: 'Please enter a valid image URL (http:// or https://)' });
             return;
         }
 
@@ -89,7 +100,7 @@ const Product_add = () => {
         // Validate file types and sizes
         const validFiles = files.filter(file => {
             if (!file.type.startsWith('image/')) {
-                alert(`${file.name} is not a valid image file`);
+                Swal.fire({ icon: 'error', title: 'Invalid file', text: `${file.name} is not a valid image file` });
                 return false;
             }
 
@@ -120,7 +131,7 @@ const Product_add = () => {
 
     const handlesubmit = async e => {
         e.preventDefault();
-        if (!state.name || selectedFiles.length === 0) return alert("Please provide name and at least 1 image");
+        if (!state.name || selectedFiles.length === 0) return Swal.fire({ icon: 'info', title: 'Missing info', text: 'Please provide product name and at least 1 image' });
 
         setLoading(true);
 
@@ -136,6 +147,11 @@ const Product_add = () => {
             formData.append('weight', state.weight);
             formData.append('tag', state.tag);
             formData.append('category', state.category);
+            formData.append('h', state.h);
+            formData.append('w', state.w);
+            formData.append('l', state.l);
+            formData.append('s_trap', state.s_trap);
+            formData.append('p_trap', state.p_trap);
 
             // Separate file uploads and URL links
             const fileImages = [];
@@ -151,9 +167,13 @@ const Product_add = () => {
                 }
             });
 
-            // Append files individually with field name 'images'
+            console.log('Submitting form data:');
+            console.log('Files:', fileImages.length);
+            console.log('Links:', linkImages);
+
+            // FIX: Append files with the correct field name 'images' instead of 'Image'
             fileImages.forEach((file) => {
-                formData.append('images', file);
+                formData.append('images', file); // CHANGED FROM 'Image' TO 'images'
             });
 
             // Append link images as JSON string
@@ -161,13 +181,15 @@ const Product_add = () => {
                 formData.append('linkImages', JSON.stringify(linkImages));
             }
 
-            console.log('Submitting form data:');
-            console.log('Files:', fileImages.length);
-            console.log('Links:', linkImages);
+            console.log('All FormData entries:');
+            for (let [key, value] of formData.entries()) {
+                console.log(key, value);
+            }
 
             // POST to backend
             const url = update ? `https://officeproject-backend.onrender.com/edite/${state.id}` : "https://officeproject-backend.onrender.com/add";
             const method = update ? "PUT" : "POST";
+            console.log(formData);
 
             const res = await fetch(url, {
                 method,
@@ -182,21 +204,26 @@ const Product_add = () => {
             const data = await res.json();
             console.log('Success response:', data);
 
-            alert(update ? "Product Updated!" : "Product Added!");
+            Swal.fire({ icon: 'success', title: update ? 'Product Updated' : 'Product Added', timer: 1500, showConfirmButton: false });
             dispatch(Product_Get());
 
-            // Reset form
+            // Reset form - ADD TITLE FIELD HERE TOO
             setstate({
                 id: "",
                 name: "",
                 Image: [],
-                title: "",
+                title: "", // ADDED TITLE FIELD
                 des: "",
                 rating: "",
                 price: "",
                 weight: "",
                 tag: "",
-                category: ""
+                category: "",
+                h: "",
+                w: "",
+                l: "",
+                s_trap: "",
+                p_trap: ""
             });
             setSelectedFiles([]);
             setupdate(false);
@@ -204,7 +231,7 @@ const Product_add = () => {
 
         } catch (err) {
             console.error("Submission error:", err);
-            alert("Error: " + err.message);
+            Swal.fire({ icon: 'error', title: 'Error', text: err.message || 'Something went wrong' });
         } finally {
             setLoading(false);
         }
@@ -218,6 +245,9 @@ const Product_add = () => {
                 </h2>
 
                 <input name="name" value={state.name} onChange={handlechange} placeholder="Product Name" className="w-full p-2 rounded bg-white/10 text-white" required />
+
+                {/* UNCOMMENT THE TITLE INPUT FIELD */}
+                <input name="title" value={state.title} onChange={handlechange} placeholder="Title" className="w-full p-2 rounded bg-white/10 text-white" />
 
                 <div className="flex gap-4">
                     <button type="button" onClick={() => setActiveTab("link")} className={`px-4 py-2 rounded ${activeTab === 'link' ? 'bg-pink-600 text-white' : 'bg-white/10 text-white'}`}>Image URL</button>
@@ -295,11 +325,55 @@ const Product_add = () => {
                 )}
 
                 <textarea name="des" value={state.des} onChange={handlechange} placeholder="Description" className="w-full p-2 rounded bg-white/10 text-white" />
-                {/* <input name="title" value={state.title} onChange={handlechange} placeholder="Title" className="w-full p-2 rounded bg-white/10 text-white" /> */}
+
+                {/* UNCOMMENT OTHER FIELDS IF NEEDED */}
                 {/* <input name="rating" value={state.rating} onChange={handlechange} placeholder="Rating" className="w-full p-2 rounded bg-white/10 text-white" /> */}
                 {/* <input name="price" value={state.price} onChange={handlechange} placeholder="Price" className="w-full p-2 rounded bg-white/10 text-white" /> */}
                 {/* <input name="weight" value={state.weight} onChange={handlechange} placeholder="Weight" className="w-full p-2 rounded bg-white/10 text-white" /> */}
+
                 <input name="tag" value={state.tag} onChange={handlechange} placeholder="Tag" className="w-full p-2 rounded bg-white/10 text-white" />
+
+                {/* Dimension and trap inputs */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <input
+                        name="h"
+                        value={state.h}
+                        onChange={handlechange}
+                        placeholder="Height (h)"
+                        className="w-full p-2 rounded bg-white/10 text-white"
+                    />
+                    <input
+                        name="w"
+                        value={state.w}
+                        onChange={handlechange}
+                        placeholder="Width (w)"
+                        className="w-full p-2 rounded bg-white/10 text-white"
+                    />
+                    <input
+                        name="l"
+                        value={state.l}
+                        onChange={handlechange}
+                        placeholder="Length (l)"
+                        className="w-full p-2 rounded bg-white/10 text-white"
+                    />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input
+                        name="s_trap"
+                        value={state.s_trap}
+                        onChange={handlechange}
+                        placeholder="S Trap"
+                        className="w-full p-2 rounded bg-white/10 text-white"
+                    />
+                    <input
+                        name="p_trap"
+                        value={state.p_trap}
+                        onChange={handlechange}
+                        placeholder="P Trap"
+                        className="w-full p-2 rounded bg-white/10 text-white"
+                    />
+                </div>
 
                 <select name="category" value={state.category} onChange={handlechange} className="w-full p-2 rounded bg-white/10 text-black">
                     <option value="">Select Category</option>

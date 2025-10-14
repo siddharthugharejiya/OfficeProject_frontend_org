@@ -137,7 +137,7 @@ function NewArrivals() {
                                     className="px-4 py-2 bg-[#BD624C] text-white rounded"
                                 >
                                     Search
-                                </button>
+                                </button>   
                             </div>
                         </div>
 

@@ -115,7 +115,7 @@ export function Navi({ textColor = 'white' }) {
                             {/* WHO WE ARE */}
                             <div className="relative group flex">
                                 <Link
-                                    to="/whoWeAre"
+                                    to="/about"
                                     onClick={() => setActiveIndex(1)}
                                     className={`text-[17px] font-medium ${baseLinkTextClass} ${textColor === 'black' ? hoverDarkClass : hoverLightClass} focus:outline-none relative`}
 

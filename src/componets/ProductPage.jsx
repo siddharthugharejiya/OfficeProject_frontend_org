@@ -90,7 +90,6 @@ function ProductPage() {
                     </div>
                 </div>
 
-                {/* Footer - will always be at bottom */}
                 <div className="overflow-hidden">
 
                     <Footer />

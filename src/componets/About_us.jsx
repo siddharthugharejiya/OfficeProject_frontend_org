@@ -5,6 +5,7 @@ import Navbar_1 from './Navbar_1'
 import Footer1 from './Footer1'
 import { Navi } from './Navi'
 import Footer from './Footer'
+import Main_Image_slider from './Main_Image_slider'
 
 export function Who_we_are() {
     const slides = [
@@ -23,9 +24,9 @@ export function Who_we_are() {
     return (
         <>
 
-            <div className="text-black">
-                <Navi textColor="black" />
-            </div>
+          
+
+            <Main_Image_slider />
             {/* <Navi /> */}
             <div className="w-full px-4 sm:px-8 md:px-16 lg:px-20 xl:px-28 py-12  text-gray-800">
                 {/* Hero */}
@@ -98,9 +99,9 @@ export function Who_we_are() {
                             <div className="space-y-3 text-sm text-gray-600">
                                 <div className="flex justify-between"><span>Material</span><span className="font-medium">Premium Vitreous China</span></div>
                                 <div className="flex justify-between"><span>Flush Technology</span><span className="font-medium">Dual-Flush System</span></div>
-                                <div className="flex justify-between"><span>Water Usage</span><span className="font-medium">3/4.5 L</span></div>
+                                <div className="flex justify-between"><span>Water Usage</span><span className="font-medium">3/6.5 L</span></div>
                                 <div className="flex justify-between"><span>Mounting Options</span><span className="font-medium">Floor & Wall Mount</span></div>
-                                <div className="flex justify-between"><span>Warranty</span><span className="font-medium">5 Years Comprehensive</span></div>
+                                <div className="flex justify-between"><span>Warranty</span><span className="font-medium">10 Years Comprehensive</span></div>
                             </div>
                         </div>
 

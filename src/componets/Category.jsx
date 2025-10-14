@@ -43,7 +43,7 @@ function Category() {
                             <div className="flex justify-center items-stretch h-full">
                                 <div
                                     className="card w-full bg-white max-w-[18rem] sm:max-w-[20rem] md:max-w-[22rem] lg:max-w-[18rem] xl:max-w-[17rem] flex flex-col items-center hover:shadow-sm transition-transform duration-300 cursor-pointer overflow-auto m-1 z-0"
-                                    onClick={() => handleclick(item._id)}
+                                    onClick={() => handleSinglePageClick(item._id)}
                                 >
                                     <div className="h-[350px] relative overflow-hidden w-full group">
                                         <img

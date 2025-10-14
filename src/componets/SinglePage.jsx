@@ -130,7 +130,7 @@ function SinglePage() {
               <p className="text-gray-600 leading-relaxed mb-6 wrap-anywhere italic">{product.des}</p>
 
               {/* Security, Delivery, Return */}
-              <div className="space-y-5">
+              {/* <div className="space-y-5">
                 <div className='flex items-center'>
                   <img src="../image/security.svg" alt="" className='h-[30px]' />
                   <div className='ml-3'>
@@ -154,7 +154,7 @@ function SinglePage() {
                     <p className='text-xs text-gray-500'>(edit with the Customer Reassurance module)</p>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             {/* Share Icons */}
@@ -234,10 +234,10 @@ function SinglePage() {
           </div>
         </div>
       </div>
-         <div className="overflow-hidden">
+      <div className="overflow-hidden">
 
-      <Footer />
-         </div>
+        <Footer />
+      </div>
     </div>
   );
 }

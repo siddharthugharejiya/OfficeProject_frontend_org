@@ -241,12 +241,12 @@ function Home() {
 
             <div className="sm:py-5 sm:mt-10 mb-3  py-2 mt-1 pb-1">
                 <div className='mb-6 px-4' data-aos="fade-up">
-                    <div className="flex items-center justify-center space-x-2 font-semibold text-[#393185] text-sm uppercase pb-2">
+                    {/* <div className="flex items-center justify-center space-x-2 font-semibold text-[#393185] text-sm uppercase pb-2">
                         <span>01</span>
                         <span className="h-[1px] w-[20px] bg-[#393185]"></span>
                         <span>Find Your Favorite</span>
-                    </div>
-                    <h3 className='text-center text-2xl sm:text-3xl md:text-4xl uppercase font-bold text-[#2B2A29] '>shop by category</h3>
+                    </div> */}
+                    <h3 className='text-center text-2xl sm:text-3xl md:text-4xl uppercase font-bold text-[#2B2A29] '>Browse the Collection</h3>
                 </div>
 
                 {/* product */}
@@ -332,12 +332,12 @@ function Home() {
 
             <div className='sm:py-10 py-1'>
                 <div className='pt-4 px-4 pb-3' data-aos="fade-up">
-                    <div className="flex items-center justify-center space-x-2 font-semibold text-[#393185] text-sm uppercase pb-2">
+                    {/* <div className="flex items-center justify-center space-x-2 font-semibold text-[#393185] text-sm uppercase pb-2">
                         <span>02</span>
                         <span className="h-[1px] w-[20px] bg-[#393185]"></span>
                         <span>BROWSE OUR ITEMS</span>
-                    </div>
-                    <p className='text-center text-2xl sm:text-3xl md:text-4xl uppercase font-bold'>Top Picks for You</p>
+                    </div> */}
+                    <p className='text-center text-2xl sm:text-3xl md:text-4xl uppercase font-bold'>Recommended Selectionsn</p>
                 </div>
                 <div className="md:px-30 px-0">
 
@@ -355,11 +355,11 @@ function Home() {
                 <div className="space-y-6 lg:space-y-10" data-aos="fade-up" data-aos-delay="100">
                     {/* Heading Section */}
                     <div>
-                        <div className="flex items-center space-x-3 text-[#393185] font-semibold text-sm uppercase mb-3">
+                        {/* <div className="flex items-center space-x-3 text-[#393185] font-semibold text-sm uppercase mb-3">
                             <span>03</span>
                             <span className="h-[1px] w-[30px] bg-[#393185]"></span>
                             <span>About Us</span>
-                        </div>
+                        </div> */}
                         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold uppercase mb-4 lg:mb-6 text-gray-700">
                             INNOVATION MEETS FUNCTIONAL DESIGN
                         </h2>

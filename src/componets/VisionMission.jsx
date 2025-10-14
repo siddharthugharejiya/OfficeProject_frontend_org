@@ -15,7 +15,7 @@ const VisionMission = () => {
         <div className="absolute bottom-0 right-0 w-80 h-80 bg-neutral-100 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float delay-1000"></div>
 
         {/* Header Section */}
-        <div className="text-center relative z-10 max-w-4xl mx-auto">
+        {/* <div className="text-center relative z-10 max-w-4xl mx-auto">
           <div className="inline-flex items-center justify-center mb-6">
             <div className="w-16 h-1 bg-stone-400 rounded-full mr-3"></div>
             <span className="text-stone-700 font-semibold text-lg">Why Choose Us</span>
@@ -27,11 +27,11 @@ const VisionMission = () => {
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
             Where quality meets reliability in every piece we create
           </p>
-        </div>
+        </div> */}
 
         {/* Introduction */}
         <div className="relative z-10 max-w-6xl mx-auto">
-          <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+          <div className=" rounded-2xl p-8">
             <div className="grid lg:grid-cols-2 gap-8 items-center">
               <div>
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">
@@ -49,7 +49,7 @@ const VisionMission = () => {
               <div className="relative group">
                 <div className="absolute -inset-3 bg-gradient-to-r from-stone-200 to-zinc-200 rounded-2xl blur opacity-30 group-hover:opacity-40 transition duration-500"></div>
                 <img
-                  src="https://cdn.pixabay.com/photo/2016/04/18/13/53/bathroom-1336160_1280.jpg"
+                  src="/image/slider_7.jpg"
                   alt="Modern bathroom"
                   className="w-full h-72 object-cover rounded-xl shadow-md transform group-hover:scale-105 transition duration-500"
                 />

@@ -21,7 +21,7 @@ function Main_Routers() {
             <Route path='/SinglePage/:id' element={<SinglePage />} />
             <Route path='/Product/:id' element={<ProductPage />} />
             <Route path='/contact' element={<Contect />} />
-            <Route path='/whoWeAre' element={<Who_we_are />} />
+            <Route path='/about' element={<Who_we_are />} />
             <Route path='/new' element={<NewArrivals />} />
             <Route path='/category/:category' element={<Category />} />
             <Route path='/v' element={<VisionMission />} />

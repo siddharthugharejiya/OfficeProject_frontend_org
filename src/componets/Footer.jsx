@@ -41,14 +41,21 @@ function Footer() {
                         </a>
 
 
-                        <p className='uppercase mt-4 mb-1'>Email Us</p>
-                        <a
-                            href="https://mail.google.com/mail/?view=cm&to=Info@prettywareceramikallp.com&su=Enquiry&body=Hello, I want to know more about your products."
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Info@prettywareceramikallp.com
-                        </a>
+
+                        <p className='uppercase mt-4 mb-1'>Gmail Us</p>
+                        <div className='flex items-center' >
+                            <div className='bg-[#BD9C85] h-10 w-10 rounded-full flex justify-center items-center'>
+                                <i class="fa-solid fa-envelope text-white text-sm"></i>
+                                {/* <i className="fa-solid fa-phone text-white text-sm"></i> */}
+                            </div>
+                            <a
+                                href="https://mail.google.com/mail/?view=cm&to=Info@prettywareceramikallp.com&su=Enquiry&body=Hello, I want to know more about your products."
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Info@prettywareceramikallp.com
+                            </a>
+                        </div>
 
                     </div>
 
