@@ -90,7 +90,7 @@ function Footer() {
                     </div>
                     <div className="flex md:block justify-center md:justify-start">
                         <img
-                            src="./image/qr.jpg"
+                            src="/image/qr.jpg"
                             alt="Scan to connect"
                             className='h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 object-contain rounded-md shadow-sm'
                         />

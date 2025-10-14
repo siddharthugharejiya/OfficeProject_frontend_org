@@ -8,6 +8,7 @@ import "../App.css";
 import Footer1 from './Footer1';
 import { getImageUrl } from '../utils/imageUtils';
 import { Navi } from './Navi';
+import Footer from './Footer';
 // import { Nav } from 'react-bootstrap';
 // import { Navi } from './Navi';
 
@@ -45,7 +46,7 @@ function ProductPage() {
 
     return (
         <>
-            <Navi />
+            <Navi textColor='black'/>
 
             <div className='bg-[#F6F4F2] text-center py-10 text-[#514633] font-semibold text-md'>
                 Home / Storage
@@ -90,7 +91,10 @@ function ProductPage() {
                 </div>
 
                 {/* Footer - will always be at bottom */}
-                <Footer1 />
+                <div className="overflow-hidden">
+
+                    <Footer />
+                </div>
             </div>
         </>
     );
