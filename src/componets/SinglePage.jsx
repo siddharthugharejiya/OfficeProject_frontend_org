@@ -12,6 +12,8 @@ import "swiper/css/pagination";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { getImageUrl } from '../utils/imageUtils';
+import { Navi } from './Navi';
+import Footer from './Footer';
 
 function SinglePage() {
   const { id } = useParams();
@@ -77,8 +79,8 @@ function SinglePage() {
   if (!product) return <div className="text-center p-10 text-xl font-medium">Loading...</div>;
 
   return (
-    <div className="bg-gray-50">
-      <Navbar_1 />
+    <div >
+      <Navi textColor='black' />
       <div className='bg-[#F6F4F2] text-center py-10 text-[#514633] font-semibold text-md'><Link to="/"> Home </Link> / Storage / {product.category}</div>
 
 
@@ -232,8 +234,10 @@ function SinglePage() {
           </div>
         </div>
       </div>
+         <div className="overflow-hidden">
 
-      <Footer1 />
+      <Footer />
+         </div>
     </div>
   );
 }

@@ -88,7 +88,7 @@ function Footer() {
                             <li>Help</li>
                         </ul>
                     </div>
-                    <div className="flex md:block justify-center md:justify-start">
+                    <div className="flex md:block  md:justify-start">
                         <img
                             src="/image/qr.jpg"
                             alt="Scan to connect"
