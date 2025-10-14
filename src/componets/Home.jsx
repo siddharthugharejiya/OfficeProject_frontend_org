@@ -246,7 +246,7 @@ function Home() {
                         <span className="h-[1px] w-[20px] bg-[#393185]"></span>
                         <span>Find Your Favorite</span>
                     </div>
-                    <h3 className='text-center text-2xl sm:text-3xl md:text-4xl uppercase font-bold text-[#2B2A29]'>shop by category</h3>
+                    <h3 className='text-center text-2xl sm:text-3xl md:text-4xl uppercase font-bold text-[#2B2A29] '>shop by category</h3>
                 </div>
 
                 {/* product */}
@@ -311,10 +311,10 @@ function Home() {
                                                                 />
                                                             </div>
                                                             <div className="card-body mt-4 p-2" onClick={() => handleclick(item._id)}>
-                                                                <h2 className="card-title text-lg font-mono uppercase text-[14px] text-center text-[#CE701F] active:text-[#CE701F]">
+                                                                <h2 className="card-title text-lg font-mono uppercase text-[14px] text-center text-[#393185] active:text-[#CE701F]">
                                                                     {item.name}
                                                                 </h2>
-                                                                <p className="card-title text-gray-500 text-lg font-mono uppercase text-[14px] text-center hover:text-[#CE701F] active:text-[#CE701F]">
+                                                                <p className="card-title text-gray-500 text-lg font-mono uppercase text-[14px] text-center hover:text-[#393185] active:text-[#CE701F]">
                                                                     {item.category}
                                                                 </p>
                                                             </div>
@@ -332,14 +332,14 @@ function Home() {
 
             <div className='sm:py-10 py-1'>
                 <div className='pt-4 px-4 pb-3' data-aos="fade-up">
-                    <div className="flex items-center justify-center space-x-2 font-semibold text-[#BD9C85] text-sm uppercase pb-2">
+                    <div className="flex items-center justify-center space-x-2 font-semibold text-[#393185] text-sm uppercase pb-2">
                         <span>02</span>
-                        <span className="h-[1px] w-[20px] bg-[#BD9C85]"></span>
+                        <span className="h-[1px] w-[20px] bg-[#393185]"></span>
                         <span>BROWSE OUR ITEMS</span>
                     </div>
                     <p className='text-center text-2xl sm:text-3xl md:text-4xl uppercase font-bold'>Top Picks for You</p>
                 </div>
-                <div className="md:px-30 px-0   ">
+                <div className="md:px-30 px-0">
 
                     <CategorySlider />
                 </div>
@@ -355,12 +355,12 @@ function Home() {
                 <div className="space-y-6 lg:space-y-10" data-aos="fade-up" data-aos-delay="100">
                     {/* Heading Section */}
                     <div>
-                        <div className="flex items-center space-x-3 text-[#BD9C85] font-semibold text-sm uppercase mb-3">
+                        <div className="flex items-center space-x-3 text-[#393185] font-semibold text-sm uppercase mb-3">
                             <span>03</span>
-                            <span className="h-[1px] w-[30px] bg-[#BD9C85]"></span>
+                            <span className="h-[1px] w-[30px] bg-[#393185]"></span>
                             <span>About Us</span>
                         </div>
-                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold uppercase mb-4 lg:mb-6 text-black">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold uppercase mb-4 lg:mb-6 text-gray-700">
                             INNOVATION MEETS FUNCTIONAL DESIGN
                         </h2>
                         <p className="text-[#666] text-sm sm:text-base md:text-lg leading-relaxed">
@@ -370,7 +370,7 @@ function Home() {
                     </div>
 
                     {/* Bottom Chair Image */}
-                    <div className="bg-[#f8f2ee] rounded-lg p-4">
+                    <div className="bg-[#f8f2ee] rounded-lg pt-4">
                         <img
                             src="/image/slider_6.jpg"
                             alt="Chair"
@@ -382,7 +382,7 @@ function Home() {
                 {/* Right Section */}
                 <div className="flex flex-col justify-start space-y-4 lg:space-y-6" data-aos="fade-up" data-aos-delay="200">
                     {/* Top Chair Image */}
-                    <div className="bg-[#f8f2ee] rounded-lg p-4">
+                    <div className="bg-[#f8f2ee] rounded-lg pt-4">
                         <img
                             src="/image/slider_5.jpg"
                             alt="Chair 2"
@@ -393,18 +393,18 @@ function Home() {
                     {/* Features */}
                     {[
                         {
-                            title: "Imaginative Design",
-                            desc: "We collaborate with designers whose bodies of work reflect their unique identities.",
+                            title: "SMART DESIGN ENGINEERING",
+                            desc: "We design with purpose — combining sleek aesthetics with practical innovation for modern living.",
                             icon: "fa-headphones",
                         },
                         {
-                            title: "Obsessive Quality",
-                            desc: "Our dedication to quality influences every aspect of our brand.",
+                            title: "RELIABLE PERFORMANCE",
+                            desc: "Each product is rigorously tested to deliver consistent, water-efficient flushing and lasting quality.",
                             icon: "fa-chair",
                         },
                         {
-                            title: "Effortless Experience",
-                            desc: "Our user-journey is highly streamlined, and we offer quick and efficient delivery.",
+                            title: "SMOOTH EXPERIENCE",
+                            desc: "From design to delivery, our process is seamless — giving you top-quality sanitary solutions with zero compromise.",
                             icon: "fa-globe",
                         },
                     ].map((item, index) => (
@@ -413,7 +413,7 @@ function Home() {
                                 <i className={`fa-solid ${item.icon} text-[#BD9C85] text-sm sm:text-base`}></i>
                             </div>
                             <div>
-                                <h3 className="text-sm sm:text-base lg:text-lg font-bold uppercase text-black">
+                                <h3 className="text-sm sm:text-base lg:text-lg font-bold uppercase text-gray-700">
                                     {item.title}
                                 </h3>
                                 <p className="text-[#666] text-xs sm:text-sm lg:text-base">
@@ -427,37 +427,7 @@ function Home() {
             {/* about 03 */}
 
 
-            {/* Stay in the loop */}
-            <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-28 py-12">
-                <div className="border rounded-md px-4 sm:px-6 lg:px-10 py-8 lg:py-10 grid grid-cols-1 lg:grid-cols-2 items-center gap-6">
-                    {/* Left Text Content */}
-                    <div className="space-y-2" data-aos="fade-up" data-aos-delay="100">
-                        <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold uppercase text-center lg:text-left">
-                            Stay in the loop
-                        </h2>
-                        <p className="text-[#666] text-sm sm:text-base text-center lg:text-left">
-                            Get weekly inspiration in your inbox.
-                        </p>
-                    </div>
 
-                    {/* Right Form */}
-                    <form className="flex flex-col sm:flex-row items-center justify-center lg:justify-end gap-3 sm:gap-4 w-full" data-aos="fade-up" data-aos-delay="200">
-                        <input
-                            type="email"
-                            placeholder="Your Email Address"
-                            className="w-full sm:w-auto px-3 sm:px-4 py-2 sm:py-3 rounded-md bg-[#f5f5f5] text-[#333] placeholder:text-[#666] outline-none text-sm sm:text-base"
-                        />
-                        <button
-                            type="submit"
-                            className="bg-[#BD624C] hover:bg-[#a7503b] text-white font-semibold px-4 sm:px-6 py-2 sm:py-3 rounded-md flex items-center gap-2 transition text-sm sm:text-base"
-                        >
-                            Subscribe <i className="fa-solid fa-arrow-right"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-
-            {/* Stay in the loop */}
 
             {/* <div className='mb-4 py-10'>
                 <div className='pt-4 px-4 pb-4' data-aos="fade-up">

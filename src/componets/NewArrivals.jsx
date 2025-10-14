@@ -9,6 +9,8 @@ import { FaEye, FaShareAlt, FaShoppingCart, FaHeart } from 'react-icons/fa'
 import Navbar_1 from './Navbar_1'
 import Footer1 from './Footer1'
 import { getImageUrl } from '../utils/imageUtils'
+import { Navi } from './Navi'
+import Footer from './Footer'
 
 const sampleProducts = [
     {
@@ -105,9 +107,9 @@ function NewArrivals() {
 
     return (
         <>
-            <Navbar_1 />
+            <Navi textColor="black" />
 
-            <div className="w-full px-4 sm:px-8 md:px-16 lg:px-20 xl:px-28 py-12 bg-white text-gray-800">
+            <div className="w-full px-4 sm:px-8 md:px-16 lg:px-20 xl:px-28 py-12  text-gray-800">
                 <section className="max-w-7xl mx-auto text-center mb-8">
                     {/* <div className="text-[#BD9C85] font-semibold uppercase text-sm mb-2">New</div> */}
                     <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold uppercase mb-4">New Arrivals</h1>
@@ -183,7 +185,10 @@ function NewArrivals() {
                 </section>
 
             </div>
-            <Footer1 />
+            <div className="overflow-hidden">
+
+            <Footer />
+            </div>
         </>
     )
 }

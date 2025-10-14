@@ -121,8 +121,8 @@ function SinglePage() {
           <div className="p-4 sm:p-6 flex flex-col ">
             <div>
               <div className='border-b border-gray-300 pb-4 mb-6'>
-                <h2 className="text-xl font-semibold uppercase text-[#BF624C]">{product.name}</h2>
-                <h4 className="text-sm font-semibold uppercase text-gray-600">{product.category}</h4>
+                <h2 className="text-xl font-semibold uppercase text-[#393185]">{product.name}</h2>
+                <h4 className="text-sm font-semibold uppercase hover:text-[#393185] cursor-pointer text-gray-600">{product.category}</h4>
               </div>
 
               <p className="text-gray-600 leading-relaxed mb-6 wrap-anywhere italic">{product.des}</p>
@@ -202,7 +202,7 @@ function SinglePage() {
                 480: { slidesPerView: 1 },
                 300: { slidesPerView: 1 },
               }}
-               loop={releted.length > 4}
+              loop={releted.length > 4}
             >
               {releted.map((item, index) => (
                 <SwiperSlide key={item.id}>
@@ -216,13 +216,13 @@ function SinglePage() {
                           src={getImageUrl(item.Image?.[0])}
                           alt={item.name}
                           className="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out"
-                          // onError={(e) => handleImageError(e, 'No Image')}
-                          // onLoad={() => handleImageLoad(item.Image?.[0])}
+                        // onError={(e) => handleImageError(e, 'No Image')}
+                        // onLoad={() => handleImageLoad(item.Image?.[0])}
                         />
                       </div>
                       <div className="card-body mt-4 p-2" >
-                        <h2 className="card-title text-lg font-mono uppercase text-[14px] text-center text-[#CE701F]">{item.name}</h2>
-                        <p className="card-title text-gray-500 text-lg font-mono uppercase text-[14px] text-center hover:text-[#CE701F] ">{item.category}</p>
+                        <h2 className="card-title text-lg font-mono uppercase text-[14px] text-center text-[#393185]">{item.name}</h2>
+                        <p className="card-title text-gray-500 text-lg font-mono uppercase text-[14px] text-center hover:text-[#393185] ">{item.category}</p>
                       </div>
                     </div>
                   </div>

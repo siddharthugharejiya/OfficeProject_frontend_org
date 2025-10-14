@@ -3,9 +3,13 @@ import { Product_Action } from '../Redux/action';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import "../App.css";
-import Navbar_1 from './Navbar_1';
+// import Navbar_1 from './Navbar_1';
+
 import Footer1 from './Footer1';
 import { getImageUrl } from '../utils/imageUtils';
+import { Navi } from './Navi';
+// import { Nav } from 'react-bootstrap';
+// import { Navi } from './Navi';
 
 function ProductPage() {
     const { id } = useParams();
@@ -41,7 +45,7 @@ function ProductPage() {
 
     return (
         <>
-            <Navbar_1 />
+            <Navi />
 
             <div className='bg-[#F6F4F2] text-center py-10 text-[#514633] font-semibold text-md'>
                 Home / Storage
@@ -67,10 +71,10 @@ function ProductPage() {
                                             />
                                         </div>
                                         <div className="card-body mt-4 p-2 text-center">
-                                            <h2 className="card-title text-lg font-mono uppercase text-[14px] text-[#CE701F]">
+                                            <h2 className="card-title text-lg font-mono uppercase text-[14px] text-[#393185]">
                                                 {item.name}
                                             </h2>
-                                            <p className="card-title text-gray-500 text-lg font-mono uppercase text-[14px] hover:text-[#CE701F]">
+                                            <p className="card-title text-gray-500 text-lg font-mono uppercase text-[14px] hover:text-[#393185]">
                                                 {item.category}
                                             </p>
                                         </div>

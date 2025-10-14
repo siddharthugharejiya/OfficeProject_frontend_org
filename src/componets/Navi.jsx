@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Product_category } from '../Redux/action';
 import { useDispatch, useSelector } from 'react-redux';
 
-export function Nav() {
+export function Navi({ textColor = 'white' }) {
     const [activeIndex, setActiveIndex] = useState(0);
     const [isOpen, setIsOpen] = useState(false);
     const [open, setOpen] = useState(false);
@@ -14,6 +14,7 @@ export function Nav() {
 
     const dispatch = useDispatch();
     const nav = useNavigate();
+    const location = useLocation();
 
     const handleToggle = () => setIsOpen(prev => !prev);
 
@@ -66,6 +67,18 @@ export function Nav() {
         nav(`/category/${e}`);
     };
 
+    const baseLinkTextClass = textColor === 'black' ? 'text-black' : 'text-white';
+    const hoverLightClass = 'hover:text-gray-200';
+    const hoverDarkClass = 'hover:text-gray-800';
+
+    const pathname = location.pathname || '/';
+    const isHomeActive = pathname === '/';
+    const isAboutActive = pathname.startsWith('/whoWeAre');
+    const isProductActive = pathname.startsWith('/category') || pathname.startsWith('/product');
+    const isNewActive = pathname.startsWith('/new');
+    const isVisionActive = pathname.startsWith('/v');
+    const isContactActive = pathname.startsWith('/contact');
+
     return (
         <>
             <header className="md:py-3 md:px-30 sm:py-2 py-3 lg:px-5 sm:px-30 px-3 relative z-50">
@@ -92,10 +105,10 @@ export function Nav() {
                                 <Link
                                     to="/"
                                     onClick={() => setActiveIndex(0)}
-                                    className="text-[17px] font-medium text-white hover:text-gray-200 focus:outline-none relative"
+                                    className={`text-[17px] font-medium ${baseLinkTextClass} ${textColor === 'black' ? hoverDarkClass : hoverLightClass} focus:outline-none relative`}
                                 >
                                     Home
-                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#393185] transition-all duration-300 ${activeIndex === 0 ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
+                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#393185] transition-all duration-300 ${isHomeActive ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
                                 </Link>
                             </div>
 
@@ -104,11 +117,11 @@ export function Nav() {
                                 <Link
                                     to="/whoWeAre"
                                     onClick={() => setActiveIndex(1)}
-                                    className="text-[17px] font-medium text-white hover:text-gray-200 focus:outline-none relative"
+                                    className={`text-[17px] font-medium ${baseLinkTextClass} ${textColor === 'black' ? hoverDarkClass : hoverLightClass} focus:outline-none relative`}
 
                                 >
                                     About Us
-                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#393185] transition-all duration-300 ${activeIndex === 1 ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
+                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#393185] transition-all duration-300 ${isAboutActive ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
                                 </Link>
                             </div>
 
@@ -121,10 +134,10 @@ export function Nav() {
                                         }
                                         setActiveIndex(2);
                                     }}
-                                    className="text-[17px] font-medium text-white hover:text-white focus:outline-none relative transition"
+                                    className={`text-[17px] font-medium ${baseLinkTextClass} ${textColor === 'black' ? hoverDarkClass : 'hover:text-white'} focus:outline-none relative transition`}
                                 >
                                     Product
-                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#393185] transition-all duration-300 ${activeIndex === 2 ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
+                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#393185] transition-all duration-300 ${isProductActive ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
                                 </Link>
                                 {/* Centered Dropdown */}
                                 <div className={`absolute left-1/2 transform -translate-x-1/2 top-[60%] mt-2 z-50 w-[90vw] max-w-[300px] sm:w-[80vw] sm:max-w-[380px] md:w-[60vw] md:max-w-[420px] lg:w-[36rem] lg:max-w-[550px] bg-white shadow-lg rounded-md max-h-[60vh] lg:max-h-[50vh] overflow-y-auto ${isProductDropdownOpen ? 'block' : 'hidden'}`}>
@@ -146,7 +159,7 @@ export function Nav() {
                                             <li key={category}>
                                                 <button
                                                     onClick={() => handleCategory(category)}
-                                                    className="w-full text-left px-3 py-2 text-sm text-gray-700 rounded hover:bg-gray-100 hover:text-[#b86c59] transition"
+                                                    className="w-full text-left px-3 py-2 text-sm text-gray-700 rounded hover:bg-gray-100 hover:text-[#393185] transition"
                                                 >
                                                     {category}
                                                 </button>
@@ -161,10 +174,10 @@ export function Nav() {
                                 <Link
                                     to="/new"
                                     onClick={() => setActiveIndex(4)}
-                                    className="text-[17px] font-medium text-white hover:text-white focus:outline-none relative"
+                                    className={`text-[17px] font-medium ${baseLinkTextClass} ${textColor === 'black' ? hoverDarkClass : 'hover:text-white'} focus:outline-none relative`}
                                 >
                                     New Arrivals
-                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#393185] transition-all duration-300 ${activeIndex === 4 ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
+                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#393185] transition-all duration-300 ${isNewActive ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
                                 </Link>
                             </div>
 
@@ -172,10 +185,10 @@ export function Nav() {
                                 <Link
                                     to="/v"
                                     onClick={() => setActiveIndex(4)}
-                                    className="text-[17px] font-medium text-white hover:text-white focus:outline-none relative"
+                                    className={`text-[17px] font-medium ${baseLinkTextClass} ${textColor === 'black' ? hoverDarkClass : 'hover:text-white'} focus:outline-none relative`}
                                 >
                                     Vision & Mission
-                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#393185] transition-all duration-300 ${activeIndex === 4 ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
+                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#393185] transition-all duration-300 ${isVisionActive ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
                                 </Link>
                             </div>
 
@@ -184,10 +197,10 @@ export function Nav() {
                                 <Link
                                     to="/contact"
                                     onClick={() => setActiveIndex(5)}
-                                    className="text-[17px] font-medium text-white hover:text-white focus:outline-none relative"
+                                    className={`text-[17px] font-medium ${baseLinkTextClass} ${textColor === 'black' ? hoverDarkClass : 'hover:text-white'} focus:outline-none relative`}
                                 >
                                     Contact
-                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#393185] transition-all duration-300 ${activeIndex === 5 ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
+                                    <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#393185] transition-all duration-300 ${isContactActive ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
                                 </Link>
                             </div>
                         </nav>

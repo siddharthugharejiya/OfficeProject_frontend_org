@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import "../App.css"
 import Navbar_1 from './Navbar_1';
+import { Navi } from './Navi';
 import Footer1 from './Footer1';
 function Product_Page() {
     const { id } = useParams();
@@ -27,7 +28,7 @@ function Product_Page() {
 
     return (
         <>
-            <Navbar_1 />
+            <Navi />
             <div className='bg-[#F6F4F2] text-center py-10 text-[#514633] font-semibold text-md'>Home / Storage</div>
 
 

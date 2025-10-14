@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
 
-import { Nav } from "./Nav";
+// import { Nav } from "./Navi";
+import { Navi } from './Navi';
 import { Autoplay } from "swiper/modules";
 
 const useWindowSize = () => {
@@ -64,17 +65,17 @@ const AnimatedImageSlider = () => {
         }
     }
     const mobileHeight = screenWidth < 640 ? `${mobileVh}vh` : undefined;
-      const swiperRef = useRef(null);
-     
+    const swiperRef = useRef(null);
+
     return (
         <div className="w-full relative overflow-hidden -px-1">
-            <div className="absolute top-0 w-full z-50">
-                <Nav />
+            <div className="absolute top-0 w-full z-50 text-white">
+                <Navi />
             </div>
             <Swiper
-    onSwiper={(swiper) => (swiperRef.current = swiper)}
-                                        modules={[Autoplay]}
-                
+                onSwiper={(swiper) => (swiperRef.current = swiper)}
+                modules={[Autoplay]}
+
                 slidesPerView={1}
                 loop={true}
                 speed={1500}
@@ -83,7 +84,7 @@ const AnimatedImageSlider = () => {
                     disableOnInteraction: false,
                 }}
                 onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-                className="w-full sm:h-[60vh] md:h-[70vh] lg:h-[80vh] xl:h-[100vh] 2xl:h-[100vh]" 
+                className="w-full sm:h-[60vh] md:h-[70vh] lg:h-[80vh] xl:h-[100vh] 2xl:h-[100vh]"
                 style={{
                     height: screenWidth >= 1280 ? '100vh' : mobileHeight, // XL+ screens
                     overflow: screenWidth >= 1280 ? 'hidden' : 'visible', // scroll hide for XL+

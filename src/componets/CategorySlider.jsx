@@ -52,47 +52,49 @@ export function CategorySlider() {
     ));
 
     return (
-        <Swiper
-            navigation
-            spaceBetween={20}
-            slidesPerView={1}
-            breakpoints={{
-                640: { slidesPerView: 1 },
-                768: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 },
-                1280: { slidesPerView: 4 },
-            }}
-        >
-            {loading
-                ? skeletonSlides
-                : products.map((item) => (
-                    <SwiperSlide key={item.id}>
-                        <div className="flex justify-center items-stretch h-full">
-                            <div
-                                className="card w-full bg-white max-w-[18rem] sm:max-w-[20rem] md:max-w-[22rem] lg:max-w-[18rem] xl:max-w-[17rem] flex flex-col items-center hover:shadow-sm transition-transform duration-300 cursor-pointer overflow-auto m-1 z-0"
-                                onClick={() => handleclick(item._id)}
-                            >
-                                <div className="h-[350px] relative overflow-hidden w-full group">
-                                    <img
-                                        src={getImageUrl(item.Image?.[0])}
-                                        alt={item.name}
-                                        className="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out"
-                                    // onError={(e) => handleImageError(e, 'No Image')}
-                                    // onLoad={() => handleImageLoad(item.Image?.[0])}
-                                    />
+        <div className="w-full flex justify-center px-2 sm:px-4 py-6">
+            <div className="w-full max-w-7xl mx-auto my-5">
+                <Swiper
+                    navigation
+                    spaceBetween={20}
+                    slidesPerView={1}
+                    breakpoints={{
+                        640: { slidesPerView: 1 },
+                        768: { slidesPerView: 2 },
+                        1024: { slidesPerView: 3 },
+                        1280: { slidesPerView: 4 },
+                    }}
+                >
+                    {loading
+                        ? skeletonSlides
+                        : products.map((item) => (
+                            <SwiperSlide key={item.id}>
+                                <div className="flex justify-center items-stretch h-full">
+                                    <div
+                                        className="card w-full bg-white max-w-[18rem] sm:max-w-[20rem] md:max-w-[22rem] lg:max-w-[18rem] xl:max-w-[17rem] flex flex-col items-center hover:shadow-sm transition-transform duration-300 cursor-pointer overflow-auto m-1 z-0"
+                                        onClick={() => handleclick(item._id)}
+                                    >
+                                        <div className="h-[350px] relative overflow-hidden w-full group">
+                                            <img
+                                                src={getImageUrl(item.Image?.[0])}
+                                                alt={item.name}
+                                                className="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out"
+                                            />
+                                        </div>
+                                        <div className="card-body mt-4 p-2">
+                                            <h2 className="card-title text-lg font-mono uppercase text-[14px] text-center  text-gray-700">
+                                                {item.name}
+                                            </h2>
+                                            <p className="card-title text-gray-500 text-lg font-mono uppercase text-[14px] text-center hover:text-[#393185]">
+                                                {item.category}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="card-body mt-4 p-2">
-                                    <h2 className="card-title text-lg font-mono uppercase text-[14px] text-center text-[#CE701F]">
-                                        {item.name}
-                                    </h2>
-                                    <p className="card-title text-gray-500 text-lg font-mono uppercase text-[14px] text-center hover:text-[#CE701F]">
-                                        {item.category}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </SwiperSlide>
-                ))}
-        </Swiper>
+                            </SwiperSlide>
+                        ))}
+                </Swiper>
+            </div>
+        </div>
     );
 }

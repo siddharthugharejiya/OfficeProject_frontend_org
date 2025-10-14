@@ -13,7 +13,7 @@ function Footer() {
     return (
         <>
             <footer className="bg-[#333] text-[#999] py-12 px-6" data-aos="fade-up">
-                <div className="max-w-[1300px] mx-auto grid xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10">
+                <div className="max-w-[1300px] mx-auto grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10">
                     {/* Contact Info */}
                     <div data-aos="fade-right">
                         <h1 className='uppercase text-white font-bold mb-4'>Contact Info</h1>
@@ -24,14 +24,7 @@ function Footer() {
                             Lalpar morbi, 363642
 
                         </address>
-                        <p className='uppercase mt-4 mb-1'>Email Us</p>
-                        <a
-                            href="https://mail.google.com/mail/?view=cm&to=Info@prettywareceramikallp.com&su=Enquiry&body=Hello, I want to know more about your products."
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Info@prettywareceramikallp.com
-                        </a>
+
 
 
 
@@ -47,10 +40,20 @@ function Footer() {
                             <span className='text-white text-sm'>9879800170</span>
                         </a>
 
+
+                        <p className='uppercase mt-4 mb-1'>Email Us</p>
+                        <a
+                            href="https://mail.google.com/mail/?view=cm&to=Info@prettywareceramikallp.com&su=Enquiry&body=Hello, I want to know more about your products."
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Info@prettywareceramikallp.com
+                        </a>
+
                     </div>
 
                     {/* Useful Links */}
-                    <div data-aos="fade-left">
+                    {/* <div data-aos="fade-left">
                         <h1 className='uppercase text-white font-bold mb-4'>Useful Links</h1>
                         <ul className='space-y-2 text-sm'>
                             <li>Legal & Privacy</li>
@@ -60,10 +63,10 @@ function Footer() {
                             <li>My Account</li>
                             <li>Find a Store</li>
                         </ul>
-                    </div>
+                    </div> */}
 
                     {/* Company */}
-                    <div data-aos="fade-left">
+                    {/* <div data-aos="fade-left">
                         <h1 className='uppercase text-white font-bold mb-4'>Company</h1>
                         <ul className='space-y-2 text-sm'>
                             <li>About Us</li>
@@ -72,7 +75,7 @@ function Footer() {
                             <li>Investors</li>
                             <li>FAQs</li>
                         </ul>
-                    </div>
+                    </div> */}
 
                     {/* My Account */}
                     <div data-aos="fade-left">
@@ -84,6 +87,13 @@ function Footer() {
                             <li>Track Order</li>
                             <li>Help</li>
                         </ul>
+                    </div>
+                    <div className="flex md:block justify-center md:justify-start">
+                        <img
+                            src="./image/qr.jpg"
+                            alt="Scan to connect"
+                            className='h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 object-contain rounded-md shadow-sm'
+                        />
                     </div>
                 </div>
 

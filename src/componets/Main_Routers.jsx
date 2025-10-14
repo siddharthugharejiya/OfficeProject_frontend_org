@@ -6,10 +6,11 @@ import SinglePage from './SinglePage'
 import ProductPage from './ProductPage'
 import Contect from './Contect'
 import Category from './Category'
-import Who_we_are from './Who_we_are'
+// import Who_we_are from './Who_we_are'
 import NewArrivals from './NewArrivals'
 import VisionMission from './VisionMission'
 import { CategorySlider } from './CategorySlider'
+import Who_we_are from './About_us'
 // import CategorySlider from './CategorySlider'
 
 function Main_Routers() {

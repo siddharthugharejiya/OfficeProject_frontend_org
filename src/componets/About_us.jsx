@@ -3,12 +3,14 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import Navbar_1 from './Navbar_1'
 import Footer1 from './Footer1'
+import { Navi } from './Navi'
+import Footer from './Footer'
 
 export function Who_we_are() {
     const slides = [
-        { src: 'https://images.unsplash.com/photo-1584622650111-993dceae8ed1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', alt: 'Modern Ceramic Toilet Design' },
-        { src: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', alt: 'Luxury Bathroom Setup' },
-        { src: 'https://images.unsplash.com/photo-1584622793402-8c9d275ad50d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', alt: 'Premium Ceramic Finish' },
+        { src: '/image/slider_1.jpg', alt: 'Prettyware ceramic collection - slide 1' },
+        { src: '/image/slider_2.jpg', alt: 'Prettyware ceramic collection - slide 2' },
+        { src: '/image/slider_3.jpg', alt: 'Prettyware ceramic collection - slide 3' },
     ]
 
     const socialLinks = {
@@ -20,8 +22,12 @@ export function Who_we_are() {
 
     return (
         <>
-            <Navbar_1 />
-            <div className="w-full px-4 sm:px-8 md:px-16 lg:px-20 xl:px-28 py-12 bg-white text-gray-800">
+
+            <div className="text-black">
+                <Navi textColor="black" />
+            </div>
+            {/* <Navi /> */}
+            <div className="w-full px-4 sm:px-8 md:px-16 lg:px-20 xl:px-28 py-12  text-gray-800">
                 {/* Hero */}
                 <section className="max-w-7xl mx-auto text-center mb-10">
                     <div className="text-[#BD9C85] font-semibold uppercase text-sm mb-2">Prettyware Ceramika</div>
@@ -34,9 +40,9 @@ export function Who_we_are() {
                     <Swiper
                         spaceBetween={20}
                         slidesPerView={1}
-                        breakpoints={{ 
-                            640: { slidesPerView: 1 }, 
-                            1024: { slidesPerView: 2 } 
+                        breakpoints={{
+                            640: { slidesPerView: 1 },
+                            1024: { slidesPerView: 2 }
                         }}
                         pagination={{ clickable: true }}
                     >
@@ -60,7 +66,7 @@ export function Who_we_are() {
                         <p className="text-gray-700 leading-relaxed">
                             Today, we're recognized for our exceptional quality, innovative designs, and commitment to sustainability. Each product reflects our dedication to excellence and our passion for creating sanitaryware that stands the test of time.
                         </p>
-                        
+
                         <ul className="mt-6 space-y-3">
                             <li className="flex items-start gap-3">
                                 <div className="bg-[#F4EBE4] rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0">✓</div>
@@ -128,11 +134,11 @@ export function Who_we_are() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                         {[1, 2, 3, 4, 5, 6].map(i => (
                             <div key={i} className="bg-white rounded-lg p-4 border border-gray-200 hover:shadow-lg transition-shadow">
-                                <div className="w-full h-48 bg-gray-100 mb-4 flex items-center justify-center overflow-hidden rounded-lg">
-                                    <img 
-                                        src={`https://images.unsplash.com/photo-1584622650111-993dceae8ed1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80&text=Model+${i}`} 
-                                        alt={`Prettyware Model ${i}`} 
-                                        className="w-full h-full object-cover" 
+                                <div className="w-full h-[330px] bg-gray-100 mb-4 flex items-center justify-center overflow-hidden rounded-lg">
+                                    <img
+                                        src={`./image/1.jpg`}
+                                        alt={`Prettyware Model ${i}`}
+                                        className="w-full h-full object-cover"
                                     />
                                 </div>
                                 <h5 className="font-semibold text-lg mb-2">Ceramika Pro Model {i}</h5>
@@ -267,9 +273,12 @@ export function Who_we_are() {
                     </div>
                 </section>
 
-            
+
             </div>
-            <Footer1 />
+            <div className="overflow-hidden">
+
+                <Footer />
+            </div>
         </>
     )
 }

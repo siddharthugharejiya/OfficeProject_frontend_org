@@ -50,7 +50,7 @@ export default function GlobalLoader({ visible, onComplete }) {
     return (
         <div className="fixed top-0 left-0 w-full h-1 bg-gray-200 z-50">
             <div
-                className="h-full bg-[#7eb859] transition-all duration-200 ease-linear"
+                className="h-full bg-[#393185] transition-all duration-200 ease-linear"
                 style={{ width: `${progress}%` }}
             ></div>
         </div>
