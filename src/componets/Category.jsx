@@ -49,7 +49,7 @@ function Category() {
                                         <img
                                             src={getImageUrl(item.Image?.[0])}
                                             alt={item.name}
-                                            className="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out"
+                                            className="h-full w-full object-cover  transition-all duration-500 ease-in-out"
                                         // onError={(e) => handleImageError(e, 'No Image')}
                                         // onLoad={() => handleImageLoad(item.Image?.[0])}
                                         />

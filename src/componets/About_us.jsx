@@ -24,9 +24,9 @@ export function Who_we_are() {
     return (
         <>
 
-          
 
-            <Main_Image_slider />
+
+            <Main_Image_slider textColor="black" />
             {/* <Navi /> */}
             <div className="w-full px-4 sm:px-8 md:px-16 lg:px-20 xl:px-28 py-12  text-gray-800">
                 {/* Hero */}

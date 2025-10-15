@@ -20,6 +20,8 @@ function SinglePage() {
   const dispatch = useDispatch();
   const products = useSelector(state => state.SinglePageProduct?.Product);
   const product = products?.data || null;
+  console.log(product);
+
   const [selectedImage, setSelectedImage] = useState(null);
 
   const nav = useNavigate()
@@ -121,42 +123,28 @@ function SinglePage() {
 
           {/* Details Section */}
           <div className="p-4 sm:p-6 flex flex-col ">
-            <div>
-              <div className='border-b border-gray-300 pb-4 mb-6'>
-                <h2 className="text-xl font-semibold uppercase text-[#393185]">{product.name}</h2>
-                <h4 className="text-sm font-semibold uppercase hover:text-[#393185] cursor-pointer text-gray-600">{product.category}</h4>
+            <div className="p-5 w-fit ">
+              <h1 className="text-xl font-semibold text-gray-800 mb-2">{product.name}</h1>
+              <div className="text-gray-600 text-sm mb-4">
+                L {product.l || 0} | W {product.w || 0} | H {product.h || 0} mm
               </div>
 
-              <p className="text-gray-600 leading-relaxed mb-6 wrap-anywhere italic">{product.des}</p>
-
-              {/* Security, Delivery, Return */}
-              {/* <div className="space-y-5">
-                <div className='flex items-center'>
-                  <img src="../image/security.svg" alt="" className='h-[30px]' />
-                  <div className='ml-3'>
-                    <p className='font-medium text-sm text-gray-700'>Security policy</p>
-                    <p className='text-xs text-gray-500'>(edit with the Customer Reassurance module)</p>
-                  </div>
+              <div className="flex items-start gap-10">
+                <div>
+                  <h2 className="text-gray-800 font-semibold text-sm">S-Trap</h2>
+                  <span className="text-gray-600 text-sm">{product.s_trap }</span>
                 </div>
 
-                <div className='flex items-center'>
-                  <img src="../image/carrier.svg" alt="" className='h-[30px]' />
-                  <div className='ml-3'>
-                    <p className='font-medium text-sm text-gray-700'>Delivery policy</p>
-                    <p className='text-xs text-gray-500'>(edit with the Customer Reassurance module)</p>
-                  </div>
-                </div>
+                {/* Vertical line between S-Trap and P-Trap */}
+                <div className="h-12 border-l border-gray-300"></div>
 
-                <div className='flex items-center'>
-                  <img src="../image/return.svg" alt="" className='h-[30px]' />
-                  <div className='ml-3'>
-                    <p className='font-medium text-sm text-gray-700'>Return policy</p>
-                    <p className='text-xs text-gray-500'>(edit with the Customer Reassurance module)</p>
-                  </div>
+                <div>
+                  <h2 className="text-gray-800 font-semibold text-sm">P-Trap</h2>
+                  <span className="text-gray-600 text-sm">{product.p_trap}mm</span>
                 </div>
-              </div> */}
+              </div>
+
             </div>
-
             {/* Share Icons */}
             <div className='mt-8 flex items-center gap-3 text-gray-600'>
               <span className='text-sm font-medium'>Share:</span>
@@ -217,7 +205,7 @@ function SinglePage() {
                         <img
                           src={getImageUrl(item.Image?.[0])}
                           alt={item.name}
-                          className="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out"
+                          className="h-full w-full object-cover  transition-all duration-500 ease-in-out"
                         // onError={(e) => handleImageError(e, 'No Image')}
                         // onLoad={() => handleImageLoad(item.Image?.[0])}
                         />

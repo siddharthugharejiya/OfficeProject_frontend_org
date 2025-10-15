@@ -247,7 +247,7 @@ const Product_add = () => {
                 <input name="name" value={state.name} onChange={handlechange} placeholder="Product Name" className="w-full p-2 rounded bg-white/10 text-white" required />
 
                 {/* UNCOMMENT THE TITLE INPUT FIELD */}
-                <input name="title" value={state.title} onChange={handlechange} placeholder="Title" className="w-full p-2 rounded bg-white/10 text-white" />
+                {/* <input name="title" value={state.title} onChange={handlechange} placeholder="Title" className="w-full p-2 rounded bg-white/10 text-white" /> */}
 
                 <div className="flex gap-4">
                     <button type="button" onClick={() => setActiveTab("link")} className={`px-4 py-2 rounded ${activeTab === 'link' ? 'bg-pink-600 text-white' : 'bg-white/10 text-white'}`}>Image URL</button>

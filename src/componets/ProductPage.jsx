@@ -46,7 +46,7 @@ function ProductPage() {
 
     return (
         <>
-            <Navi textColor='black'/>
+            <Navi textColor='black' />
 
             <div className='bg-[#F6F4F2] text-center py-10 text-[#514633] font-semibold text-md'>
                 Home / Storage
@@ -68,7 +68,7 @@ function ProductPage() {
                                             <img
                                                 src={getImageUrl(item.Image?.[0])}
                                                 alt={item.name}
-                                                className="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out"
+                                                className="h-full w-full object-cover transition-all duration-500 ease-in-out"
                                             />
                                         </div>
                                         <div className="card-body mt-4 p-2 text-center">

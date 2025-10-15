@@ -211,14 +211,31 @@ export function Navi({ textColor = 'white' }) {
             {/* MOBILE DRAWER */}
             <div className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-50 transform transition-transform duration-300 overflow-auto ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
                 <div className="flex justify-between items-center px-4 py-4 border-b">
-                    <h2 className="text-lg font-semibold">Menu</h2>
-                    <button onClick={handleToggle} className="text-xl"><FaTimes /></button>
+                    <h2 className="text-lg font-semibold text-black">Menu</h2> {/* Text black */}
+                    <button onClick={handleToggle} className="text-xl text-black"><FaTimes /></button> {/* Icon black */}
                 </div>
                 <nav className="flex flex-col p-4 space-y-3">
-                    <Link to="/" onClick={() => { setActiveIndex(0); setIsOpen(false); }} className="text-left hover:text-white">Home</Link>
-                    <Link to="/whoWeAre" onClick={() => { setActiveIndex(1); setIsOpen(false); }} className="text-left hover:text-white">Who We Are</Link>
+                    <Link
+                        to="/"
+                        onClick={() => { setActiveIndex(0); setIsOpen(false); }}
+                        className="text-left text-black hover:text-gray-700" // Text black
+                    >
+                        Home
+                    </Link>
+                    <Link
+                        to="/about"
+                        onClick={() => { setActiveIndex(1); setIsOpen(false); }}
+                        className="text-left text-black hover:text-gray-700" // Text black
+                    >
+                        Who We Are
+                    </Link>
                     <div>
-                        <button onClick={() => { setActiveIndex(2); setIsProductDropdownOpen(!isProductDropdownOpen); }} className="text-left hover:text-[#b86c59] w-full">Product</button>
+                        <button
+                            onClick={() => { setActiveIndex(2); setIsProductDropdownOpen(!isProductDropdownOpen); }}
+                            className="text-left text-black hover:text-gray-700 w-full" // Text black
+                        >
+                            Product
+                        </button>
                         {isProductDropdownOpen && (
                             <ul className="mt-2 pl-4 space-y-2">
                                 {[
@@ -236,17 +253,33 @@ export function Navi({ textColor = 'white' }) {
                                     "Pastel Series",
                                 ].map(category => (
                                     <li key={category}>
-                                        <button onClick={() => handleCategoryMobile(category)} className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:text-[#b86c59]">{category}</button>
+                                        <button
+                                            onClick={() => handleCategoryMobile(category)}
+                                            className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:text-gray-900" // Text gray-700
+                                        >
+                                            {category}
+                                        </button>
                                     </li>
                                 ))}
                             </ul>
                         )}
                     </div>
-                    <Link to="/new" onClick={() => { setActiveIndex(4); setIsOpen(false); }} className="text-left hover:text-[#b86c59]">New Arrivals</Link>
-                    <Link to="/contact" onClick={() => { setActiveIndex(5); setIsOpen(false); }} className="text-left hover:text-[#b86c59]">Contact</Link>
+                    <Link
+                        to="/new"
+                        onClick={() => { setActiveIndex(4); setIsOpen(false); }}
+                        className="text-left text-black hover:text-gray-700" // Text black
+                    >
+                        New Arrivals
+                    </Link>
+                    <Link
+                        to="/contact"
+                        onClick={() => { setActiveIndex(5); setIsOpen(false); }}
+                        className="text-left text-black hover:text-gray-700" // Text black
+                    >
+                        Contact
+                    </Link>
                 </nav>
             </div>
-
             {/* MOBILE BACKDROP */}
             {isOpen && <div onClick={handleToggle} className="fixed top-0 left-0 w-full h-full bg-black opacity-30 z-40 sm:hidden"></div>}
         </>
