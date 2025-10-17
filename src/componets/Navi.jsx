@@ -227,7 +227,7 @@ export function Navi({ textColor = 'white' }) {
                         onClick={() => { setActiveIndex(1); setIsOpen(false); }}
                         className="text-left text-black hover:text-gray-700" // Text black
                     >
-                        Who We Are
+                        About Us
                     </Link>
                     <div>
                         <button

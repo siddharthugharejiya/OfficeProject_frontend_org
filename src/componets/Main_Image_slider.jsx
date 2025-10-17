@@ -32,8 +32,8 @@ const slidess = [
         id: 1,
         image: "/image/slider_7.jpg",
         title: "Exclusive bathroom fixtures",
-        subtitle: "Elegant & Modern Designs",
-        description: "Discover our exclusive collection of luxury bathroom fittings"
+        subtitle: "Clean and classy designs",
+        description: "Find your perfect fit with our exclusive luxury bath collection."
     },
     // {
     //     id: 2,
@@ -104,7 +104,7 @@ const Main_Image_slider = () => {
                     setActiveIndex(swiper.realIndex);
                     setIsVisible(false);
                 }}
-                className="w-full sm:h-[60vh] md:h-[70vh] lg:h-[80vh] xl:h-[100vh] 2xl:h-[100vh]"
+                className="w-full sm:h-[60vh] md:h-[70vh] lg:h-[80vh] xl:h-[100vh] 2xl:h-[110vh]"
                 style={{
                     height: screenWidth >= 1280 ? '100vh' : mobileHeight,
                     overflow: screenWidth >= 1280 ? 'hidden' : 'visible',

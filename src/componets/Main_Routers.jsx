@@ -11,6 +11,7 @@ import NewArrivals from './NewArrivals'
 import VisionMission from './VisionMission'
 import { CategorySlider } from './CategorySlider'
 import Who_we_are from './About_us'
+import NotFound from './NotFound'
 // import CategorySlider from './CategorySlider'
 
 function Main_Routers() {
@@ -26,6 +27,7 @@ function Main_Routers() {
             <Route path='/category/:category' element={<Category />} />
             <Route path='/v' element={<VisionMission />} />
             <Route path='/c' element={<CategorySlider />} />
+            <Route path='*' element={<NotFound />} />
         </Routes>
     )
 }
