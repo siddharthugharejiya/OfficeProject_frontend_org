@@ -183,8 +183,8 @@ const Product_add = () => {
             }
 
             const url = update
-                ? `https://officeproject-backend.onrender.com/edite/${state.id}`
-                : "https://officeproject-backend.onrender.com/add";
+                ? `api.prettywareceramikallp.com/edite/${state.id}`
+                : "api.prettywareceramikallp.com/add";
             const method = update ? "PUT" : "POST";
 
             const res = await fetch(url, {
