@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Product_Action } from '../Redux/action';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import "../App.css";
 // import Navbar_1 from './Navbar_1';
 
@@ -34,6 +34,25 @@ function ProductPage() {
         productList = [rawData.data];
     }
 
+    // Sort products by product number (e.g., extract 5112 from "afro - 5112")
+    productList.sort((a, b) => {
+        // Extract product numbers from name (numbers after the hyphen)
+        const getProductNumber = (name) => {
+            if (!name) return 0;
+            const parts = name.split('-');
+            if (parts.length > 1) {
+                const numStr = parts[1].trim();
+                return parseInt(numStr, 10) || 0;
+            }
+            return 0;
+        };
+
+        const numA = getProductNumber(a.name);
+        const numB = getProductNumber(b.name);
+
+        return numA - numB; // Ascending order by product number
+    });
+
     const handleSinglePageClick = (productId) => {
         console.log("Clicked Product ID:", productId);
         nav(`/SinglePage/${productId}`);
@@ -48,9 +67,7 @@ function ProductPage() {
         <>
             <Navi textColor='black' />
 
-            <div className='bg-[#F6F4F2] text-center py-10 text-[#514633] font-semibold text-md'>
-                Home / Storage
-            </div>
+            <div className='bg-[#F6F4F2] text-center py-10 text-[#514633] font-semibold text-md cursor-pointer'><Link to="/"> Home </Link> / Storage </div>
 
             <div className="min-h-screen flex flex-col">
                 {/* Main content area */}

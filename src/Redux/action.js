@@ -65,7 +65,23 @@ export const Product_Get = () => async (dispatch) => {
     try {
         const response = await fetch("https://officeproject-backend.onrender.com/get");
         const res = await response.json();
-        const fixedData = fixImageUrls(res.data);
+        let fixedData = fixImageUrls(res.data);
+
+        // Sort products by product code (e.g., "Lumania-5101")
+        if (Array.isArray(fixedData)) {
+            fixedData = fixedData.sort((a, b) => {
+                // Extract product codes (numbers after the hyphen)
+                const codeA = a.productCode ? a.productCode.split('-')[1] : '';
+                const codeB = b.productCode ? b.productCode.split('-')[1] : '';
+
+                // Convert to numbers for proper numerical sorting
+                const numA = codeA ? parseInt(codeA, 10) : 0;
+                const numB = codeB ? parseInt(codeB, 10) : 0;
+
+                return numA - numB; // Ascending order
+            });
+        }
+
         dispatch({ type: "PRODUCT_GET_SUCCESS", payload: fixedData });
     } catch (error) {
         showToast("Failed to fetch products", "error");

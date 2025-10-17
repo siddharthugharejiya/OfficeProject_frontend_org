@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import { Link } from 'react-router-dom';
 
 function Footer() {
     useEffect(() => {
@@ -52,6 +53,7 @@ function Footer() {
                                 href="https://mail.google.com/mail/?view=cm&to=Info@prettywareceramikallp.com&su=Enquiry&body=Hello, I want to know more about your products."
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                className='text-white text-sm ml-1'
                             >
                                 Info@prettywareceramikallp.com
                             </a>
@@ -87,12 +89,15 @@ function Footer() {
                     {/* My Account */}
                     <div data-aos="fade-left">
                         <h1 className='uppercase text-white font-bold mb-4'>My Account</h1>
-                        <ul className='space-y-2 text-sm'>
-                            <li>Sign In</li>
-                            <li>View Cart</li>
-                            <li>Wishlist</li>
-                            <li>Track Order</li>
-                            <li>Help</li>
+                        <ul className='space-y-2 text-sm flex flex-col'>
+                            <Link to="/">Home</Link>
+                            <Link to="/about">About</Link>
+                            <Link to="/new">New Arrivals</Link>
+                            {/* <Link to="/v">Vision And Mission</Link> */}
+                            {/* <Link to="/Product">Product</Link> */}
+                            <Link to="/contact">Contact</Link>
+                            {/* <li>Track Order</li> */}
+                            {/* <li>Help</li> */}
                         </ul>
                     </div>
                     <div className="flex md:block  md:justify-start">

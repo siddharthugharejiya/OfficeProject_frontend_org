@@ -137,7 +137,7 @@ function NewArrivals() {
                                     className="px-4 py-2 bg-[#BD624C] text-white rounded"
                                 >
                                     Search
-                                </button>   
+                                </button>
                             </div>
                         </div>
 
@@ -173,10 +173,10 @@ function NewArrivals() {
                                 />
                             </div>
                             <div className="card-body mt-4 p-2 text-center" onClick={() => goToProduct(item._id)}>
-                                <h2 className="card-title text-lg font-mono uppercase text-[14px] text-[#CE701F]">
+                                <h2 className="card-title text-lg font-mono uppercase text-[14px] text-gray-700">
                                     {item.name}
                                 </h2>
-                                <p className="card-title text-gray-500 text-lg font-mono uppercase text-[14px] hover:text-[#CE701F]">
+                                <p className="card-title text-gray-500 text-lg font-mono uppercase text-[14px]  hover:text-[#393185]">
                                     {item.category}
                                 </p>
                             </div>
@@ -187,7 +187,7 @@ function NewArrivals() {
             </div>
             <div className="overflow-hidden">
 
-            <Footer />
+                <Footer />
             </div>
         </>
     )

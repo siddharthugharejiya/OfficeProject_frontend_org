@@ -181,7 +181,7 @@ export function Navi({ textColor = 'white' }) {
                                 </Link>
                             </div>
 
-                            <div className="relative group flex">
+                            {/* <div className="relative group flex">
                                 <Link
                                     to="/v"
                                     onClick={() => setActiveIndex(4)}
@@ -190,7 +190,7 @@ export function Navi({ textColor = 'white' }) {
                                     Vision & Mission
                                     <span className={`absolute left-1/2 -bottom-1 h-[2px] bg-[#393185] transition-all duration-300 ${isVisionActive ? 'w-full translate-x-[-50%]' : 'w-0 group-hover:w-full group-hover:translate-x-[-50%]'} `}></span>
                                 </Link>
-                            </div>
+                            </div> */}
 
                             {/* CONTACT */}
                             <div className="relative group flex">

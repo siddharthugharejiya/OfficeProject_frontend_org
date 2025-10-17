@@ -26,6 +26,8 @@ export function CategorySlider() {
     const nav = useNavigate();
     const dispatch = useDispatch();
     const { loading, products } = useSelector((state) => state.categoryProducts);
+    console.log(products);
+
 
 
     const handleclick = (e) => {
@@ -35,6 +37,25 @@ export function CategorySlider() {
     useEffect(() => {
         dispatch(fetchCategoryProducts(categories));
     }, [dispatch]);
+
+    // Get the product with lowest product code for each category
+    const lowestCodeProductOfEachCategory = products ? categories.map(category => {
+        // Get all products of this category
+        const categoryProducts = products.filter(product => product.category === category);
+
+        if (categoryProducts.length === 0) return null;
+
+        // Sort products by product code and get the one with lowest code
+        return categoryProducts.sort((a, b) => {
+            // Extract product code from name (e.g., "milano - 5105" -> "5105")
+            const getProductCode = (name) => {
+                const match = name?.match(/(\d+)$/);
+                return match ? parseInt(match[0]) : 0;
+            };
+
+            return getProductCode(a.name) - getProductCode(b.name);
+        })[0]; // Get the first product after sorting (lowest code)
+    }).filter(Boolean) : []; // Filter out undefined values (categories with no products)
 
     // Skeleton Slides
     const skeletonSlides = Array(4).fill(0).map((_, index) => (
@@ -67,7 +88,7 @@ export function CategorySlider() {
                 >
                     {loading
                         ? skeletonSlides
-                        : products.map((item) => (
+                        : lowestCodeProductOfEachCategory.map((item) => (
                             <SwiperSlide key={item.id}>
                                 <div className="flex justify-center items-stretch h-full">
                                     <div

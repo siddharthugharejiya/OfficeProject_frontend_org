@@ -31,7 +31,7 @@ const slidess = [
     {
         id: 1,
         image: "/image/slider_7.jpg",
-        title: "Premium Bathroom Solutions",
+        title: "Exclusive bathroom fixtures",
         subtitle: "Elegant & Modern Designs",
         description: "Discover our exclusive collection of luxury bathroom fittings"
     },
@@ -71,12 +71,12 @@ const Main_Image_slider = () => {
     }, [activeIndex]);
 
     // Dynamic vh calculation for mobile
-    let mobileVh = 30;
+    let mobileVh = 15;
     if (screenWidth >= 430 && screenWidth < 640) {
         mobileVh = 40;
     } else if (screenWidth < 430) {
         if (screenHeight > 850) {
-            mobileVh = 32;
+            mobileVh = 15;
         } else if (screenHeight < 750) {
             mobileVh = 28;
         }
@@ -87,8 +87,8 @@ const Main_Image_slider = () => {
 
     return (
         <div className="w-full relative overflow-hidden -px-1">
+            <Navi textColor="black" />
             <div className="absolute top-0 w-full z-50 text-white">
-                <Navi />
             </div>
             <Swiper
                 onSwiper={(swiper) => (swiperRef.current = swiper)}
@@ -121,28 +121,25 @@ const Main_Image_slider = () => {
                             />
 
                             {/* Responsive Left Side Content */}
-                            <div className="absolute left-4 sm:left-6 md:left-10 lg:left-20 xl:left-32 z-10 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg w-full px-2">
-                                <div className={`space-y-2 sm:space-y-3 md:space-y-4 transition-all duration-700 ease-out ${isVisible
-                                    ? 'translate-x-0 opacity-100'
-                                    : '-translate-x-8 opacity-0'
-                                    }`}>
+                            <div className="absolute left-4 sm:left-6 md:left-10 lg:left-20 2xl:left-56 xl:left-30 z-10 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg w-full px-2">
+                                <div>
                                     {/* Responsive Title */}
-                                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight sm:leading-tight md:leading-tight">
+                                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-black leading-tight sm:leading-tight md:leading-tight">
                                         {slide.title}
                                     </h1>
 
                                     {/* Responsive Subtitle */}
-                                    <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-200 font-medium">
+                                    <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-800 font-medium">
                                         {slide.subtitle}
                                     </h2>
 
                                     {/* Responsive Description */}
-                                    <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-full sm:max-w-md">
+                                    <p className="text-sm sm:text-base md:text-lg text-gray-700 max-w-full sm:max-w-md">
                                         {slide.description}
                                     </p>
 
                                     {/* Responsive Button */}
-                                    <button className="mt-3 sm:mt-4 md:mt-6 px-4 sm:px-6 md:px-8 py-2 sm:py-3 bg-white text-black font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-300 text-sm sm:text-base md:text-lg">
+                                    <button className="mt-3 sm:mt-4 md:mt-6 px-4 sm:px-6 md:px-8 py-2 sm:py-3 bg-gray-300 text-black font-semibold rounded-lg hover:bg-gray-600 transition-colors duration-300 text-sm sm:text-base md:text-lg">
                                         Explore Collection
                                     </button>
                                 </div>

@@ -28,16 +28,16 @@ export function Who_we_are() {
 
             <Main_Image_slider textColor="black" />
             {/* <Navi /> */}
-            <div className="w-full px-4 sm:px-8 md:px-16 lg:px-20 xl:px-28 py-12  text-gray-800">
+            <div className="w-full px-4 sm:px-8 md:px-16 lg:px-20 py-12  text-gray-800">
                 {/* Hero */}
-                <section className="max-w-7xl mx-auto text-center mb-10">
+                <section className=" mx-auto text-center mb-10">
                     <div className="text-[#BD9C85] font-semibold uppercase text-sm mb-2">Prettyware Ceramika</div>
                     <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold uppercase mb-4">Who We Are — Ceramic Excellence</h1>
                     <p className="text-gray-600 max-w-3xl mx-auto">Prettyware Ceramika is a premier manufacturer of high-quality ceramic toilets and sanitaryware. We blend traditional craftsmanship with modern technology to create products that redefine bathroom experiences.</p>
                 </section>
 
                 {/* Swiper gallery */}
-                <section className="max-w-7xl mx-auto mb-10">
+                <section className=" mx-auto mb-10">
                     <Swiper
                         spaceBetween={20}
                         slidesPerView={1}
@@ -58,7 +58,7 @@ export function Who_we_are() {
                 </section>
 
                 {/* Company Story */}
-                <section className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+                <section className=" mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
                     <div className="lg:col-span-2 bg-[#f8f2ee] rounded-lg p-6">
                         <h2 className="text-2xl font-semibold mb-3">Our Story</h2>
                         <p className="text-gray-700 leading-relaxed mb-4">
@@ -93,7 +93,7 @@ export function Who_we_are() {
                         </ul>
                     </div>
 
-                    <div className="space-y-6">
+                    <div className="space-y-6 align-content-center">
                         <div className="bg-white rounded-lg p-6 border border-gray-200">
                             <h3 className="text-xl font-semibold mb-3">Quick Specs</h3>
                             <div className="space-y-3 text-sm text-gray-600">
@@ -104,7 +104,7 @@ export function Who_we_are() {
                                 <div className="flex justify-between"><span>Warranty</span><span className="font-medium">10 Years Comprehensive</span></div>
                             </div>
                         </div>
-
+                        {/* 
                         <div className="bg-white rounded-lg p-6 border border-gray-200">
                             <h3 className="text-xl font-semibold mb-3">Connect With Us</h3>
                             <div className="space-y-3">
@@ -125,28 +125,38 @@ export function Who_we_are() {
                                     <span>Pinterest</span>
                                 </a>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </section>
 
                 {/* Products showcase */}
-                <section className="max-w-7xl mx-auto mb-12">
+                <section className=" mx-auto mb-12">
                     <h3 className="text-2xl font-semibold mb-6 text-center">Our Premium Collection</h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                         {[1, 2, 3, 4, 5, 6].map(i => (
-                            <div key={i} className="bg-white rounded-lg p-4 border border-gray-200 hover:shadow-lg transition-shadow">
-                                <div className="w-full h-[330px] bg-gray-100 mb-4 flex items-center justify-center overflow-hidden rounded-lg">
-                                    <img
-                                        src={`./image/1.jpg`}
-                                        alt={`Prettyware Model ${i}`}
-                                        className="w-full h-full object-cover"
-                                    />
-                                </div>
-                                <h5 className="font-semibold text-lg mb-2">Ceramika Pro Model {i}</h5>
-                                <p className="text-sm text-gray-600 mb-3">Advanced ceramic technology with elegant design</p>
-                                <div className="flex justify-between items-center text-sm">
-                                    <span className="text-gray-500">Water Efficient</span>
-                                    <span className="font-semibold text-[#BD9C85]">Premium</span>
+                            <div className="flex justify-center items-stretch h-full">
+                                <div
+                                    className="card w-full bg-white max-w-[18rem] sm:max-w-[20rem] md:max-w-[22rem] lg:max-w-[18rem] xl:max-w-[17rem] flex flex-col items-center hover:shadow-sm transition-transform duration-300 cursor-pointer overflow-auto m-1 z-0"
+                                    onClick={() => handleclick(item._id)}
+                                >
+                                    <div className="h-[350px] relative overflow-hidden w-full group">
+                                        <img
+                                            // src={getImageUrl(item.Image?.[0])}
+                                            src='/image/1.jpg'
+                                            // alt={item.name}
+                                            className="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out"
+                                        />
+                                    </div>
+                                    <div className="card-body mt-4 p-2">
+                                        <h2 className="card-title text-lg font-mono uppercase text-[14px] text-center  text-gray-700">
+                                            {/* {item.name} */}
+                                            Ceramic Product
+                                        </h2>
+                                        <p className="card-title text-gray-500 text-lg font-mono uppercase text-[14px] text-center hover:text-[#393185]">
+                                            {/* {item.category} */}
+                                            Sanitary Ware
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         ))}
@@ -154,7 +164,7 @@ export function Who_we_are() {
                 </section>
 
                 {/* CTA Section */}
-                <section className="max-w-7xl mx-auto text-center py-12 bg-gradient-to-r from-[#f8f2ee] to-[#F4EBE4] rounded-lg mb-12">
+                {/* <section className=" mx-auto text-center py-12 bg-gradient-to-r from-[#f8f2ee] to-[#F4EBE4] rounded-lg mb-12">
                     <h3 className="text-2xl font-semibold mb-3">Experience the Prettyware Difference</h3>
                     <p className="text-gray-600 mb-6 max-w-2xl mx-auto">Join thousands of satisfied customers who have transformed their bathrooms with our premium ceramic solutions.</p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -165,10 +175,10 @@ export function Who_we_are() {
                             Contact Sales
                         </button>
                     </div>
-                </section>
+                </section> */}
 
                 {/* Additional sections */}
-                <section className="max-w-7xl mx-auto mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <section className=" mx-auto mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <div className="bg-white rounded-lg p-6 border border-gray-200">
                         <h4 className="text-xl font-semibold mb-3">Why Choose Prettyware</h4>
                         <ul className="space-y-3 text-gray-700">
@@ -210,7 +220,7 @@ export function Who_we_are() {
                 </section>
 
                 {/* Certifications & Values */}
-                <section className="max-w-7xl mx-auto mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <section className=" mx-auto mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div className="bg-[#f8f2ee] rounded-lg p-6 text-center">
                         <div className="w-12 h-12 bg-[#BD9C85] rounded-full flex items-center justify-center mx-auto mb-3 text-white">✓</div>
                         <h5 className="font-semibold mb-2">Certifications</h5>
@@ -229,7 +239,7 @@ export function Who_we_are() {
                 </section>
 
                 {/* Testimonials */}
-                <section className="max-w-7xl mx-auto mt-10">
+                {/* <section className=" mx-auto mt-10">
                     <h4 className="text-2xl font-semibold mb-6 text-center">What Our Customers Say</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="bg-white rounded-lg p-6 border border-gray-200">
@@ -249,10 +259,10 @@ export function Who_we_are() {
                             <div className="mt-3 text-sm text-gray-600">— Construction Company Director</div>
                         </div>
                     </div>
-                </section>
+                </section> */}
 
                 {/* FAQ Section */}
-                <section className="max-w-7xl mx-auto mt-10 mb-16">
+                <section className=" mx-auto mt-10 mb-16">
                     <h4 className="text-2xl font-semibold mb-6 text-center">Frequently Asked Questions</h4>
                     <div className="space-y-4">
                         <details className="bg-white rounded-lg p-4 border border-gray-200">

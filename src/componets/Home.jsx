@@ -36,6 +36,25 @@ function Home() {
     const productState = useSelector((state) => state.Product);
     const { Product, loading, error } = productState;
 
+    // Sort products by product code (e.g., extract 5101 from name "lumania - 5101")
+    const sortedProducts = Product ? [...Product].sort((a, b) => {
+        // Extract product numbers from name (numbers after the hyphen)
+        const getProductNumber = (name) => {
+            if (!name) return 0;
+            const parts = name.split('-');
+            if (parts.length > 1) {
+                const numStr = parts[1].trim();
+                return parseInt(numStr, 10) || 0;
+            }
+            return 0;
+        };
+
+        const numA = getProductNumber(a.name);
+        const numB = getProductNumber(b.name);
+
+        return numA - numB; // Ascending order by product number
+    }) : [];
+
 
 
     // Zoom effect for slider images
@@ -289,7 +308,7 @@ function Home() {
                                         }}
                                     >
                                         {
-                                            Product.map((item) => (
+                                            sortedProducts.map((item) => (
                                                 <SwiperSlide key={item._id}>
                                                     <div className="flex justify-center items-stretch h-full">
                                                         <div
@@ -337,7 +356,7 @@ function Home() {
                         <span className="h-[1px] w-[20px] bg-[#393185]"></span>
                         <span>BROWSE OUR ITEMS</span>
                     </div> */}
-                    <p className='text-center text-2xl sm:text-3xl md:text-4xl uppercase font-bold'>Recommended Selectionsn</p>
+                    <p className='text-center text-2xl sm:text-3xl md:text-4xl uppercase font-bold'>Recommended Selections</p>
                 </div>
                 <div className="md:px-30 px-0">
 

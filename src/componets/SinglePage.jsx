@@ -90,12 +90,12 @@ function SinglePage() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
 
           {/* Image Section */}
-          <div className="">
+          <div className="w-fit">
             <div className="overflow-hidden  group relative image-container border border-gray-200">
               <img
                 src={getImageUrl(selectedImage)}
                 alt={product.name}
-                className="w-full h-[560px] object-cover transition-transform duration-300 ease-in-out"
+                className="w-full h-[560px] object-contain transition-transform duration-300 ease-in-out"
               // onError={(e) => handleImageError(e, 'No Image')}
               // onLoad={() => handleImageLoad(selectedImage)}
               />
@@ -103,71 +103,61 @@ function SinglePage() {
 
             {/* Thumbnail Images */}
             <div className="mt-5 flex gap-3 flex-wrap">
-              {Array.isArray(product.Image) &&
-                product.Image.map((img, index) => (
+              {Array.isArray(product.Image) && product.Image.length > 0 ? (
+                product.Image.slice(0, 2).map((img, index) => (
                   <img
                     key={index}
                     src={getImageUrl(img)}
                     alt={`preview-${index}`}
                     onClick={() => setSelectedImage(img)}
-                    className={`w-20 h-20 object-cover rounded-lg border cursor-pointer
-                      ${selectedImage === img
+                    className={`w-20 h-20 object-contain rounded-lg border cursor-pointer
+          ${selectedImage === img
                         ? "ring-2 ring-indigo-500"
                         : "hover:ring-2 ring-offset-2 ring-indigo-300"}`}
-                  // onError={(e) => handleImageError(e, 'Error')}
-                  // onLoad={() => handleImageLoad(img)}
                   />
-                ))}
+                ))
+              ) : (
+                <p className="text-gray-500 text-sm">No Images Available</p>
+              )}
             </div>
+
+
           </div>
 
           {/* Details Section */}
           <div className="p-4 sm:p-6 flex flex-col ">
-            <div className="p-5 w-fit ">
-              <h1 className="text-xl font-semibold text-gray-800 mb-2">{product.name}</h1>
+            <div className="pt-5 w-fit ">
+              <h1 className="text-2xl font-semibold text-gray-800 mb-2 uppercase">{product.name}</h1>
               <div className="text-gray-600 text-sm mb-4">
                 L {product.l || 0} | W {product.w || 0} | H {product.h || 0} mm
               </div>
 
               <div className="flex items-start gap-10">
                 <div>
-                  <h2 className="text-gray-800 font-semibold text-sm">S-Trap</h2>
-                  <span className="text-gray-600 text-sm">{product.s_trap }</span>
+                  <h2 className="text-gray-800 font-semibold text-md">S-Trap</h2>
+                  <span className="text-gray-600 text-sm">{product.s_trap}</span>
                 </div>
 
                 {/* Vertical line between S-Trap and P-Trap */}
                 <div className="h-12 border-l border-gray-300"></div>
 
                 <div>
-                  <h2 className="text-gray-800 font-semibold text-sm">P-Trap</h2>
-                  <span className="text-gray-600 text-sm">{product.p_trap}mm</span>
+                  <h2 className="text-gray-800 font-semibold text-md">P-Trap</h2>
+                  <span className="text-gray-600 text-sm">{product.p_trap}</span>
                 </div>
               </div>
 
             </div>
-            {/* Share Icons */}
-            <div className='mt-8 flex items-center gap-3 text-gray-600'>
-              <span className='text-sm font-medium'>Share:</span>
+            <div className="">
+              <img
+                src={product.Image[1]}
+                alt=""
+                className="w-full max-w-[300px] h-auto object-contain rounded-xl mt-5"
+              />
+            </div>
 
-              {/* Facebook */}
-              <a href="https://www.facebook.com/profile.php?id=61578722161740" className="hover:text-blue-600">
-                <i className="fa-brands fa-facebook text-lg"></i>
-              </a>
-
-              {/* LinkedIn */}
-              <a href="https://www.linkedin.com/in/prettyware-ceramika-33b973377" className="hover:text-sky-500">
-                <i className="fa-brands fa-linkedin-in"></i>
-              </a>
-
-              {/* Pinterest */}
-              <a href="https://pin.it/4GIGzi4YU" className="hover:text-red-600">
-                <i className="fa-brands fa-pinterest text-lg"></i>
-              </a>
-
-              {/* Instagram */}
-              <a href="https://www.instagram.com/prettyware_ceramika" target="_blank" rel="noopener noreferrer" className="hover:text-pink-500">
-                <i className="fa-brands fa-instagram text-lg"></i>
-              </a>
+            <div className='mt-6'>
+              <p className='text-gray-500'>{product.des}</p>
             </div>
 
           </div>
