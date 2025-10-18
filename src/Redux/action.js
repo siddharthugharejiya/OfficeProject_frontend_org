@@ -23,7 +23,7 @@ const showToast = (message, type = "success") => {
 
 // Helper function to fix image URLs and ensure HTTPS
 const fixImageUrls = (products) => {
-    const BASE_URL = "api.prettywareceramikallp.com";
+    const BASE_URL = "https://api.prettywareceramikallp.com";
 
     if (!products) return products;
 
@@ -63,7 +63,7 @@ export const Product_Get = () => async (dispatch) => {
     dispatch({ type: "PRODUCT_GET_LOADING" });
 
     try {
-        const response = await fetch("api.prettywareceramikallp.com/get");
+        const response = await fetch("https://api.prettywareceramikallp.com/get");
         const res = await response.json();
         let fixedData = fixImageUrls(res.data);
 
@@ -100,7 +100,7 @@ export const product_add_action = (productData) => async (dispatch) => {
         // Check if productData is FormData (file upload) or regular object
         const isFormData = productData instanceof FormData;
 
-        const response = await fetch("api.prettywareceramikallp.com/add", {
+        const response = await fetch("https://api.prettywareceramikallp.com/add", {
             method: "POST",
             headers: isFormData ? {} : {
                 'Content-Type': 'application/json',
@@ -130,7 +130,7 @@ export const Product_del = (id) => async (dispatch) => {
     dispatch({ type: "PRODUCT_DELETE_LOADING" });
 
     try {
-        const response = await fetch(`api.prettywareceramikallp.com/del/${id}`, {
+        const response = await fetch(`https://api.prettywareceramikallp.com/del/${id}`, {
             method: "DELETE"
         });
         const res = await response.json();
@@ -149,7 +149,7 @@ export const Product_edite_get = (id) => async (dispatch) => {
     dispatch({ type: "PRODUCT_EDIT_GET_LOADING" });
 
     try {
-        const response = await fetch(`api.prettywareceramikallp.com/edite-get/${id}`);
+        const response = await fetch(`https://api.prettywareceramikallp.com/edite-get/${id}`);
         const res = await response.json();
         const fixedData = fixImageUrls(res);
         dispatch({ type: "PRODUCT_EDIT_GET_SUCCESS", payload: fixedData });
@@ -165,7 +165,7 @@ export const product_edite_action = (id, productData) => async (dispatch) => {
     dispatch({ type: "PRODUCT_EDIT_LOADING" });
 
     try {
-        const response = await fetch(`api.prettywareceramikallp.com/edite/${id}`, {
+        const response = await fetch(`https://api.prettywareceramikallp.com/edite/${id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(productData)
@@ -189,7 +189,7 @@ export const SingleProduct_Action = (id) => async (dispatch) => {
     dispatch({ type: "SINGLE_PRODUCT_LOADING" });
 
     try {
-        const response = await fetch(`api.prettywareceramikallp.com/SinglePage/${id}`);
+        const response = await fetch(`https://api.prettywareceramikallp.com/SinglePage/${id}`);
 
         // Check if response is ok
         if (!response.ok) {
@@ -220,7 +220,7 @@ export const Product_Action = (id) => async (dispatch) => {
     dispatch({ type: "PRODUCT_BY_ID_LOADING" });
 
     try {
-        const response = await fetch(`api.prettywareceramikallp.com/product/${id}`);
+        const response = await fetch(`https://api.prettywareceramikallp.com/product/${id}`);
 
         // Check if response is ok
         // if (!response.ok) {
@@ -253,7 +253,7 @@ export const All_Product = () => async (dispatch) => {
     dispatch({ type: "ALL_PRODUCT_LOADING" });
 
     try {
-        const response = await fetch(`api.prettywareceramikallp.com/get`);
+        const response = await fetch(`https://api.prettywareceramikallp.com/get`);
         const data = await response.json();
         const fixedData = fixImageUrls(data);
         dispatch({ type: "ALL_PRODUCT_SUCCESS", payload: fixedData });
@@ -268,7 +268,7 @@ export const Product_category = (category) => async (dispatch) => {
     dispatch({ type: "CATEGORY_LOADING" });
 
     try {
-        const response = await fetch(`api.prettywareceramikallp.com/category/${category}`);
+        const response = await fetch(`https://api.prettywareceramikallp.com/category/${category}`);
         const data = await response.json();
         const fixedData = fixImageUrls(data);
         dispatch({ type: "CATEGORY_SUCCESS", payload: fixedData });
@@ -283,7 +283,7 @@ export const fetchCategoryProducts = (categories) => async (dispatch) => {
     dispatch({ type: "CATEGORY_PRODUCTS_LOADING" });
 
     try {
-        const BASE_URL = "api.prettywareceramikallp.com";
+        const BASE_URL = "https://api.prettywareceramikallp.com";
 
         const promises = categories.map(async (category) => {
             try {

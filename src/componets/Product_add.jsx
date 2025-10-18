@@ -183,8 +183,8 @@ const Product_add = () => {
             }
 
             const url = update
-                ? `api.prettywareceramikallp.com/edite/${state.id}`
-                : "api.prettywareceramikallp.com/add";
+                ? `https://api.prettywareceramikallp.com/edite/${state.id}`
+                : "https://api.prettywareceramikallp.com/add";
             const method = update ? "PUT" : "POST";
 
             const res = await fetch(url, {
