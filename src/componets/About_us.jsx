@@ -37,25 +37,7 @@ export function Who_we_are() {
                 </section>
 
                 {/* Swiper gallery */}
-                <section className=" mx-auto mb-10">
-                    <Swiper
-                        spaceBetween={20}
-                        slidesPerView={1}
-                        breakpoints={{
-                            640: { slidesPerView: 1 },
-                            1024: { slidesPerView: 2 }
-                        }}
-                        pagination={{ clickable: true }}
-                    >
-                        {slides.map((s, i) => (
-                            <SwiperSlide key={i}>
-                                <div className="h-64 md:h-80 lg:h-96 bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center">
-                                    <img src={s.src} alt={s.alt} className="w-full h-full object-cover" />
-                                </div>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-                </section>
+      
 
                 {/* Company Story */}
                 <section className=" mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
