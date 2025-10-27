@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Swal from 'sweetalert2';
 import { useDispatch, useSelector } from 'react-redux';
 import { Product_Get } from '../Redux/action';
@@ -34,6 +34,7 @@ const Product_add = () => {
         weight: "",
         tag: "",
         category: "",
+        sizes: ["", ""], // ✅ Only 2 size fields always
         h: "",
         w: "",
         l: "",
@@ -41,10 +42,31 @@ const Product_add = () => {
         p_trap: "",
     });
 
+    // Handle size input change - only 2 sizes allowed
+    const handleSizeChange = (index, value) => {
+        setState(prev => ({
+            ...prev,
+            sizes: prev.sizes.map((size, i) => i === index ? value : size)
+        }));
+    };
+
     useEffect(() => {
         if (product_edite && product_edite.data) {
             const data = product_edite.data;
             const imgs = Array.isArray(data.Image) ? [...new Set(data.Image)] : [];
+
+            // Handle both old single size and new sizes array - always show 2 fields
+            let sizesData = ["", ""];
+            if (data.sizes && Array.isArray(data.sizes)) {
+                // Take first 2 sizes from existing data
+                sizesData = [...data.sizes.slice(0, 2)];
+                // Fill remaining slots with empty strings if less than 2
+                while (sizesData.length < 2) {
+                    sizesData.push("");
+                }
+            } else if (data.size) {
+                sizesData = [data.size, ""];
+            }
 
             setState({
                 id: data._id || "",
@@ -62,6 +84,7 @@ const Product_add = () => {
                 l: data.l || "",
                 s_trap: data.s_trap || "",
                 p_trap: data.p_trap || "",
+                sizes: sizesData, // ✅ Always 2 size fields
             });
 
             setSelectedFiles(imgs.map(url => ({
@@ -73,6 +96,26 @@ const Product_add = () => {
         } else {
             setUpdate(false);
             setSelectedFiles([]);
+            // Reset to initial state with exactly 2 size fields
+            setState(prev => ({
+                ...prev,
+                id: "",
+                name: "",
+                Image: [],
+                title: "",
+                des: "",
+                rating: "",
+                price: "",
+                weight: "",
+                tag: "",
+                category: "",
+                sizes: ["", ""], // ✅ Always reset to 2 empty size fields
+                h: "",
+                w: "",
+                l: "",
+                s_trap: "",
+                p_trap: "",
+            }));
         }
     }, [product_edite]);
 
@@ -98,17 +141,25 @@ const Product_add = () => {
         }
 
         setSelectedFiles(prev => [...prev, { file: null, preview: trimmedUrl, isExisting: false }]);
-        setState(prev => ({ ...prev, Image: [...prev.Image, trimmedUrl] }));
         setImageLink("");
     };
 
     const handleFileUpload = (e) => {
         const files = Array.from(e.target.files);
+
+        if (files.length === 0) return;
+
         const valid = files.filter(f => f.type.startsWith("image/"));
-        const previews = valid.map(f => ({ file: f, preview: URL.createObjectURL(f), isExisting: false }));
+        const previews = valid.map(f => ({
+            file: f,
+            preview: URL.createObjectURL(f),
+            isExisting: false
+        }));
 
         setSelectedFiles(prev => [...prev, ...previews]);
-        setState(prev => ({ ...prev, Image: [...prev.Image, ...valid] }));
+
+        // ✅ Reset file input to allow selecting same files again
+        e.target.value = '';
     };
 
     const removeImage = (idx) => {
@@ -130,9 +181,30 @@ const Product_add = () => {
         setLoading(true);
         try {
             const formData = new FormData();
-            for (let key in state) {
-                if (key !== "Image") formData.append(key, state[key]);
-            }
+
+            // ✅ Add basic fields
+            formData.append("name", state.name);
+            formData.append("title", state.title || "");
+            formData.append("des", state.des || "");
+            formData.append("rating", state.rating || "");
+            formData.append("price", state.price || "");
+            formData.append("weight", state.weight || "");
+            formData.append("tag", state.tag || "");
+            formData.append("category", state.category || "");
+            formData.append("h", state.h || "");
+            formData.append("w", state.w || "");
+            formData.append("l", state.l || "");
+            formData.append("s_trap", state.s_trap || "");
+            formData.append("p_trap", state.p_trap || "");
+
+            // ✅ Handle sizes properly - send as individual fields
+            console.log("📏 Sizes to send:", state.sizes);
+            state.sizes.forEach((size, index) => {
+                if (size && size.trim() !== '') {
+                    console.log(`✅ Sending size${index + 1}:`, size.trim());
+                    formData.append(`size${index + 1}`, size.trim());
+                }
+            });
 
             const fileImgs = [];
             const linkImgs = [];
@@ -155,32 +227,45 @@ const Product_add = () => {
                 : "https://api.prettywareceramikallp.com/add";
 
             const method = update ? "PUT" : "POST";
+
+            console.log("📤 Sending form data:");
+            for (let [key, value] of formData.entries()) {
+                console.log(key, value);
+            }
+
             const res = await fetch(url, { method, body: formData });
             const data = await res.json();
-            console.log("Upload response:", data);
+            console.log("📥 Upload response:", data);
 
-            Swal.fire({
-                icon: 'success',
-                title: update ? 'Product Updated' : 'Product Added',
-                timer: 1500,
-                showConfirmButton: false,
-            });
+            if (res.ok) {
+                Swal.fire({
+                    icon: 'success',
+                    title: update ? 'Product Updated' : 'Product Added',
+                    timer: 1500,
+                    showConfirmButton: false,
+                });
 
-            dispatch(Product_Get());
-            setState({
-                id: "", name: "", Image: [], title: "", des: "", rating: "",
-                price: "", weight: "", tag: "", category: "", h: "", w: "", l: "",
-                s_trap: "", p_trap: ""
-            });
-            setSelectedFiles([]);
-            setUpdate(false);
-            setImageLink("");
+                dispatch(Product_Get());
+                // Reset form
+                setState({
+                    id: "", name: "", Image: [], title: "", des: "", rating: "",
+                    price: "", weight: "", tag: "", category: "", h: "", w: "", l: "",
+                    s_trap: "", p_trap: "", sizes: ["", ""]
+                });
+                setSelectedFiles([]);
+                setUpdate(false);
+                setImageLink("");
+            } else {
+                throw new Error(data.message || 'Something went wrong');
+            }
         } catch (err) {
             Swal.fire({ icon: 'error', title: 'Error', text: err.message });
         } finally {
             setLoading(false);
         }
     };
+
+    const fileInputRef = useRef(null);
 
     return (
         <div className="max-w-4xl mx-auto mt-8 mb-12">
@@ -229,9 +314,9 @@ const Product_add = () => {
                             <button
                                 type="button"
                                 onClick={() => setActiveTab("link")}
-                                className={`flex items-center px-6 py-3 rounded-xl font-medium transition-all duration-300 ${activeTab === 'link'
-                                    ? 'bg-blue-600 text-white shadow-md'
-                                    : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'
+                                className={`flex items-center px-6 py-3 rounded-xl font-medium transition-all duration-300 ${activeTab === "link"
+                                    ? "bg-blue-600 text-white shadow-md"
+                                    : "bg-white text-gray-700 border border-gray-300 hover:bg-gray-50"
                                     }`}
                             >
                                 <FiLink className="mr-2" />
@@ -240,9 +325,9 @@ const Product_add = () => {
                             <button
                                 type="button"
                                 onClick={() => setActiveTab("upload")}
-                                className={`flex items-center px-6 py-3 rounded-xl font-medium transition-all duration-300 ${activeTab === 'upload'
-                                    ? 'bg-blue-600 text-white shadow-md'
-                                    : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'
+                                className={`flex items-center px-6 py-3 rounded-xl font-medium transition-all duration-300 ${activeTab === "upload"
+                                    ? "bg-blue-600 text-white shadow-md"
+                                    : "bg-white text-gray-700 border border-gray-300 hover:bg-gray-50"
                                     }`}
                             >
                                 <FiUpload className="mr-2" />
@@ -253,7 +338,7 @@ const Product_add = () => {
                         {/* Tab Content */}
                         {activeTab === "link" ? (
                             <div className="space-y-4">
-                                <label className="flex-wrap block font-medium text-gray-700">Image URL</label>
+                                <label className="block font-medium text-gray-700">Image URL</label>
                                 <div className="flex gap-3 flex-wrap justify-center">
                                     <input
                                         value={imageLink}
@@ -269,14 +354,19 @@ const Product_add = () => {
                                         Add URL
                                     </button>
                                 </div>
-                                <p className="text-sm text-gray-500">Enter full image URLs starting with http:// or https://</p>
+                                <p className="text-sm text-gray-500">
+                                    Enter full image URLs starting with http:// or https://
+                                </p>
                             </div>
                         ) : (
                             <div className="space-y-4">
                                 <label className="block font-medium text-gray-700">Upload Images</label>
-                                <div className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center transition-all duration-300 hover:border-blue-400">
+
+                                {/* ✅ FIXED: Remove the outer click handler and use only file input */}
+                                <div className="relative border-2 border-dashed border-gray-300 rounded-xl p-8 text-center transition-all duration-300 hover:border-blue-400">
                                     <FiUpload className="mx-auto text-3xl text-gray-400 mb-3" />
                                     <input
+                                        ref={fileInputRef}
                                         type="file"
                                         accept="image/*"
                                         multiple
@@ -333,39 +423,46 @@ const Product_add = () => {
                     </div>
 
                     {/* Dimensions & Specifications */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {/* Dimensions */}
-                        <div className="bg-gray-50 rounded-xl p-6 border border-dashed border-gray-200">
-                            <label className="block text-lg font-semibold text-gray-800 mb-4 flex items-center">
-                                <FiLayers className="mr-2 text-blue-600" />
-                                Dimensions
-                            </label>
-                            <div className="grid grid-cols-3 gap-3">
-                                {["l", "w", "h"].map(dim => (
-                                    <div key={dim}>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                                            {dim.toUpperCase()}
-                                        </label>
-                                        <input
-                                            name={dim}
-                                            value={state[dim]}
-                                            onChange={handleChange}
-                                            placeholder="0"
-                                            className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                                        />
-                                    </div>
-                                ))}
+                    <div className="bg-white shadow-md rounded-2xl p-8">
+                        <h2 className="text-2xl font-bold text-gray-800 mb-8 border-b pb-3">
+                            Product Specifications
+                        </h2>
+
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            {/* 1️⃣ Dimensions Section */}
+                            <div className="bg-gray-50 rounded-xl p-6 border border-dashed border-gray-200 hover:shadow-sm transition-all duration-300">
+                                <label className="block text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                                    <FiLayers className="mr-2 text-blue-600 text-xl" />
+                                    Dimensions
+                                </label>
+                                <div className="grid grid-cols-3 gap-4">
+                                    {["l", "w", "h"].map((dim) => (
+                                        <div key={dim}>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                                {dim.toUpperCase()}
+                                            </label>
+                                            <input
+                                                name={dim}
+                                                value={state[dim]}
+                                                onChange={handleChange}
+                                                placeholder="0"
+                                                className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
-                        {/* Category & Additional Info */}
-                        <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
-                            <div className="bg-gray-50 rounded-xl p-6 border border-dashed border-gray-200">
-                                <label className="block text-lg font-semibold text-gray-800 mb-3">Category</label>
+
+                            {/* 2️⃣ Category Section */}
+                            <div className="bg-gray-50 rounded-xl p-6 border border-dashed border-gray-200 hover:shadow-sm transition-all duration-300">
+                                <label className="block text-lg font-semibold text-gray-800 mb-4">
+                                    Category
+                                </label>
                                 <select
                                     name="category"
                                     value={state.category}
                                     onChange={handleChange}
-                                    className="w-full border border-gray-300 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                                    className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                                 >
                                     <option value="">Select Category</option>
                                     <option>One Piece Closet</option>
@@ -384,47 +481,65 @@ const Product_add = () => {
                                 </select>
                             </div>
 
-                            {/* <div className="bg-gray-50 rounded-xl p-6 border border-dashed border-gray-200">
-                            <label className="block text-lg font-semibold text-gray-800 mb-3 flex items-center">
-                                <FiDollarSign className="mr-2 text-blue-600" />
-                                Pricing
+                            {/* 3️⃣ Size Section - Exactly 2 Size Fields */}
+                            <div className="bg-gray-50 rounded-xl p-6 border border-dashed border-gray-200 hover:shadow-sm transition-all duration-300">
+                                <label className="block text-lg font-semibold text-gray-800 mb-4">
+                                    Sizes (Maximum 2 sizes)
+                                </label>
+
+                                {/* Always show exactly 2 size fields */}
+                                {state.sizes.map((size, index) => (
+                                    <div key={index} className="mb-3">
+                                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                                            Size {index + 1}
+                                        </label>
+                                        <input
+                                            type="text"
+                                            value={size}
+                                            onChange={(e) => handleSizeChange(index, e.target.value)}
+                                            placeholder={`Enter size ${index + 1} (e.g., 20x18 inch)`}
+                                            className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                                        />
+                                    </div>
+                                ))}
+
+                                <p className="text-sm text-gray-500 mt-3">
+                                    You can add up to 2 different sizes for this product
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Divider Line */}
+                        <div className="my-10 border-t border-gray-200"></div>
+
+                        {/* 4️⃣ Trap Specifications Section */}
+                        <div className="bg-gray-50 rounded-xl p-6 border border-dashed border-gray-200 hover:shadow-sm transition-all duration-300">
+                            <label className="block text-lg font-semibold text-gray-800 mb-4">
+                                Trap Specifications
                             </label>
-                            <input
-                                name="price"
-                                value={state.price}
-                                onChange={handleChange}
-                                placeholder="0.00"
-                                className="w-full border border-gray-300 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                            />
-                        </div> */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                {[
+                                    { name: "s_trap", label: "S - Trap" },
+                                    { name: "p_trap", label: "P - Trap" }
+                                ].map((trap) => (
+                                    <div key={trap.name}>
+                                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                                            {trap.label}
+                                        </label>
+                                        <input
+                                            name={trap.name}
+                                            value={state[trap.name]}
+                                            onChange={handleChange}
+                                            placeholder="Enter specification..."
+                                            className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                                        />
+                                    </div>
+                                ))}
+                            </div>
                         </div>
 
+                      
                     </div>
-
-                    {/* Traps */}
-                    <div className="bg-gray-50 rounded-xl p-6 border border-dashed border-gray-200">
-                        <label className="block text-lg font-semibold text-gray-800 mb-4">
-                            Trap Specifications
-                        </label>
-                        <div className="space-y-3">
-                            {["s_trap", "p_trap"].map(trap => (
-                                <div key={trap}>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                                        {trap.replace('_', ' ').toUpperCase()}
-                                    </label>
-                                    <input
-                                        name={trap}
-                                        value={state[trap]}
-                                        onChange={handleChange}
-                                        placeholder="Enter specification..."
-                                        className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                                    />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-
 
                     {/* Submit Button */}
                     <div className="text-center pt-6">

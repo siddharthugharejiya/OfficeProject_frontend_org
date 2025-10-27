@@ -135,7 +135,7 @@ function SinglePage() {
               <div className="flex items-start gap-10">
                 <div>
                   <h2 className="text-gray-800 font-semibold text-md">S-Trap</h2>
-                  <span className="text-gray-600 text-sm">{product.s_trap}</span>
+                  <span className="text-gray-600 text-sm">{product.s_trap || 0}</span>
                 </div>
 
                 {/* Vertical line between S-Trap and P-Trap */}
@@ -143,7 +143,12 @@ function SinglePage() {
 
                 <div>
                   <h2 className="text-gray-800 font-semibold text-md">P-Trap</h2>
-                  <span className="text-gray-600 text-sm">{product.p_trap}</span>
+                  <span className="text-gray-600 text-sm">{product.p_trap || 0}   </span>
+                </div>
+
+                <div>
+                  <h2 className="text-gray-800 font-semibold text-md"></h2>
+                  <span className="text-gray-600 text-sm">{product.sizes[0]}" x {product.sizes[1]}"</span>
                 </div>
               </div>
 
