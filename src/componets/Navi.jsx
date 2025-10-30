@@ -155,6 +155,7 @@ export function Navi({ textColor = 'white' }) {
                                             "Urinal",
                                             "Pan",
                                             "Pastel Series",
+                                            "Coming Soon"
                                         ].map(category => (
                                             <li key={category}>
                                                 <button
@@ -251,6 +252,7 @@ export function Navi({ textColor = 'white' }) {
                                     "Urinal",
                                     "Pan",
                                     "Pastel Series",
+                                    "Coming Soon"
                                 ].map(category => (
                                     <li key={category}>
                                         <button

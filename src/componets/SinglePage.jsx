@@ -145,13 +145,16 @@ function SinglePage() {
                   <h2 className="text-gray-800 font-semibold text-md">P-Trap</h2>
                   <span className="text-gray-600 text-sm">{product.p_trap || 0}   </span>
                 </div>
-
+                {/* Vertical line between S-Trap and P-Trap */}
+                <div className="h-12 border-l border-gray-300"></div>
                 <div>
-                  <h2 className="text-gray-800 font-semibold text-md"></h2>
+                  <h2 className="text-gray-800 font-semibold text-md">Size</h2>
                   <span className="text-gray-600 text-sm">{product.sizes[0]}" x {product.sizes[1]}"</span>
                 </div>
               </div>
-
+              <div className='mt-1'>
+                <p className='text-gray-500'>{product.Set}</p>
+              </div>
             </div>
             <div className="">
               <img
@@ -164,6 +167,8 @@ function SinglePage() {
             <div className='mt-6'>
               <p className='text-gray-500'>{product.des}</p>
             </div>
+
+
 
           </div>
         </div>

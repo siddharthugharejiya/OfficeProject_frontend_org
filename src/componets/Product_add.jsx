@@ -40,6 +40,8 @@ const Product_add = () => {
         l: "",
         s_trap: "",
         p_trap: "",
+        Set: "",
+        Basin: ""
     });
 
     // Handle size input change - only 2 sizes allowed
@@ -83,6 +85,8 @@ const Product_add = () => {
                 w: data.w || "",
                 l: data.l || "",
                 s_trap: data.s_trap || "",
+                Set: data.Set || "",
+                Basin: data.Basin || "",
                 p_trap: data.p_trap || "",
                 sizes: sizesData, // ✅ Always 2 size fields
             });
@@ -113,8 +117,11 @@ const Product_add = () => {
                 h: "",
                 w: "",
                 l: "",
+                Set: "",
+                Basin: "",
                 s_trap: "",
                 p_trap: "",
+                pedestal: ""
             }));
         }
     }, [product_edite]);
@@ -194,8 +201,11 @@ const Product_add = () => {
             formData.append("h", state.h || "");
             formData.append("w", state.w || "");
             formData.append("l", state.l || "");
+            formData.append("Set", state.Set || "");
+            formData.append("Basin", state.Basin || "");
             formData.append("s_trap", state.s_trap || "");
             formData.append("p_trap", state.p_trap || "");
+            formData.append("pedestal", state.pedestal || "");
 
             // ✅ Handle sizes properly - send as individual fields
             console.log("📏 Sizes to send:", state.sizes);
@@ -250,7 +260,7 @@ const Product_add = () => {
                 setState({
                     id: "", name: "", Image: [], title: "", des: "", rating: "",
                     price: "", weight: "", tag: "", category: "", h: "", w: "", l: "",
-                    s_trap: "", p_trap: "", sizes: ["", ""]
+                    s_trap: "", p_trap: "", sizes: ["", ""], Set: "", Basin: "", pedestal: ""
                 });
                 setSelectedFiles([]);
                 setUpdate(false);
@@ -422,124 +432,172 @@ const Product_add = () => {
                         />
                     </div>
 
-                    {/* Dimensions & Specifications */}
-                    <div className="bg-white shadow-md rounded-2xl p-8">
-                        <h2 className="text-2xl font-bold text-gray-800 mb-8 border-b pb-3">
-                            Product Specifications
-                        </h2>
-
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                            {/* 1️⃣ Dimensions Section */}
-                            <div className="bg-gray-50 rounded-xl p-6 border border-dashed border-gray-200 hover:shadow-sm transition-all duration-300">
-                                <label className="block text-lg font-semibold text-gray-800 mb-4 flex items-center">
-                                    <FiLayers className="mr-2 text-blue-600 text-xl" />
-                                    Dimensions
-                                </label>
-                                <div className="grid grid-cols-3 gap-4">
-                                    {["l", "w", "h"].map((dim) => (
-                                        <div key={dim}>
-                                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                                {dim.toUpperCase()}
-                                            </label>
-                                            <input
-                                                name={dim}
-                                                value={state[dim]}
-                                                onChange={handleChange}
-                                                placeholder="0"
-                                                className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                                            />
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* 2️⃣ Category Section */}
-                            <div className="bg-gray-50 rounded-xl p-6 border border-dashed border-gray-200 hover:shadow-sm transition-all duration-300">
-                                <label className="block text-lg font-semibold text-gray-800 mb-4">
-                                    Category
-                                </label>
-                                <select
-                                    name="category"
-                                    value={state.category}
-                                    onChange={handleChange}
-                                    className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                                >
-                                    <option value="">Select Category</option>
-                                    <option>One Piece Closet</option>
-                                    <option>Wall Hung Closet</option>
-                                    <option>Water Closet</option>
-                                    <option>Table Top Basin</option>
-                                    <option>One Piece Basin</option>
-                                    <option>Counter Basin</option>
-                                    <option>Basin With Pedestal</option>
-                                    <option>Basin With Half Pedestal</option>
-                                    <option>Wall Hung Basin</option>
-                                    <option>Urinal</option>
-                                    <option>Pan</option>
-                                    <option>Pastel Series</option>
-                                    <option>Coming Soon</option>
-                                </select>
-                            </div>
-
-                            {/* 3️⃣ Size Section - Exactly 2 Size Fields */}
-                            <div className="bg-gray-50 rounded-xl p-6 border border-dashed border-gray-200 hover:shadow-sm transition-all duration-300">
-                                <label className="block text-lg font-semibold text-gray-800 mb-4">
-                                    Sizes (Maximum 2 sizes)
-                                </label>
-
-                                {/* Always show exactly 2 size fields */}
-                                {state.sizes.map((size, index) => (
-                                    <div key={index} className="mb-3">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        {/* 1️⃣ Dimensions Section */}
+                        <div className="bg-gray-50 rounded-xl p-6 border border-dashed border-gray-200 hover:shadow-sm transition-all duration-300">
+                            <label className="block text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                                <FiLayers className="mr-2 text-blue-600 text-xl" />
+                                Dimensions
+                            </label>
+                            <div className="grid grid-cols-3 gap-4">
+                                {["l", "w", "h"].map((dim) => (
+                                    <div key={dim}>
                                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                                            Size {index + 1}
+                                            {dim.toUpperCase()}
                                         </label>
                                         <input
-                                            type="text"
-                                            value={size}
-                                            onChange={(e) => handleSizeChange(index, e.target.value)}
-                                            placeholder={`Enter size ${index + 1} (e.g., 20x18 inch)`}
+                                            name={dim}
+                                            value={state[dim]}
+                                            onChange={handleChange}
+                                            placeholder="0"
                                             className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                                         />
                                     </div>
                                 ))}
-
-                                <p className="text-sm text-gray-500 mt-3">
-                                    You can add up to 2 different sizes for this product
-                                </p>
                             </div>
                         </div>
 
-                        {/* Divider Line */}
-                        <div className="my-10 border-t border-gray-200"></div>
-
-                        {/* 4️⃣ Trap Specifications Section */}
+                        {/* 2️⃣ Category Section */}
                         <div className="bg-gray-50 rounded-xl p-6 border border-dashed border-gray-200 hover:shadow-sm transition-all duration-300">
                             <label className="block text-lg font-semibold text-gray-800 mb-4">
-                                Trap Specifications
+                                Category
                             </label>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                {[
-                                    { name: "s_trap", label: "S - Trap" },
-                                    { name: "p_trap", label: "P - Trap" }
-                                ].map((trap) => (
-                                    <div key={trap.name}>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                                            {trap.label}
-                                        </label>
-                                        <input
-                                            name={trap.name}
-                                            value={state[trap.name]}
-                                            onChange={handleChange}
-                                            placeholder="Enter specification..."
-                                            className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                                        />
-                                    </div>
-                                ))}
-                            </div>
+                            <select
+                                name="category"
+                                value={state.category}
+                                onChange={handleChange}
+                                required
+                                className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                            >
+                                <option value="">Select Category</option>
+                                <option>One Piece Closet</option>
+                                <option>Wall Hung Closet</option>
+                                <option>Water Closet</option>
+                                <option>Table Top Basin</option>
+                                <option>One Piece Basin</option>
+                                <option>Counter Basin</option>
+                                <option>Basin With Pedestal</option>
+                                <option>Basin With Half Pedestal</option>
+                                <option>Wall Hung Basin</option>
+                                <option>Urinal</option>
+                                <option>Pan</option>
+                                <option>Pastel Series</option>
+                                <option>Coming Soon</option>
+                            </select>
                         </div>
 
-                      
                     </div>
+
+                    {/* 3️⃣ Size Section - Exactly 2 Size Fields */}
+                    <div className="bg-gray-50 rounded-xl p-6 border border-dashed border-gray-200 hover:shadow-sm transition-all duration-300">
+                        <label className="block text-lg font-semibold text-gray-800 mb-4">
+                            Sizes (Maximum 2 sizes)
+                        </label>
+
+                        {/* Always show exactly 2 size fields */}
+                        {state.sizes.map((size, index) => (
+                            <div key={index} className="mb-3">
+                                <label className="block text-sm font-medium text-gray-700 mb-2">
+                                    Size {index + 1}
+                                </label>
+                                <input
+                                    type="text"
+                                    value={size}
+                                    onChange={(e) => handleSizeChange(index, e.target.value)}
+                                    placeholder={`Enter size ${index + 1} (e.g., 20x18 inch)`}
+                                    className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                                />
+                            </div>
+                        ))}
+
+                        <p className="text-sm text-gray-500 mt-3">
+                            You can add up to 2 different sizes for this product
+                        </p>
+                    </div>
+
+                    {/* Divider Line */}
+                    <div className="my-10 border-t border-gray-200"></div>
+
+                    {/* 4️⃣ Trap Specifications Section */}
+                    <div className="bg-gray-50 rounded-xl p-6 border border-dashed border-gray-200 hover:shadow-sm transition-all duration-300">
+                        <label className="block text-lg font-semibold text-gray-800 mb-4">
+                            Trap Specifications
+                        </label>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            {[
+                                { name: "s_trap", label: "S - Trap" },
+                                { name: "p_trap", label: "P - Trap" }
+                            ].map((trap) => (
+                                <div key={trap.name}>
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                                        {trap.label}
+                                    </label>
+                                    <input
+                                        name={trap.name}
+                                        value={state[trap.name]}
+                                        onChange={handleChange}
+                                        placeholder="Enter specification..."
+                                        className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Set and Basin Section - Same design as Trap Specifications */}
+                    <div className="bg-gray-50 rounded-xl p-6 border border-dashed border-gray-200 hover:shadow-sm transition-all duration-300 mt-6">
+                        <label className="block text-lg font-semibold text-gray-800 mb-4">
+                            Additional Specifications
+                        </label>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            {/* Basin Input */}
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-2">
+                                    Basin
+                                </label>
+                                <input
+                                    name="Basin"
+                                    value={state.Basin}
+                                    onChange={handleChange}
+                                    placeholder="Enter specification..."
+                                    className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                                />
+                            </div>
+                            {/* Set Input */}
+                            <div>
+                                <label clas sName="block text-sm font-medium text-gray-700 mb-2">
+                                    Set
+                                </label>
+                                <input
+                                    name="Set"
+                                    value={state.Set}
+                                    onChange={handleChange}
+                                    placeholder="Enter specification..."
+                                    className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                                />
+                            </div>
+
+                            <div>
+                                <label clas sName="block text-sm font-medium text-gray-700 mb-2">
+                                    Pedestal
+                                </label>
+                                <input
+                                    name="pedestal"
+                                    value={state.pedestal}
+                                    onChange={handleChange}
+                                    placeholder="Enter specification..."
+                                    className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                                />
+                            </div>
+
+                        </div>
+                    </div>
+
+                    {/* Divider Line */}
+                    <div className="my-10 border-t border-gray-200"></div>
+
+
+
 
                     {/* Submit Button */}
                     <div className="text-center pt-6">
