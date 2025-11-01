@@ -2,7 +2,7 @@ import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FaGlobe } from "react-icons/fa";
-import { FiHome, FiBox, FiPlusCircle, FiShoppingBag, FiUsers, FiDollarSign, FiEdit, FiTrash2, FiMenu, FiX } from 'react-icons/fi';
+import { FiHome, FiBox, FiPlusCircle, FiShoppingBag, FiUsers, FiDollarSign, FiEdit, FiTrash2, FiMenu, FiX, FiSearch } from 'react-icons/fi';
 import { Line, Pie } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
@@ -106,11 +106,40 @@ const AdminPanel = () => {
             },
         },
     };
+    // Add this state near your other state declarations
+    const [searchTerm, setSearchTerm] = useState('');
+    const [filteredProducts, setFilteredProducts] = useState([]);
 
+    // Add this useEffect to initialize filteredProducts when products change
+    useEffect(() => {
+        setFilteredProducts(products);
+    }, [products]);
+
+    // Add this search function
+    const handleSearch = () => {
+        if (!searchTerm.trim()) {
+            setFilteredProducts(products);
+            return;
+        }
+
+        const filtered = products.filter(product =>
+            product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            product.category.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+
+        setFilteredProducts(filtered);
+    };
+
+    // Optional: Add search on Enter key
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            handleSearch();
+        }
+    };
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
             {/* Header */}
-            <header className="bg-white shadow-sm border-b border-dashed border-gray-300 sticky top-0 z-20 ">
+            <header className="bg-white shadow-sm border-b border-dashed border-gray-300 sticky top-0 z-20">
                 <div className="max-w-7xl mx-auto px-2 xs:px-3 sm:px-4 md:px-6 py-2 xs:py-3 sm:py-4">
                     <div className="flex justify-between items-center">
                         {/* Left Section - Logo and Title */}
@@ -139,8 +168,6 @@ const AdminPanel = () => {
                                 {/* Title - Responsive text and visibility */}
                                 <h1 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 whitespace-nowrap">
                                     <span className="hidden xs:inline">Admin</span>
-                                    {/* <span className="xs:hidden">A</span> */}
-                                    {/* <span className="ml-1">Dashboard</span> */}
                                 </h1>
                             </div>
                         </div>
@@ -155,13 +182,8 @@ const AdminPanel = () => {
 
                             {/* Text - Responsive content */}
                             <span className="text-xs xs:text-sm sm:text-base font-medium whitespace-nowrap">
-                                {/* Extra small screens: Show icon only or very short text */}
                                 <span className="hidden xxs:inline xs:hidden">Site</span>
-
-                                {/* Small screens: Short text */}
                                 <span className="hidden xs:inline sm:hidden">Website</span>
-
-                                {/* Medium screens and up: Full text */}
                                 <span className="hidden sm:inline">View Website</span>
                             </span>
                         </button>
@@ -169,22 +191,22 @@ const AdminPanel = () => {
                 </div>
             </header>
 
-            <div className="max-w-7xl mx-auto px-3 sm:px-4 py-4 sm:py-8 ">
-                <div className="flex flex-col lg:flex-row gap-4 sm:gap-8">
-                    {/* Mobile Menu Overlay */}
-                    {isMobileMenuOpen && (
-                        <div
-                            className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                        />
-                    )}
+            <div className="max-w-7xl mx-auto px-3 sm:px-4 py-4 sm:py-8">
+                {/* Mobile Menu Overlay */}
+                {isMobileMenuOpen && (
+                    <div
+                        className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                    />
+                )}
 
-                    {/* Sidebar */}
-                    <aside className={`w-full lg:w-64 lg:sticky lg:top-20 lg:self-start transition-all duration-300 ${isMobileMenuOpen
-                        ? 'fixed left-0 top-0 h-screen z-40 bg-white p-4 shadow-xl'
+                <div className="flex flex-col  lg:flex-row gap-4 sm:gap-8">
+                    {/* Sidebar - Now properly separated */}
+                    <aside className={`w-full lg:w-64 flex-shrink-0 ${isMobileMenuOpen
+                        ? 'fixed left-0 top-0 h-screen z-40 bg-white p-4 shadow-xl lg:static lg:h-auto lg:shadow-none lg:p-0'
                         : 'hidden lg:block'
                         }`}>
-                        <div className="bg-white rounded-xl shadow-sm border border-dashed border-gray-300 p-4 sm:p-6 transition-all duration-300 hover:shadow-md h-full lg:h-auto">
+                        <div className="bg-white rounded-xl shadow-sm border border-dashed border-gray-300 p-4 sm:p-6 transition-all duration-300 hover:shadow-md h-full lg:h-auto sticky top-24">
                             {isMobileMenuOpen && (
                                 <div className="flex justify-between items-center mb-4 lg:hidden">
                                     <h2 className="text-lg font-semibold text-gray-800">Menu</h2>
@@ -231,7 +253,7 @@ const AdminPanel = () => {
                         </div>
                     </aside>
 
-                    {/* Main Content */}
+                    {/* Main Content - Now completely separate */}
                     <main className="flex-1 min-w-0">
                         {/* Dashboard Section */}
                         {activeSection === "dashboard" && (
@@ -301,27 +323,50 @@ const AdminPanel = () => {
                             <div>
                                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 sm:mb-6 lg:mb-8 gap-3">
                                     <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">Product Management</h2>
-                                    <button
-                                        onClick={() => handleSectionChange("add")}
-                                        className="flex items-center px-4 py-2 sm:px-6 sm:py-3 bg-white border border-dashed border-gray-400 rounded-lg text-gray-700 shadow-sm hover:shadow-md transition-all duration-300 w-full sm:w-auto justify-center text-sm sm:text-base"
-                                    >
-                                        <FiPlusCircle className="mr-2" />
-                                        Add New Product
-                                    </button>
+                                    <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                                        {/* Search Bar */}
+                                        <div className="relative w-full sm:w-64">
+                                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                                <FiSearch className="h-4 w-4 text-gray-400" />
+                                            </div>
+                                            <input
+                                                type="text"
+                                                placeholder="Search products..."
+                                                value={searchTerm}
+                                                onChange={(e) => setSearchTerm(e.target.value)}
+                                                className="pl-10 pr-4 py-2 w-full border border-dashed border-gray-400 rounded-lg text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-sm"
+                                            />
+                                        </div>
+
+                                        {/* Submit Search Button */}
+                                        <button
+                                            onClick={handleSearch}
+                                            className="flex items-center justify-center px-4 py-2 bg-blue-600 border border-blue-700 rounded-lg text-white shadow-sm hover:bg-blue-700 hover:shadow-md transition-all duration-300 w-full sm:w-auto text-sm font-medium"
+                                        >
+                                            <FiSearch className="mr-2" />
+                                            Search
+                                        </button>
+                                    </div>
                                 </div>
 
                                 <div className="bg-white rounded-xl shadow-sm border border-dashed border-gray-300 overflow-hidden transition-all duration-300 hover:shadow-md">
-                                    {products.length === 0 ? (
+                                    {filteredProducts.length === 0 ? (
                                         <div className="text-center py-8 sm:py-12 lg:py-16">
                                             <FiBox className="mx-auto h-10 w-10 sm:h-12 sm:w-12 lg:h-16 lg:w-16 text-gray-400 mb-3 sm:mb-4" />
-                                            <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-2">No products found</h3>
-                                            <p className="text-gray-500 mb-4 text-sm sm:text-base">Start by adding your first product</p>
-                                            <button
-                                                onClick={() => handleSectionChange("add")}
-                                                className="px-4 py-2 sm:px-6 sm:py-2 border border-dashed border-gray-400 rounded-lg text-gray-700 hover:bg-gray-50 transition-all duration-300 text-sm sm:text-base"
-                                            >
-                                                Add Product
-                                            </button>
+                                            <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-2">
+                                                {searchTerm ? 'No products found' : 'No products found'}
+                                            </h3>
+                                            <p className="text-gray-500 mb-4 text-sm sm:text-base">
+                                                {searchTerm ? 'Try different search terms' : 'Start by adding your first product'}
+                                            </p>
+                                            {!searchTerm && (
+                                                <button
+                                                    onClick={() => handleSectionChange("add")}
+                                                    className="px-4 py-2 sm:px-6 sm:py-2 border border-dashed border-gray-400 rounded-lg text-gray-700 hover:bg-gray-50 transition-all duration-300 text-sm sm:text-base"
+                                                >
+                                                    Add Product
+                                                </button>
+                                            )}
                                         </div>
                                     ) : (
                                         <div className="overflow-x-auto">
@@ -343,7 +388,7 @@ const AdminPanel = () => {
                                                     </tr>
                                                 </thead>
                                                 <tbody className="divide-y divide-dashed divide-gray-300">
-                                                    {[...products]
+                                                    {filteredProducts
                                                         .sort((a, b) => {
                                                             const numA = Number(a.name.match(/\d+/)?.[0]) || 0;
                                                             const numB = Number(b.name.match(/\d+/)?.[0]) || 0;

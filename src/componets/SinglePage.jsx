@@ -153,7 +153,13 @@ function SinglePage() {
                 </div>
               </div>
               <div className='mt-1'>
-                <p className='text-gray-500'>{product.Set}</p>
+                <p className='text-gray-500 uppercase'> {product.semi}</p>
+              </div>
+              <div className='mt-1'>
+                <p className='text-gray-500'>Basin : {product.Basin}</p>
+              </div>
+              <div className='mt-1'>
+                <p className='text-gray-500'>Set : {product.Set}</p>
               </div>
             </div>
             <div className="">

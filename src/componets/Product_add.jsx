@@ -41,6 +41,7 @@ const Product_add = () => {
         s_trap: "",
         p_trap: "",
         Set: "",
+        semi: "",
         Basin: ""
     });
 
@@ -87,6 +88,7 @@ const Product_add = () => {
                 s_trap: data.s_trap || "",
                 Set: data.Set || "",
                 Basin: data.Basin || "",
+                semi: data.semi || "",
                 p_trap: data.p_trap || "",
                 sizes: sizesData, // ✅ Always 2 size fields
             });
@@ -121,7 +123,8 @@ const Product_add = () => {
                 Basin: "",
                 s_trap: "",
                 p_trap: "",
-                pedestal: ""
+                pedestal: "",
+                semi: ""
             }));
         }
     }, [product_edite]);
@@ -205,6 +208,7 @@ const Product_add = () => {
             formData.append("Basin", state.Basin || "");
             formData.append("s_trap", state.s_trap || "");
             formData.append("p_trap", state.p_trap || "");
+            formData.append("semi", state.semi || "");
             formData.append("pedestal", state.pedestal || "");
 
             // ✅ Handle sizes properly - send as individual fields
@@ -260,7 +264,7 @@ const Product_add = () => {
                 setState({
                     id: "", name: "", Image: [], title: "", des: "", rating: "",
                     price: "", weight: "", tag: "", category: "", h: "", w: "", l: "",
-                    s_trap: "", p_trap: "", sizes: ["", ""], Set: "", Basin: "", pedestal: ""
+                    s_trap: "", p_trap: "", sizes: ["", ""], Set: "", Basin: "", pedestal: "", semi: ""
                 });
                 setSelectedFiles([]);
                 setUpdate(false);
@@ -584,6 +588,20 @@ const Product_add = () => {
                                 <input
                                     name="pedestal"
                                     value={state.pedestal}
+                                    onChange={handleChange}
+                                    placeholder="Enter specification..."
+                                    className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                                />
+                            </div>
+
+
+                            <div>
+                                <label clas sName="block text-sm font-medium text-gray-700 mb-2">
+                                    semi - description
+                                </label>
+                                <input
+                                    name="semi"
+                                    value={state.semi}
                                     onChange={handleChange}
                                     placeholder="Enter specification..."
                                     className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
