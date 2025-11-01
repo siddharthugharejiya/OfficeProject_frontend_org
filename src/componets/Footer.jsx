@@ -123,13 +123,13 @@ function Footer() {
                             </a>
 
                             {/* Pinterest */}
-                            <a href="https://pin.it/4GIGzi4YU" target="_blank" rel="noopener noreferrer">
+                            {/* <a href="https://pin.it/4GIGzi4YU" target="_blank" rel="noopener noreferrer">
                                 <div className="w-[42px] h-[42px] rounded-full border flex justify-center items-center
         transition-colors duration-300 hover:bg-red-600 hover:text-white"
                                     style={{ borderColor: 'rgba(153, 153, 153, 0.1)' }}>
                                     <i className="fa-brands fa-pinterest text-sm"></i>
                                 </div>
-                            </a>
+                            </a> */}
 
                             {/* Instagram */}
                             <a href="https://www.instagram.com/prettyware_ceramika" target="_blank" rel="noopener noreferrer">
