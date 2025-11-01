@@ -100,13 +100,54 @@ function Footer() {
                             {/* <li>Help</li> */}
                         </ul>
                     </div>
-                    <div className="flex md:block  md:justify-start">
-                        <img
-                            src="/image/qr.jpg"
-                            alt="Scan to connect"
-                            className='h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 object-contain rounded-md shadow-sm'
-                        />
+                    <div>
+                        <h1 className='uppercase text-white font-bold mb-4'>Connect with us</h1>
+                        <div className="flex gap-2">
+
+                            {/* Facebook */}
+                            <a href="https://www.facebook.com/profile.php?id=61578722161740" target="_blank" rel="noopener noreferrer">
+                                <div className="w-[42px] h-[42px] rounded-full border flex justify-center items-center
+        transition-colors duration-300 hover:bg-blue-600 hover:text-white"
+                                    style={{ borderColor: 'rgba(153, 153, 153, 0.1)' }}>
+                                    <i className="fa-brands fa-facebook-f text-sm"></i>
+                                </div>
+                            </a>
+
+                            {/* LinkedIn */}
+                            <a href="https://www.linkedin.com/in/prettyware-ceramika-33b973377" target="_blank" rel="noopener noreferrer">
+                                <div className="w-[42px] h-[42px] rounded-full border flex justify-center items-center
+        transition-colors duration-300 hover:bg-sky-500 hover:text-white"
+                                    style={{ borderColor: 'rgba(153, 153, 153, 0.1)' }}>
+                                    <i className="fa-brands fa-linkedin-in text-sm"></i>
+                                </div>
+                            </a>
+
+                            {/* Pinterest */}
+                            <a href="https://pin.it/4GIGzi4YU" target="_blank" rel="noopener noreferrer">
+                                <div className="w-[42px] h-[42px] rounded-full border flex justify-center items-center
+        transition-colors duration-300 hover:bg-red-600 hover:text-white"
+                                    style={{ borderColor: 'rgba(153, 153, 153, 0.1)' }}>
+                                    <i className="fa-brands fa-pinterest text-sm"></i>
+                                </div>
+                            </a>
+
+                            {/* Instagram */}
+                            <a href="https://www.instagram.com/prettyware_ceramika" target="_blank" rel="noopener noreferrer">
+                                <div className="w-[42px] h-[42px] rounded-full border flex justify-center items-center
+        transition-colors duration-300 hover:bg-pink-500 hover:text-white"
+                                    style={{ borderColor: 'rgba(153, 153, 153, 0.1)' }}>
+                                    <i className="fa-brands fa-instagram text-sm"></i>
+                                </div>
+                            </a>
+
+                            {/* Twitter (existing placeholder) */}
+
+
+
+
+                        </div>
                     </div>
+
                 </div>
 
                 {/* Footer Bottom */}
