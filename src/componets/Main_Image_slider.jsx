@@ -32,7 +32,7 @@ const slidess = [
         id: 1,
         image: "/image/slider_7.jpg",
         title: "Exclusive bathroom fixtures",
-        subtitle: "Clean and classy designs",
+        subtitle: "Clean And Classy Designs",
         description: "Find your perfect fit with our exclusive luxury bath collection."
     },
     // {
@@ -138,10 +138,6 @@ const Main_Image_slider = () => {
                                         {slide.description}
                                     </p>
 
-                                    {/* Responsive Button */}
-                                    <button className="mt-3 sm:mt-4 md:mt-6 px-4 sm:px-6 md:px-8 py-2 sm:py-3 bg-gray-300 text-black font-semibold rounded-lg hover:bg-gray-600 transition-colors duration-300 text-sm sm:text-base md:text-lg">
-                                        Explore Collection
-                                    </button>
                                 </div>
                             </div>
                         </div>

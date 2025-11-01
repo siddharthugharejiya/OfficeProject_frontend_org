@@ -28,7 +28,7 @@ export function Who_we_are() {
 
             <Main_Image_slider textColor="black" />
             {/* <Navi /> */}
-            <div className="w-full px-4 sm:px-8 md:px-16 lg:px-20 py-12  text-gray-800">
+            <div className="w-full px-4 sm:px-8 md:px-16 lg:px-20 py-3  text-gray-800">
                 {/* Hero */}
                 <section className=" mx-auto text-center mb-10">
                     <div className="text-[#BD9C85] font-semibold uppercase text-sm mb-2">Prettyware Ceramika</div>
@@ -37,45 +37,55 @@ export function Who_we_are() {
                 </section>
 
                 {/* Swiper gallery */}
-      
+
 
                 {/* Company Story */}
-                <section className=" mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-                    <div className="lg:col-span-2 bg-[#f8f2ee] rounded-lg p-6">
-                        <h2 className="text-2xl font-semibold mb-3">Our Story</h2>
-                        <p className="text-gray-700 leading-relaxed mb-4">
-                            Established with a vision to transform bathroom spaces, Prettyware Ceramika has been at the forefront of ceramic innovation. Our journey began with a simple belief: every bathroom deserves beauty, functionality, and durability.
-                        </p>
-                        <p className="text-gray-700 leading-relaxed">
-                            Today, we're recognized for our exceptional quality, innovative designs, and commitment to sustainability. Each product reflects our dedication to excellence and our passion for creating sanitaryware that stands the test of time.
-                        </p>
+                <div className='flex justify-center items-center'>
+                    <section className=" mx-auto grid grid-cols-1  w-[90%]     gap-8 mb-12 justify-center">
+                        <div className="lg:col-span-2 bg-[#f8f2ee] rounded-lg p-6 flex  flex-col justify-center">
+                            <h2 className="text-2xl font-semibold mb-3">Our Story</h2>
+                            <p className="text-gray-700 leading-relaxed mb-4">
+                                Established with a vision to transform bathroom spaces, Prettyware Ceramika has been at the forefront of ceramic innovation. Our journey began with a simple belief: every bathroom deserves beauty, functionality, and durability.
+                            </p>
+                            <p className="text-gray-700 leading-relaxed">
+                                Today, we're recognized for our exceptional quality, innovative designs, and commitment to sustainability. Each product reflects our dedication to excellence and our passion for creating sanitaryware that stands the test of time.
+                            </p>
 
-                        <ul className="mt-6 space-y-3">
-                            <li className="flex items-start gap-3">
-                                <div className="bg-[#F4EBE4] rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0">✓</div>
-                                <div>
-                                    <strong className="text-gray-800">Innovative Designs</strong>
-                                    <div className="text-sm text-gray-600">Combining aesthetics with functionality for modern living spaces</div>
-                                </div>
-                            </li>
-                            <li className="flex items-start gap-3">
-                                <div className="bg-[#F4EBE4] rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0">✓</div>
-                                <div>
-                                    <strong className="text-gray-800">Sustainable Manufacturing</strong>
-                                    <div className="text-sm text-gray-600">Eco-friendly processes that minimize environmental impact</div>
-                                </div>
-                            </li>
-                            <li className="flex items-start gap-3">
-                                <div className="bg-[#F4EBE4] rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0">✓</div>
-                                <div>
-                                    <strong className="text-gray-800">Quality Assurance</strong>
-                                    <div className="text-sm text-gray-600">Rigorous testing to ensure long-lasting performance</div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                            <ul className="mt-6 grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                                <li className="flex items-start gap-3">
+                                    <div className="bg-[#F4EBE4] rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0">✓</div>
+                                    <div>
+                                        <strong className="text-gray-800">Innovative Designs</strong>
+                                        <div className="text-sm text-gray-600">
+                                            Combining aesthetics with functionality for modern living spaces
+                                        </div>
+                                    </div>
+                                </li>
 
-                    <div className="space-y-6 align-content-center">
+                                <li className="flex items-start gap-3">
+                                    <div className="bg-[#F4EBE4] rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0">✓</div>
+                                    <div>
+                                        <strong className="text-gray-800">Sustainable Manufacturing</strong>
+                                        <div className="text-sm text-gray-600">
+                                            Eco-friendly processes that minimize environmental impact
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li className="flex items-start gap-3">
+                                    <div className="bg-[#F4EBE4] rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0">✓</div>
+                                    <div>
+                                        <strong className="text-gray-800">Quality Assurance</strong>
+                                        <div className="text-sm text-gray-600">
+                                            Rigorous testing to ensure long-lasting performance
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                        {/* <div className="space-y-6 align-content-center">
                         <div className="bg-white rounded-lg p-6 border border-gray-200">
                             <h3 className="text-xl font-semibold mb-3">Quick Specs</h3>
                             <div className="space-y-3 text-sm text-gray-600">
@@ -86,28 +96,49 @@ export function Who_we_are() {
                                 <div className="flex justify-between"><span>Warranty</span><span className="font-medium">10 Years Comprehensive</span></div>
                             </div>
                         </div>
-                        {/* 
-                        <div className="bg-white rounded-lg p-6 border border-gray-200">
-                            <h3 className="text-xl font-semibold mb-3">Connect With Us</h3>
-                            <div className="space-y-3">
-                                <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-700 hover:text-blue-600 transition-colors">
-                                    <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">f</div>
-                                    <span>Facebook</span>
-                                </a>
-                                <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-700 hover:text-blue-500 transition-colors">
-                                    <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">in</div>
-                                    <span>LinkedIn</span>
-                                </a>
-                                <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-700 hover:text-pink-600 transition-colors">
-                                    <div className="w-8 h-8 bg-pink-100 rounded-full flex items-center justify-center">ig</div>
-                                    <span>Instagram</span>
-                                </a>
-                                <a href={socialLinks.pinterest} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-700 hover:text-red-600 transition-colors">
-                                    <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">P</div>
-                                    <span>Pinterest</span>
-                                </a>
+
+                    </div> */}
+                    </section>
+                </div>
+                {/* Additional sections */}
+                <section className=" mx-auto mt-2 mb-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div className="bg-white rounded-lg p-6 border border-gray-200">
+                        <h4 className="text-xl font-semibold mb-3">Why Choose Prettyware</h4>
+                        <ul className="space-y-3 text-gray-700">
+                            <li className="flex items-start gap-2">
+                                <span className="text-[#BD9C85] font-bold">•</span>
+                                <span>Decades of expertise in ceramic manufacturing and innovation</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                                <span className="text-[#BD9C85] font-bold">•</span>
+                                <span>State-of-the-art production facilities with quality control at every stage</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                                <span className="text-[#BD9C85] font-bold">•</span>
+                                <span>Custom solutions for residential and commercial projects</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                                <span className="text-[#BD9C85] font-bold">•</span>
+                                <span>Global standards compliance with local manufacturing advantages</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div className="bg-white rounded-lg p-6 border border-gray-200">
+                        <h4 className="text-xl font-semibold mb-3">Manufacturing Excellence</h4>
+                        <p className="text-gray-700 mb-4">
+                            Our manufacturing process combines traditional ceramic artistry with cutting-edge technology. Each piece undergoes 27 quality checks before reaching our customers.
+                        </p>
+                        <div className="grid grid-cols-2 gap-4 text-sm">
+                            <div className="text-center p-3 bg-gray-50 rounded">
+                                <div className="font-bold text-lg text-[#BD624C]">1000+</div>
+                                <div className="text-gray-600">Units Daily</div>
                             </div>
-                        </div> */}
+                            <div className="text-center p-3 bg-gray-50 rounded">
+                                <div className="font-bold text-lg text-[#BD624C]">99.2%</div>
+                                <div className="text-gray-600">Quality Pass</div>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
@@ -159,47 +190,7 @@ export function Who_we_are() {
                     </div>
                 </section> */}
 
-                {/* Additional sections */}
-                <section className=" mx-auto mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div className="bg-white rounded-lg p-6 border border-gray-200">
-                        <h4 className="text-xl font-semibold mb-3">Why Choose Prettyware</h4>
-                        <ul className="space-y-3 text-gray-700">
-                            <li className="flex items-start gap-2">
-                                <span className="text-[#BD9C85] font-bold">•</span>
-                                <span>Decades of expertise in ceramic manufacturing and innovation</span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                                <span className="text-[#BD9C85] font-bold">•</span>
-                                <span>State-of-the-art production facilities with quality control at every stage</span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                                <span className="text-[#BD9C85] font-bold">•</span>
-                                <span>Custom solutions for residential and commercial projects</span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                                <span className="text-[#BD9C85] font-bold">•</span>
-                                <span>Global standards compliance with local manufacturing advantages</span>
-                            </li>
-                        </ul>
-                    </div>
 
-                    <div className="bg-white rounded-lg p-6 border border-gray-200">
-                        <h4 className="text-xl font-semibold mb-3">Manufacturing Excellence</h4>
-                        <p className="text-gray-700 mb-4">
-                            Our manufacturing process combines traditional ceramic artistry with cutting-edge technology. Each piece undergoes 27 quality checks before reaching our customers.
-                        </p>
-                        <div className="grid grid-cols-2 gap-4 text-sm">
-                            <div className="text-center p-3 bg-gray-50 rounded">
-                                <div className="font-bold text-lg text-[#BD624C]">1000+</div>
-                                <div className="text-gray-600">Units Daily</div>
-                            </div>
-                            <div className="text-center p-3 bg-gray-50 rounded">
-                                <div className="font-bold text-lg text-[#BD624C]">99.2%</div>
-                                <div className="text-gray-600">Quality Pass</div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
 
                 {/* Certifications & Values */}
                 <section className=" mx-auto mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">

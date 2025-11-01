@@ -19,10 +19,10 @@ function Footer() {
                     <div data-aos="fade-right">
                         <h1 className='uppercase text-white font-bold mb-4'>Contact Info</h1>
                         <p className='uppercase mb-1'>Store Location</p>
-                        <address className='not-italic leading-6'>
-                            Head office
-                            322,third floor, ishan business center, <br /> B/H ishan ceramic zone
-                            Lalpar morbi, 363642
+                        <address className='not-italic leading-6 text-[16px]'>
+                            Head Office
+                            322, Third Floor, <br /> Ishan Business Center,  <br /> B/H Ishan Ceramic Zone <br />
+                            Lalpar - Morbi, 363642
 
                         </address>
 
@@ -50,12 +50,12 @@ function Footer() {
                                 {/* <i className="fa-solid fa-phone text-white text-sm"></i> */}
                             </div>
                             <a
-                                href="https://mail.google.com/mail/?view=cm&to=Info@prettywareceramikallp.com&su=Enquiry&body=Hello, I want to know more about your products."
+                                href="https://mail.google.com/mail/?view=cm&to=prettywareceramika@gmail.com&su=Enquiry&body=Hello, I want to know more about your products."
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className='text-white text-sm ml-1'
                             >
-                                Info@prettywareceramikallp.com
+                                prettywareceramika@gmail.com
                             </a>
                         </div>
 
@@ -89,7 +89,7 @@ function Footer() {
                     {/* My Account */}
                     <div data-aos="fade-left">
                         <h1 className='uppercase text-white font-bold mb-4'>My Account</h1>
-                        <ul className='space-y-2 text-sm flex flex-col'>
+                        <ul className='space-y-2 text-[16px] flex flex-col'>
                             <Link to="/">Home</Link>
                             <Link to="/about">About</Link>
                             <Link to="/new">New Arrivals</Link>
@@ -110,8 +110,12 @@ function Footer() {
                 </div>
 
                 {/* Footer Bottom */}
-                <div className="text-center text-xs text-[#777] mt-10 border-t border-[#444] pt-6" >
-                    © {new Date().getFullYear()} Your Company. All rights reserved.
+                <div className=" text-[16px] flex-wrap  sm:px-20 px-2 flex text-white  justify-between items-center  mt-10 border-t-[#eaeaea] border-t-1 text-black pt-6" >
+                    <h1>
+
+                        Copyright © 2025 <span className=' font-semibold'>Shopio.</span>  All rights reserved
+                    </h1>
+                    <h1>Designed by <span className=" font-semibold">Four Sense Branding</span></h1>
                 </div>
             </footer>
         </>
