@@ -9,6 +9,7 @@ import Footer1 from './Footer1';
 import { getImageUrl } from '../utils/imageUtils';
 import { Navi } from './Navi';
 import Footer from './Footer';
+import { SwiperSlide } from 'swiper/react';
 // import { Nav } from 'react-bootstrap';
 // import { Navi } from './Navi';
 
@@ -62,6 +63,21 @@ function ProductPage() {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+    const skeletonSlides = Array(4)
+        .fill(0)
+        .map((_, index) => (
+            <SwiperSlide key={index}>
+                <div className="flex justify-center items-stretch h-full">
+                    <div className="w-full max-w-sm flex flex-col items-center cursor-pointer overflow-hidden m-1">
+                        <div className="h-[300px] w-full bg-gray-300 animate-pulse rounded-lg"></div>
+                        <div className="w-full mt-4 p-2">
+                            <div className="h-4 bg-gray-300 animate-pulse rounded w-3/4 mx-auto mb-2"></div>
+                            <div className="h-4 bg-gray-300 animate-pulse rounded w-1/2 mx-auto"></div>
+                        </div>
+                    </div>
+                </div>
+            </SwiperSlide>
+        ));
 
     return (
         <>
@@ -107,6 +123,8 @@ function ProductPage() {
                     </div>
                 </div>
 
+
+                {/* <skeletonSlides /> */}
                 <div className="overflow-hidden">
 
                     <Footer />

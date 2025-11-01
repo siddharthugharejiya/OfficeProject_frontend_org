@@ -13,6 +13,7 @@ import { CategorySlider } from './CategorySlider'
 import Who_we_are from './About_us'
 import NotFound from './NotFound'
 import Ex from './Ex'
+import ContactForm from './ContactForm'
 // import CategorySlider from './CategorySlider'
 
 function Main_Routers() {
@@ -29,6 +30,7 @@ function Main_Routers() {
             <Route path='/v' element={<VisionMission />} />
             <Route path='/c' element={<CategorySlider />} />
             <Route path='/e' element={<Ex />} />
+            <Route path='/con' element={<ContactForm />} />
             <Route path='*' element={<NotFound />} />
         </Routes>
     )

@@ -4,6 +4,7 @@ import Navbar_1 from "./Navbar_1";
 import Footer1 from "./Footer1";
 import { Navi } from "./Navi";
 import Footer from "./Footer";
+import ContactForm from "./ContactForm";
 
 function Contect() {
     const [formData, setFormData] = useState({
@@ -66,73 +67,7 @@ function Contect() {
 
 
                 {/* 🔹 Contact Form Section */}
-                <div className="bg-gray-5   c `78900 p-6 md:p-10">
-                    <h2 className="text-2xl font-semibold mb-6 text-center">Send A Message</h2>
-
-                    <form className="space-y-4" onSubmit={handleSubmit}>
-                        {/* Name */}
-                        <div>
-                            <label className="block mb-1 font-medium">Customer Service</label>
-                            <input
-                                type="text"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleChange}
-                                placeholder="Your Name"
-                                className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#b86c59]"
-                                required
-                            />
-                        </div>
-
-                        {/* Email */}
-                        <div>
-                            <label className="block mb-1 font-medium">Your Email</label>
-                            <input
-                                type="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                placeholder="your@email.com"
-                                className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#b86c59]"
-                                required
-                            />
-                        </div>
-
-                        {/* File Upload */}
-                        <div>
-                            <label className="block mb-1 font-medium">Attachment (optional)</label>
-                            <input
-                                type="file"
-                                name="file"
-                                onChange={handleChange}
-                                className="w-full"
-                            />
-                        </div>
-
-                        {/* Message */}
-                        <div>
-                            <label className="block mb-1 font-medium">How Can We Help?</label>
-                            <textarea
-                                name="message"
-                                value={formData.message}
-                                onChange={handleChange}
-                                placeholder="Type your message..."
-                                className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#b86c59] h-32 resize-none"
-                                required
-                            ></textarea>
-                        </div>
-
-                        {/* Submit Button */}
-                        <div className="text-center">
-                            <button
-                                type="submit"
-                                className="bg-[#b86c59] text-white font-semibold px-6 py-2 rounded-md hover:bg-[#a85a4b] transition"
-                            >
-                                Send Message
-                            </button>
-                        </div>
-                    </form>
-                </div>
+               <ContactForm />
             </div>
             <div className="overflow-hidden">
                 <Footer />

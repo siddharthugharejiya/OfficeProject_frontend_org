@@ -151,7 +151,7 @@ function Footer() {
                 </div>
 
                 {/* Footer Bottom */}
-                <div className=" text-[16px] flex-wrap  sm:px-20 px-2 flex text-white  justify-between items-center  mt-10 border-t-[#eaeaea] border-t-1 text-black pt-6" >
+                <div className=" text-[16px] flex-wrap  sm:px-20 px-2 flex text-white  justify-between items-center  mt-10 border-t-[#eaeaea] border-t-1  pt-6" >
                     <h1>
 
                         Copyright © 2025 <span className=' font-semibold'>Shopio.</span>  All rights reserved
